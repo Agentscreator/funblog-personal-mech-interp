@@ -6,7 +6,6 @@ Joshua N. Brown's blog. It pulls automatically from
 
 - **Best Research**: AI safety, evaluation, decision-making
 - **Best Personal**: short stories, poems, non-work essays
-- **New & Trending**: engagement on each post, decayed by age
 
 ## How ranking works
 
