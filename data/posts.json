@@ -36,22 +36,6 @@
    {
     "source": "lesswrong",
     "url": "https://www.lesswrong.com/posts/KkdCGyPyJgMvyNgnZ/the-proxies-are-breaking"
-   },
-   {
-    "source": "lesswrong",
-    "url": "https://www.lesswrong.com/posts/KkdCGyPyJgMvyNgnZ/the-proxies-are-breaking"
-   },
-   {
-    "source": "lesswrong",
-    "url": "https://www.lesswrong.com/posts/KkdCGyPyJgMvyNgnZ/the-proxies-are-breaking"
-   },
-   {
-    "source": "lesswrong",
-    "url": "https://www.lesswrong.com/posts/KkdCGyPyJgMvyNgnZ/the-proxies-are-breaking"
-   },
-   {
-    "source": "lesswrong",
-    "url": "https://www.lesswrong.com/posts/KkdCGyPyJgMvyNgnZ/the-proxies-are-breaking"
    }
   ],
   "text": "The Fundamentals\nTwo things have always been valuable in a worker: that you can be trusted to do good work, and that you won’t be a liability to the company.\nNothing else is fundamental. \nThe resume, the interview, the degree, the portfolio, they are proxies, to access those fundamental two values.\nWhy Proxies Exist\nProxies exist because verification is expensive. Nobody can watch you work for a year before deciding to hire you, so substitutes were invented. \nA degree proxies competence because it’s costly to fake and correlates with ability. A clean background check proxies safety. A polished interview proxies both. \nThe whole architecture of hiring is just a stack of these shortcuts. And for most of the 20th century, they worked well enough. \nWhy the Proxies Are Breaking\nAI collapses the cost of faking these proxies without collapsing the cost of faking the underlying trait. A resume can be perfectly tailored in seconds. A cover letter can simulate exactly the voice a hiring manager wants to hear. \nInterview answers can be rehearsed against AI-predicted questions. \nNone of this means the candidate is more competent. \nAnd once everyone has a bachelor’s degree, it stops signaling anything, so the market invents a master’s degree to restore the gap. \nBut AI is decoupling proxies from what they measure faster than institutions can invent replacements, which means we’re heading into a period where the old signals are visibly broken and the new ones haven’t stabilized yet.\nWhat the New Proxies Look Like\nThe strongest candidates for replacement proxies share one property: they require the underlying trait to produce them, not just the appearance of it.\nA visible trail of work done before anyone was watching. \nNot a portfolio curated for a job search, but a public record that accumulated while you were doing the work for its own reasons. \nA years-long commit history, a body of writing that predates any application, a track record of shipped things that can be verified by date. \nThis is hard to fake retroactively because faking it means actually doing years of work.\nA referral from someone whose own reputation is on the line. \nNot a LinkedIn endorsement, which costs the writer nothing, but a referral where the referrer takes real damage if you fail. \nPerformance on a task that closely resembles the actual job. \nGeneric interview questions can be predicted and rehearsed. \nA real, somewhat idiosyncratic problem specific to the role.\nA consistent identity across contexts over time. \nSomeone who has said the same things, held the same positions, and behaved the same way across a long public record is harder to fake than someone you’re meeting for the first time.\nWhat These Have in Common\nNotice what all four share. They route around self-report.\nThe old proxies — resume, cover letter, interview — all relied on the candidate’s own claims about themselves, packaged persuasively. The new proxies rely on externally verifiable trails that existed before the person knew they’d be evaluated, or on the testimony of someone else who has something to lose.\nThe Practical Implication\nThe practical implication for anyone building career capital is straightforward: stop optimizing the parts of your record that are self-reported, and start building the parts that someone else would have to vouch for, or that existed on the record before you needed them to.\nAnd finally, maybe trust was the only thing that was ever valuable. The proxies were just the tools we built to approximate it cheaply. Now those tools are breaking, and we’re left with the thing itself.",

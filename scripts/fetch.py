@@ -8,16 +8,23 @@ import json
 import re
 import sys
 import urllib.request
+import xml.etree.ElementTree as ET
+from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "config.json").read_text())
 OUT = ROOT / "data" / "posts.json"
-UA = {"User-Agent": "Mozilla/5.0 (personal-blog-sync)"}
+UA = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/141.0 Safari/537.36",
+    "Accept": "application/json, application/rss+xml, text/html;q=0.9, */*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
 
 
-def http_json(url, body=None):
+def http_get(url, body=None):
     headers = dict(UA)
     data = None
     if body is not None:
@@ -25,7 +32,15 @@ def http_json(url, body=None):
         headers["Content-Type"] = "application/json"
     req = urllib.request.Request(url, data=data, headers=headers)
     with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)
+        return r.read()
+
+
+def http_json(url, body=None):
+    return json.loads(http_get(url, body))
+
+
+def cached_posts():
+    return json.loads(OUT.read_text()) if OUT.exists() else []
 
 
 # ---------------------------------------------------------------- sanitizing
@@ -139,6 +154,45 @@ def fetch_lesswrong(slug):
 
 
 def fetch_substack(sub):
+    # Substack's JSON API answers 403 to GitHub Actions' datacenter IPs, so fall
+    # back to the RSS feed, which carries the full text of free posts.
+    try:
+        return fetch_substack_api(sub)
+    except Exception as e:
+        print(f"Substack API: {e}; trying RSS", file=sys.stderr)
+        return fetch_substack_rss(sub)
+
+
+def fetch_substack_rss(sub):
+    xml = http_get(f"https://{sub}.substack.com/feed")
+    ns = {"content": "http://purl.org/rss/1.0/modules/content/"}
+    # RSS has no numeric post id or engagement counts: reuse what we already
+    # know about a slug so its id (and therefore its ranking) stays stable.
+    known = {p["slug"]: p for p in cached_posts() if p["source"] == "substack"}
+    posts = []
+    for item in ET.fromstring(xml).iter("item"):
+        url = item.findtext("link").strip()
+        slug = url.rstrip("/").rsplit("/", 1)[-1]
+        html = sanitize(item.findtext("content:encoded", "", ns))
+        if not html:
+            continue
+        old = known.get(slug, {})
+        posts.append({
+            "id": old.get("id") or f"ss-{slug}",
+            "source": "substack",
+            "slug": slug,
+            "title": item.findtext("title").strip(),
+            "subtitle": (item.findtext("description") or "").strip(),
+            "date": parsedate_to_datetime(item.findtext("pubDate")).date().isoformat(),
+            "url": url,
+            "words": len(to_text(html).split()),
+            "engagement": old.get("engagement", {"likes": 0, "comments": 0, "restacks": 0}),
+            "html": html,
+        })
+    return posts
+
+
+def fetch_substack_api(sub):
     base = f"https://{sub}.substack.com/api/v1"
     archive, offset = [], 0
     while True:
@@ -185,17 +239,20 @@ def main():
             posts += got
         except Exception as e:  # keep going if one source is down
             print(f"{name}: FAILED ({e})", file=sys.stderr)
-            if OUT.exists():
-                old = [p for p in json.loads(OUT.read_text()) if p["source"] == name.lower()]
-                print(f"{name}: reusing {len(old)} cached posts", file=sys.stderr)
-                posts += old
+            old = [p for p in cached_posts() if p["source"] == name.lower()]
+            for p in old:
+                p.pop("also_on", None)  # rebuilt below
+            print(f"{name}: reusing {len(old)} cached posts", file=sys.stderr)
+            posts += old
 
     # Cross-posted pieces: keep the Substack copy as primary, remember the LW link.
     by_title = {}
     for p in sorted(posts, key=lambda p: p["source"] != "substack"):
         key = norm_title(p["title"])
         if key in by_title:
-            by_title[key].setdefault("also_on", []).append({"source": p["source"], "url": p["url"]})
+            also = by_title[key].setdefault("also_on", [])
+            if p["url"] not in {a["url"] for a in also}:
+                also.append({"source": p["source"], "url": p["url"]})
             continue
         by_title[key] = p
     posts = list(by_title.values())
