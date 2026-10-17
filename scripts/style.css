@@ -1,23 +1,14 @@
-/* Claude-inspired palette: warm ivory, near-black ink, terracotta accent. */
+/* Anthropic-style palette: beige paper, slate ink, clay accent. Always light, like anthropic.com. */
 :root {
-  --bg: #faf9f5;
+  color-scheme: light;
+  --bg: #f0eee6;
   --fg: #141413;
-  --muted: #73726c;
-  --rule: #e8e6dc;
+  --muted: #6b6a63;
+  --rule: #e3dacc;
   --accent: #d97757;
-  --link-line: #e3b7a5;
+  --link-line: #d9a48f;
   --serif: "Tiempos Text", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --sans: "Styrene A", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #262624;
-    --fg: #f5f4ed;
-    --muted: #a3a199;
-    --rule: #3a3935;
-    --accent: #e08a6c;
-    --link-line: #7a4a3a;
-  }
 }
 
 * { box-sizing: border-box; }
