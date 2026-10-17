@@ -1,0 +1,244 @@
+{
+ "model": "claude-opus-5-5 (initial read in Claude Code)",
+ "ranked_at": "2026-10-17T00:00:00+00:00",
+ "posts": {
+  "ss-220559716": {
+   "hash": "a5f2ab6b1ea89938",
+   "category": "research",
+   "overall": 90,
+   "scores": {
+    "originality": 9,
+    "rigor": 8,
+    "craft": 8,
+    "depth": 9,
+    "standalone": 9
+   },
+   "blurb": "Agent-based simulations suggest relationships don't decay. We learn what they always were, and thinking late costs years in bad matches.",
+   "rationale": "The most rigorous piece in the corpus: concrete mechanistic models, quantified results, and five falsifiable predictions. Counterintuitive findings (selection not growth; 7x reconciliation asymmetry) are clearly argued."
+  },
+  "ss-208463566": {
+   "hash": "6b9773ee794c80bc",
+   "category": "research",
+   "overall": 87,
+   "scores": {
+    "originality": 9,
+    "rigor": 7,
+    "craft": 8,
+    "depth": 9,
+    "standalone": 9
+   },
+   "blurb": "Every alignment method assumes we can still check the model's work. This piece proposes evaluating the shape of its values instead, before that assumption fails.",
+   "rationale": "Clear, original framing of the scalable-oversight problem with a concrete proposal (structurally novel moral dilemmas probing incentive, not behavior). Strongest pure AI-safety piece; would benefit from a worked example."
+  },
+  "ss-220251918": {
+   "hash": "983811c7ce84ca41",
+   "category": "research",
+   "overall": 82,
+   "scores": {
+    "originality": 8,
+    "rigor": 7,
+    "craft": 8,
+    "depth": 7,
+    "standalone": 9
+   },
+   "blurb": "AI made resumes, cover letters and interviews cheap to fake. What replaces them are signals that need the real trait to produce.",
+   "rationale": "Tight, well-structured argument with a memorable thesis and a practical takeaway. Also posted to LessWrong."
+  },
+  "ss-209224664": {
+   "hash": "0f8a210fe9ac886f",
+   "category": "research",
+   "overall": 76,
+   "scores": {
+    "originality": 7,
+    "rigor": 6,
+    "craft": 7,
+    "depth": 8,
+    "standalone": 8
+   },
+   "blurb": "Treat morality as a system with predictable breakages, not a verdict machine. Here are five of them, and why models must not inherit them.",
+   "rationale": "Good taxonomy (shared core objectives vs learned heuristics) that connects human moral error to alignment. Some failure modes overlap."
+  },
+  "ss-208418808": {
+   "hash": "7f463c099d7facbf",
+   "category": "research",
+   "overall": 74,
+   "scores": {
+    "originality": 7,
+    "rigor": 5,
+    "craft": 8,
+    "depth": 8,
+    "standalone": 8
+   },
+   "blurb": "A letter to Marcus Aurelius on building a mind that will outreason us, and why the goal must shift from control to evolving our own morality.",
+   "rationale": "Moving and well-written; bridges philosophy and alignment. Argument is more rhetorical than rigorous ('control is impossible' is asserted, not shown)."
+  },
+  "ss-210543088": {
+   "hash": "e9c1d985f99cae71",
+   "category": "research",
+   "overall": 72,
+   "scores": {
+    "originality": 7,
+    "rigor": 7,
+    "craft": 7,
+    "depth": 7,
+    "standalone": 8
+   },
+   "blurb": "Most bad decisions don't come from bad information. They come from an objective someone else quietly handed you.",
+   "rationale": "Clean incentive -> objective -> context -> decision pipeline and a useful self-reinforcing-loop insight. Short and focused."
+  },
+  "ss-206772437": {
+   "hash": "0d539bcb826534f8",
+   "category": "research",
+   "overall": 71,
+   "scores": {
+    "originality": 7,
+    "rigor": 6,
+    "craft": 7,
+    "depth": 7,
+    "standalone": 8
+   },
+   "blurb": "We defend against malice but not against sincere people who are wrong, so judge by track record and treat autonomy as structural.",
+   "rationale": "Sharp contrarian thesis that builds to a real conclusion about autonomy. A few leaps (morality diverges 'Not might. Will.') are asserted."
+  },
+  "ss-215583264": {
+   "hash": "64737d613ddfc85c",
+   "category": "research",
+   "overall": 67,
+   "scores": {
+    "originality": 5,
+    "rigor": 6,
+    "craft": 6,
+    "depth": 6,
+    "standalone": 8
+   },
+   "blurb": "Employment as a two-sided exchange: ask what an institution makes rational for you to do, not only what it offers.",
+   "rationale": "Useful, practical framework for evaluating labs, but familiar econ (principal-agent, opportunity cost) and list-heavy formatting."
+  },
+  "ss-213921144": {
+   "hash": "80f1e33aa3ef0d94",
+   "category": "research",
+   "overall": 64,
+   "scores": {
+    "originality": 4,
+    "rigor": 6,
+    "craft": 6,
+    "depth": 5,
+    "standalone": 8
+   },
+   "blurb": "A method for deciding before you've decided, followed by a field guide to sixteen common reasoning failures and their fixes.",
+   "rationale": "Opening section on aimed reasoning is good; the bulk is a catalog of well-known biases with standard fixes, so originality is lower."
+  },
+  "ss-218633709": {
+   "hash": "6db9178d29eb9ccf",
+   "category": "research",
+   "overall": 62,
+   "scores": {
+    "originality": 5,
+    "rigor": 5,
+    "craft": 6,
+    "depth": 6,
+    "standalone": 8
+   },
+   "blurb": "Value is moving away from whatever is cheap to produce and check, and toward verification, infrastructure, and accountability.",
+   "rationale": "Reasonable synthesis with a crisp core rule, but largely consensus forecasting and list-driven."
+  },
+  "ss-210377028": {
+   "hash": "994e26aa06e4beea",
+   "category": "research",
+   "overall": 58,
+   "scores": {
+    "originality": 6,
+    "rigor": 4,
+    "craft": 7,
+    "depth": 6,
+    "standalone": 4
+   },
+   "blurb": "A sequel to Love, Aurelius: maybe what an AI needs is not a perfect objective but a well-placed obsession with human flourishing.",
+   "rationale": "Interesting 'attention as obsession' idea, but the first third repeats Love, Aurelius nearly verbatim and the core idea stays speculative."
+  },
+  "ss-207055706": {
+   "hash": "5c25bcbe6a147987",
+   "category": "personal",
+   "overall": 88,
+   "scores": {
+    "originality": 8,
+    "rigor": 7,
+    "craft": 9,
+    "depth": 8,
+    "standalone": 9
+   },
+   "blurb": "Jamie and Sally, four seasons, and no villain. A short story about how trust is spent quietly on assumptions nobody compared.",
+   "rationale": "The strongest creative work: real characters, specific details (the withheld laugh, the thirtieth Tuesday), and a structure that earns its closing aphorisms."
+  },
+  "ss-213722983": {
+   "hash": "da32b33038450b9d",
+   "category": "personal",
+   "overall": 82,
+   "scores": {
+    "originality": 8,
+    "rigor": 7,
+    "craft": 8,
+    "depth": 8,
+    "standalone": 8
+   },
+   "blurb": "A Meditations-style prologue of debts, followed by a parable in which the Emperor tells Sizoron how a person becomes valuable.",
+   "rationale": "Distinctive voice and confident, quotable lines ('If a doctrine does not change what a man does on an ordinary Tuesday then it is jewelry'). Ambitious form, mostly pulled off."
+  },
+  "ss-211829148": {
+   "hash": "7c8c6956cb7d2588",
+   "category": "personal",
+   "overall": 77,
+   "scores": {
+    "originality": 6,
+    "rigor": 7,
+    "craft": 8,
+    "depth": 7,
+    "standalone": 9
+   },
+   "blurb": "It isn't that life is short. It's that we spend most of it chasing a goal that was never ours.",
+   "rationale": "Seneca-inflected essay with real rhetorical force and a clear turn toward the 'pull you cannot explain'. Theme is familiar but the execution is strong."
+  },
+  "ss-220000849": {
+   "hash": "cf8b0e16fc4b2952",
+   "category": "personal",
+   "overall": 72,
+   "scores": {
+    "originality": 7,
+    "rigor": 8,
+    "craft": 7,
+    "depth": 7,
+    "standalone": 7
+   },
+   "blurb": "A self-portrait in the third person: a mind that turns experience into law, and has to learn when to stop climbing the ladder of questions.",
+   "rationale": "Honest and self-aware, with its best lines on mistaking beauty for truth. Benefits from knowing the author."
+  },
+  "ss-216230747": {
+   "hash": "ffb9373ceaf5f254",
+   "category": "personal",
+   "overall": 68,
+   "scores": {
+    "originality": 6,
+    "rigor": 6,
+    "craft": 6,
+    "depth": 6,
+    "standalone": 8
+   },
+   "blurb": "A poem about surrender and peace, carried by a blueberry on a hot summer day.",
+   "rationale": "Warm and sincere with a lovely central image; drifts into abstraction ('majesty so pure') in the back half."
+  },
+  "ss-207827995": {
+   "hash": "9923fd33c84bdca1",
+   "category": "personal",
+   "overall": 52,
+   "scores": {
+    "originality": 4,
+    "rigor": 4,
+    "craft": 6,
+    "depth": 4,
+    "standalone": 8
+   },
+   "blurb": "Success = focus x time, and the room you're in sets the coefficients.",
+   "rationale": "Short and punchy but the idea is well-trodden and the 'formula' is not developed beyond the anecdotes."
+  }
+ }
+}

@@ -1,0 +1,14 @@
+{
+  "site_title": "Joshua N. Brown",
+  "tagline": "AI safety research, and the stories I write when I'm not working.",
+  "base_url": "https://agentscreator.github.io/funblog-personal-mech-interp",
+  "lesswrong_user": "joshua-n-brown",
+  "substack_subdomain": "joshbrown620328",
+  "featured_per_section": 3,
+  "links": {
+    "LessWrong": "https://www.lesswrong.com/users/joshua-n-brown",
+    "Substack": "https://substack.com/@joshbrown620328",
+    "GitHub": "https://github.com/Agentscreator"
+  },
+  "trending_count": 4
+}

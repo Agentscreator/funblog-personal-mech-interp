@@ -1,0 +1,4 @@
+{
+  "_help": "Key by post slug. Fields: category ('research'|'personal'), pin (true = always featured first), hide (true = drop from site), boost (+/- points added to Claude's score), blurb (replace the card text).",
+  "posts": {}
+}
