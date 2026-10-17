@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render data/posts.json + data/rankings.json into a static site in site/."""
+"""Render data/posts.json + data/scores.json into a static site in site/."""
 import json
 import shutil
 from datetime import date
@@ -10,10 +10,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site"
 CONFIG = json.loads((ROOT / "config.json").read_text())
 
-SECTIONS = {
-    "research": ("Best Research", "AI safety, evaluation, decision-making and incentives."),
-    "personal": ("Best Personal", "Short stories, poems and essays that have nothing to do with work."),
-}
+SECTIONS = {"research": "Research", "personal": "Personal"}
 SOURCE_NAMES = {"substack": "Substack", "lesswrong": "LessWrong"}
 
 
@@ -30,6 +27,7 @@ def load():
         p["category"] = o.get("category") or s["category"]
         p["score"] = s["best"] + o.get("boost", 0)
         p["trending"] = s["trending"]
+        p["engagement"] = s.get("engagement", 0)
         p["provisional"] = s["quality_source"] == "provisional"
         p["pin"] = bool(o.get("pin"))
         p["blurb"] = o.get("blurb") or s["blurb"] or p.get("subtitle") or ""
@@ -46,8 +44,8 @@ def fmt_date(d):
     return date.fromisoformat(d).strftime("%b %-d, %Y")
 
 
-def read_time(words):
-    return f"{max(1, round(words / 230))} min read"
+def short_date(d):
+    return date.fromisoformat(d).strftime("%b %Y")
 
 
 def page(title, body, *, description="", canonical="", depth=0):
@@ -65,80 +63,73 @@ def page(title, body, *, description="", canonical="", depth=0):
 <link rel="stylesheet" href="{rel}style.css">
 </head>
 <body>
-<header class="masthead"><div class="wrap">
+<main>
+<header>
   <a class="name" href="{rel}index.html">{escape(CONFIG["site_title"])}</a>
   <nav>{links}</nav>
-</div></header>
-<main class="wrap">
+</header>
 {body}
 </main>
-<footer class="wrap"><p>Pulled automatically from LessWrong and Substack. Picks chosen by having Claude read the whole corpus.</p></footer>
 </body>
 </html>
 """
 
 
-def card(p, rank=None):
-    num = f'<span class="rank">{rank:02d}</span>' if rank else ""
-    new = '<span class="badge">New</span>' if p["provisional"] else ""
-    return f"""<article class="card">
-  {num}
-  <div>
-    <h3><a href="posts/{escape(p['slug'])}.html">{escape(p['title'])}</a>{new}</h3>
-    <p class="blurb">{escape(p['blurb'])}</p>
-    <p class="meta">{fmt_date(p['date'])} · {read_time(p['words'])} · {SOURCE_NAMES[p['source']]}</p>
-  </div>
-</article>"""
+def entry(p, blurb=True):
+    note = f'<p class="blurb">{escape(p["blurb"])}</p>' if blurb and p["blurb"] else ""
+    return f"""<li>
+  <a href="posts/{escape(p['slug'])}.html">{escape(p['title'])}</a>
+  {note}
+</li>"""
 
 
-def row(p):
-    return f"""<li><a href="posts/{escape(p['slug'])}.html">{escape(p['title'])}</a>
-  <span class="meta">{fmt_date(p['date'])}</span></li>"""
+def dated(p):
+    return f"""<li class="row">
+  <a href="posts/{escape(p['slug'])}.html">{escape(p['title'])}</a>
+  <time>{short_date(p['date'])}</time>
+</li>"""
 
 
 def build_index(posts):
     n = CONFIG.get("featured_per_section", 3)
-    featured = []
-    archive = []
-    for cat, (label, desc) in SECTIONS.items():
-        picks = ranked(posts, cat)[:n]
-        featured.append(f"""<section class="shelf" id="{cat}">
+    best = "".join(f"""<section id="{cat}">
   <h2>{label}</h2>
-  <p class="shelf-desc">{desc}</p>
-  {"".join(card(p, i + 1) for i, p in enumerate(picks))}
-</section>""")
-        by_date = sorted((p for p in posts if p["category"] == cat), key=lambda p: p["date"], reverse=True)
-        archive.append(f"""<section>
-  <h3>All {cat} · {len(by_date)}</h3>
-  <ul class="archive">{"".join(row(p) for p in by_date)}</ul>
-</section>""")
-    hot = sorted(posts, key=lambda p: -p["trending"])[:CONFIG.get("trending_count", 4)]
-    trend = "".join(f"""<a class="chip" href="posts/{escape(p['slug'])}.html">
-  <span class="chip-cat">{p['category']}</span>{escape(p['title'])}</a>""" for p in hot)
-    body = f"""<p class="tagline">{escape(CONFIG["tagline"])}</p>
-<section class="trending"><h2>New &amp; trending</h2><div class="chips">{trend}</div></section>
-<div class="shelves">{"".join(featured)}</div>
-<h2 class="archive-title">Everything</h2>
-<div class="shelves">{"".join(archive)}</div>"""
+  <ul class="best">{"".join(entry(p) for p in ranked(posts, cat)[:n])}</ul>
+</section>""" for cat, label in SECTIONS.items())
+    # Without any likes/comments, trending is just date order and would duplicate "All writing".
+    trending = ""
+    if any(p["engagement"] for p in posts):
+        hot = sorted(posts, key=lambda p: -p["trending"])[:CONFIG.get("trending_count", 4)]
+        trending = f"""<section>
+  <h2>Trending</h2>
+  <ul class="list">{"".join(dated(p) for p in hot)}</ul>
+</section>"""
+    everything = sorted(posts, key=lambda p: p["date"], reverse=True)
+    body = f"""<p class="intro">{escape(CONFIG["tagline"])}</p>
+{best}
+{trending}
+<section>
+  <h2>All writing</h2>
+  <ul class="list">{"".join(dated(p) for p in everything)}</ul>
+</section>"""
     return page(CONFIG["site_title"], body, description=CONFIG["tagline"])
 
 
 def build_post(p, prev, nxt):
     sub = f'<p class="subtitle">{escape(p["subtitle"])}</p>' if p.get("subtitle") else ""
     origins = [(p["source"], p["url"])] + [(a["source"], a["url"]) for a in p.get("also_on", [])]
-    orig = " · ".join(f'<a href="{escape(u)}">{SOURCE_NAMES[s]}</a>' for s, u in origins)
+    orig = " and ".join(f'<a href="{escape(u)}">{SOURCE_NAMES[s]}</a>' for s, u in origins)
     nav = []
     if prev:
         nav.append(f'<a href="{escape(prev["slug"])}.html">← {escape(prev["title"])}</a>')
     if nxt:
         nav.append(f'<a class="next" href="{escape(nxt["slug"])}.html">{escape(nxt["title"])} →</a>')
-    body = f"""<article class="post">
-  <p class="kicker"><a href="../index.html#{p['category']}">{SECTIONS[p['category']][0]}</a></p>
+    body = f"""<article>
   <h1>{escape(p['title'])}</h1>
   {sub}
-  <p class="meta">{fmt_date(p['date'])} · {read_time(p['words'])} · Originally on {orig}</p>
+  <p class="meta">{fmt_date(p['date'])}</p>
   <div class="prose">{p['html']}</div>
-  <p class="discuss">Comment or subscribe on {orig}.</p>
+  <p class="meta">Originally published on {orig}.</p>
 </article>
 <nav class="pager">{"".join(nav)}</nav>"""
     return page(f"{p['title']} · {CONFIG['site_title']}", body,
