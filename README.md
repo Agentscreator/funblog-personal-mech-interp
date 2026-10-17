@@ -21,8 +21,3 @@ There's no API key and it costs nothing to run.
   { "posts": { "the-trust-bank": { "pin": true }, "the-formula-for-success": { "hide": true } } }
   ```
   The available fields are `pin`, `hide`, `boost` (±points), `category` and `blurb`.
-
-## Deploy
-
-GitHub Actions (`.github/workflows/update.yml`) re-syncs every 6 hours and on every push. One-time
-setup: **Settings → Pages → Source: GitHub Actions**.
