@@ -22,15 +22,6 @@ There's no API key and it costs nothing to run.
   ```
   The available fields are `pin`, `hide`, `boost` (±points), `category` and `blurb`.
 
-## Run locally
-
-```sh
-python3 scripts/fetch.py   # pull posts
-python3 scripts/rank.py    # score
-python3 scripts/build.py   # write site/
-open site/index.html
-```
-
 ## Deploy
 
 GitHub Actions (`.github/workflows/update.yml`) re-syncs every 6 hours and on every push. One-time
