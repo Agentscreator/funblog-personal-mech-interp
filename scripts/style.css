@@ -3,10 +3,11 @@
   --fg: #111;
   --muted: #777;
   --rule: #eee;
+  --link-line: #bbb;
   --font: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #111; --fg: #e6e6e6; --muted: #888; --rule: #222; }
+  :root { --bg: #111; --fg: #e6e6e6; --muted: #888; --rule: #222; --link-line: #555; }
 }
 
 * { box-sizing: border-box; }
@@ -27,9 +28,16 @@ section { margin-bottom: 56px; }
 h2 { font-size: 0.9rem; font-weight: normal; color: var(--muted); margin: 0 0 16px; }
 
 ul { list-style: none; padding: 0; margin: 0; }
-.best li { margin-bottom: 20px; }
-.blurb { margin: 2px 0 0; color: var(--muted); font-size: 0.95rem; line-height: 1.55; }
-.row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 4px 0; }
+/* Titles are the links: always underlined, and the whole entry is the tap target. */
+.item { display: block; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.item:hover { text-decoration: none; }
+.item .title { text-decoration: underline; text-decoration-color: var(--link-line); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.item:hover .title, .item:active .title { text-decoration-color: currentColor; }
+.item:active { opacity: 0.6; }
+.best .item { padding: 10px 0; }
+.best li { margin-bottom: 8px; }
+.blurb { display: block; margin-top: 4px; color: var(--muted); font-size: 0.95rem; line-height: 1.55; }
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 8px 0; }
 .row time { flex-shrink: 0; color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
 
 article h1 { font-size: 1.9rem; line-height: 1.2; font-weight: 600; margin: 0 0 8px; }

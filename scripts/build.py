@@ -76,18 +76,18 @@ def page(title, body, *, description="", canonical="", depth=0):
 
 
 def entry(p, blurb=True):
-    note = f'<p class="blurb">{escape(p["blurb"])}</p>' if blurb and p["blurb"] else ""
-    return f"""<li>
-  <a href="posts/{escape(p['slug'])}.html">{escape(p['title'])}</a>
+    note = f'<span class="blurb">{escape(p["blurb"])}</span>' if blurb and p["blurb"] else ""
+    return f"""<li><a class="item" href="posts/{escape(p['slug'])}.html">
+  <span class="title">{escape(p['title'])}</span>
   {note}
-</li>"""
+</a></li>"""
 
 
 def dated(p):
-    return f"""<li class="row">
-  <a href="posts/{escape(p['slug'])}.html">{escape(p['title'])}</a>
+    return f"""<li><a class="item row" href="posts/{escape(p['slug'])}.html">
+  <span class="title">{escape(p['title'])}</span>
   <time>{short_date(p['date'])}</time>
-</li>"""
+</a></li>"""
 
 
 def build_index(posts):
