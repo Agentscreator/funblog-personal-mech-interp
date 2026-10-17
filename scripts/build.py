@@ -56,9 +56,7 @@ def page(title, body, *, description="", canonical="", depth=0):
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(description)}">
 {canon}
@@ -77,40 +75,44 @@ def page(title, body, *, description="", canonical="", depth=0):
 """
 
 
-def entry(p):
-    return f'<li><a href="posts/{escape(p["slug"])}.html">{escape(p["title"])}</a></li>'
+def entry(p, blurb=True):
+    note = f'<p class="blurb">{escape(p["blurb"])}</p>' if blurb and p["blurb"] else ""
+    return f"""<li>
+  <a href="posts/{escape(p['slug'])}.html">{escape(p['title'])}</a>
+  {note}
+</li>"""
 
 
 def dated(p):
-    return f"""<li><a href="posts/{escape(p['slug'])}.html">{escape(p['title'])}
-  <time>{short_date(p['date'])}</time></a></li>"""
-
-
-def section(label, items, extra=""):
-    return f"""<section>
-  <h2>{label}</h2>
-  <ul>{items}</ul>{extra}
-</section>"""
+    return f"""<li class="row">
+  <a href="posts/{escape(p['slug'])}.html">{escape(p['title'])}</a>
+  <time>{short_date(p['date'])}</time>
+</li>"""
 
 
 def build_index(posts):
     n = CONFIG.get("featured_per_section", 3)
-    body = "".join(section(label, "".join(entry(p) for p in ranked(posts, cat)[:n]))
-                   for cat, label in SECTIONS.items())
-    # Without any likes/comments, trending is just date order, so only show it once people respond.
+    best = "".join(f"""<section id="{cat}">
+  <h2>{label}</h2>
+  <ul class="best">{"".join(entry(p) for p in ranked(posts, cat)[:n])}</ul>
+</section>""" for cat, label in SECTIONS.items())
+    # Without any likes/comments, trending is just date order and would duplicate "All writing".
+    trending = ""
     if any(p["engagement"] for p in posts):
         hot = sorted(posts, key=lambda p: -p["trending"])[:CONFIG.get("trending_count", 4)]
-        body += section("Trending", "".join(entry(p) for p in hot))
-    body += f'<p class="more"><a href="archive.html">All writing ({len(posts)}) →</a></p>'
+        trending = f"""<section>
+  <h2>Trending</h2>
+  <ul class="list">{"".join(dated(p) for p in hot)}</ul>
+</section>"""
+    everything = sorted(posts, key=lambda p: p["date"], reverse=True)
+    body = f"""<p class="intro">{escape(CONFIG["tagline"])}</p>
+{best}
+{trending}
+<section>
+  <h2>All writing</h2>
+  <ul class="list">{"".join(dated(p) for p in everything)}</ul>
+</section>"""
     return page(CONFIG["site_title"], body, description=CONFIG["tagline"])
-
-
-def build_archive(posts):
-    body = "".join(
-        section(label, "".join(dated(p) for p in sorted((p for p in posts if p["category"] == cat),
-                                                       key=lambda p: p["date"], reverse=True)))
-        for cat, label in SECTIONS.items())
-    return page(f"All writing · {CONFIG['site_title']}", body, description=CONFIG["tagline"])
 
 
 def build_post(p, prev, nxt):
@@ -142,7 +144,6 @@ def main():
     shutil.copy(ROOT / "scripts" / "style.css", OUT / "style.css")
     (OUT / ".nojekyll").write_text("")
     (OUT / "index.html").write_text(build_index(posts))
-    (OUT / "archive.html").write_text(build_archive(posts))
     for cat in SECTIONS:
         seq = ranked(posts, cat)
         for i, p in enumerate(seq):
