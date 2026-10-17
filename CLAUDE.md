@@ -19,7 +19,7 @@ When the user says "rank new posts" (or similar):
      "category": "research" | "personal",
      "overall": 0-100,
      "scores": {"originality": 0-10, "rigor": 0-10, "craft": 0-10, "depth": 0-10, "standalone": 0-10},
-     "blurb": "one sentence for the card, editor's voice, no hype words",
+     "blurb": "under 8 words, plain, no hype words",
      "rationale": "two sentences, private"
    }
    ```

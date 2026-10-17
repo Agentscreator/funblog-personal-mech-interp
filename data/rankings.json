@@ -13,7 +13,7 @@
     "depth": 9,
     "standalone": 9
    },
-   "blurb": "Agent-based simulations suggest relationships don't decay. We learn what they always were, and thinking late costs years in bad matches.",
+   "blurb": "Relationships don't decay. We learn what they were.",
    "rationale": "The most rigorous piece in the corpus: concrete mechanistic models, quantified results, and five falsifiable predictions. Counterintuitive findings (selection not growth; 7x reconciliation asymmetry) are clearly argued."
   },
   "ss-208463566": {
@@ -27,7 +27,7 @@
     "depth": 9,
     "standalone": 9
    },
-   "blurb": "Every alignment method assumes we can still check the model's work. This piece proposes evaluating the shape of its values instead, before that assumption fails.",
+   "blurb": "Test a model's values, not its outputs.",
    "rationale": "Clear, original framing of the scalable-oversight problem with a concrete proposal (structurally novel moral dilemmas probing incentive, not behavior). Strongest pure AI-safety piece; would benefit from a worked example."
   },
   "ss-220251918": {
@@ -41,7 +41,7 @@
     "depth": 7,
     "standalone": 9
    },
-   "blurb": "AI made resumes, cover letters and interviews cheap to fake. What replaces them are signals that need the real trait to produce.",
+   "blurb": "AI broke the resume. Trust is what's left.",
    "rationale": "Tight, well-structured argument with a memorable thesis and a practical takeaway. Also posted to LessWrong."
   },
   "ss-209224664": {
@@ -55,7 +55,7 @@
     "depth": 8,
     "standalone": 8
    },
-   "blurb": "Treat morality as a system with predictable breakages, not a verdict machine. Here are five of them, and why models must not inherit them.",
+   "blurb": "Five ways moral judgment breaks.",
    "rationale": "Good taxonomy (shared core objectives vs learned heuristics) that connects human moral error to alignment. Some failure modes overlap."
   },
   "ss-208418808": {
@@ -69,7 +69,7 @@
     "depth": 8,
     "standalone": 8
    },
-   "blurb": "A letter to Marcus Aurelius on building a mind that will outreason us, and why the goal must shift from control to evolving our own morality.",
+   "blurb": "A letter to Marcus about the minds we're building.",
    "rationale": "Moving and well-written; bridges philosophy and alignment. Argument is more rhetorical than rigorous ('control is impossible' is asserted, not shown)."
   },
   "ss-210543088": {
@@ -83,7 +83,7 @@
     "depth": 7,
     "standalone": 8
    },
-   "blurb": "Most bad decisions don't come from bad information. They come from an objective someone else quietly handed you.",
+   "blurb": "Check the goal before the data.",
    "rationale": "Clean incentive -> objective -> context -> decision pipeline and a useful self-reinforcing-loop insight. Short and focused."
   },
   "ss-206772437": {
@@ -97,7 +97,7 @@
     "depth": 7,
     "standalone": 8
    },
-   "blurb": "We defend against malice but not against sincere people who are wrong, so judge by track record and treat autonomy as structural.",
+   "blurb": "Judge track records, not intentions.",
    "rationale": "Sharp contrarian thesis that builds to a real conclusion about autonomy. A few leaps (morality diverges 'Not might. Will.') are asserted."
   },
   "ss-215583264": {
@@ -111,7 +111,7 @@
     "depth": 6,
     "standalone": 8
    },
-   "blurb": "Employment as a two-sided exchange: ask what an institution makes rational for you to do, not only what it offers.",
+   "blurb": "What a job really buys from you.",
    "rationale": "Useful, practical framework for evaluating labs, but familiar econ (principal-agent, opportunity cost) and list-heavy formatting."
   },
   "ss-213921144": {
@@ -125,7 +125,7 @@
     "depth": 5,
     "standalone": 8
    },
-   "blurb": "A method for deciding before you've decided, followed by a field guide to sixteen common reasoning failures and their fixes.",
+   "blurb": "Decide later. Sixteen biases, sixteen fixes.",
    "rationale": "Opening section on aimed reasoning is good; the bulk is a catalog of well-known biases with standard fixes, so originality is lower."
   },
   "ss-218633709": {
@@ -139,7 +139,7 @@
     "depth": 6,
     "standalone": 8
    },
-   "blurb": "Value is moving away from whatever is cheap to produce and check, and toward verification, infrastructure, and accountability.",
+   "blurb": "Value moves to what's hard to fake.",
    "rationale": "Reasonable synthesis with a crisp core rule, but largely consensus forecasting and list-driven."
   },
   "ss-210377028": {
@@ -153,7 +153,7 @@
     "depth": 6,
     "standalone": 4
    },
-   "blurb": "A sequel to Love, Aurelius: maybe what an AI needs is not a perfect objective but a well-placed obsession with human flourishing.",
+   "blurb": "Give AI a worthy obsession.",
    "rationale": "Interesting 'attention as obsession' idea, but the first third repeats Love, Aurelius nearly verbatim and the core idea stays speculative."
   },
   "ss-207055706": {
@@ -167,7 +167,7 @@
     "depth": 8,
     "standalone": 9
    },
-   "blurb": "Jamie and Sally, four seasons, and no villain. A short story about how trust is spent quietly on assumptions nobody compared.",
+   "blurb": "Four seasons. No villain.",
    "rationale": "The strongest creative work: real characters, specific details (the withheld laugh, the thirtieth Tuesday), and a structure that earns its closing aphorisms."
   },
   "ss-213722983": {
@@ -181,7 +181,7 @@
     "depth": 8,
     "standalone": 8
    },
-   "blurb": "A Meditations-style prologue of debts, followed by a parable in which the Emperor tells Sizoron how a person becomes valuable.",
+   "blurb": "Debts, and a parable about worth.",
    "rationale": "Distinctive voice and confident, quotable lines ('If a doctrine does not change what a man does on an ordinary Tuesday then it is jewelry'). Ambitious form, mostly pulled off."
   },
   "ss-211829148": {
@@ -195,7 +195,7 @@
     "depth": 7,
     "standalone": 9
    },
-   "blurb": "It isn't that life is short. It's that we spend most of it chasing a goal that was never ours.",
+   "blurb": "Life isn't short. We waste it.",
    "rationale": "Seneca-inflected essay with real rhetorical force and a clear turn toward the 'pull you cannot explain'. Theme is familiar but the execution is strong."
   },
   "ss-220000849": {
@@ -209,7 +209,7 @@
     "depth": 7,
     "standalone": 7
    },
-   "blurb": "A self-portrait in the third person: a mind that turns experience into law, and has to learn when to stop climbing the ladder of questions.",
+   "blurb": "A self-portrait in the third person.",
    "rationale": "Honest and self-aware, with its best lines on mistaking beauty for truth. Benefits from knowing the author."
   },
   "ss-216230747": {
@@ -223,7 +223,7 @@
     "depth": 6,
     "standalone": 8
    },
-   "blurb": "A poem about surrender and peace, carried by a blueberry on a hot summer day.",
+   "blurb": "A poem about peace.",
    "rationale": "Warm and sincere with a lovely central image; drifts into abstraction ('majesty so pure') in the back half."
   },
   "ss-207827995": {
@@ -237,7 +237,7 @@
     "depth": 4,
     "standalone": 8
    },
-   "blurb": "Success = focus x time, and the room you're in sets the coefficients.",
+   "blurb": "Focus × time × the room you're in.",
    "rationale": "Short and punchy but the idea is well-trodden and the 'formula' is not developed beyond the anecdotes."
   }
  }

@@ -6,7 +6,7 @@
   "engagement": 0,
   "trending": 125.0,
   "best": 90.0,
-  "blurb": "Agent-based simulations suggest relationships don't decay. We learn what they always were, and thinking late costs years in bad matches."
+  "blurb": "Relationships don't decay. We learn what they were."
  },
  "ss-220251918": {
   "category": "research",
@@ -15,7 +15,7 @@
   "engagement": 0,
   "trending": 68.041,
   "best": 82.0,
-  "blurb": "AI made resumes, cover letters and interviews cheap to fake. What replaces them are signals that need the real trait to produce."
+  "blurb": "AI broke the resume. Trust is what's left."
  },
  "ss-220000849": {
   "category": "personal",
@@ -24,7 +24,7 @@
   "engagement": 0,
   "trending": 53.995,
   "best": 72.0,
-  "blurb": "A self-portrait in the third person: a mind that turns experience into law, and has to learn when to stop climbing the ladder of questions."
+  "blurb": "A self-portrait in the third person."
  },
  "ss-218633709": {
   "category": "research",
@@ -33,7 +33,7 @@
   "engagement": 0,
   "trending": 15.625,
   "best": 62.0,
-  "blurb": "Value is moving away from whatever is cheap to produce and check, and toward verification, infrastructure, and accountability."
+  "blurb": "Value moves to what's hard to fake."
  },
  "ss-216230747": {
   "category": "personal",
@@ -42,7 +42,7 @@
   "engagement": 0,
   "trending": 5.524,
   "best": 68.0,
-  "blurb": "A poem about surrender and peace, carried by a blueberry on a hot summer day."
+  "blurb": "A poem about peace."
  },
  "ss-215583264": {
   "category": "research",
@@ -51,7 +51,7 @@
   "engagement": 0,
   "trending": 4.829,
   "best": 67.0,
-  "blurb": "Employment as a two-sided exchange: ask what an institution makes rational for you to do, not only what it offers."
+  "blurb": "What a job really buys from you."
  },
  "ss-213921144": {
   "category": "research",
@@ -60,7 +60,7 @@
   "engagement": 0,
   "trending": 3.104,
   "best": 64.0,
-  "blurb": "A method for deciding before you've decided, followed by a field guide to sixteen common reasoning failures and their fixes."
+  "blurb": "Decide later. Sixteen biases, sixteen fixes."
  },
  "ss-213722983": {
   "category": "personal",
@@ -69,7 +69,7 @@
   "engagement": 0,
   "trending": 3.007,
   "best": 82.0,
-  "blurb": "A Meditations-style prologue of debts, followed by a parable in which the Emperor tells Sizoron how a person becomes valuable."
+  "blurb": "Debts, and a parable about worth."
  },
  "ss-211829148": {
   "category": "personal",
@@ -78,7 +78,7 @@
   "engagement": 0,
   "trending": 2.099,
   "best": 77.0,
-  "blurb": "It isn't that life is short. It's that we spend most of it chasing a goal that was never ours."
+  "blurb": "Life isn't short. We waste it."
  },
  "ss-210543088": {
   "category": "research",
@@ -87,7 +87,7 @@
   "engagement": 0,
   "trending": 1.707,
   "best": 72.0,
-  "blurb": "Most bad decisions don't come from bad information. They come from an objective someone else quietly handed you."
+  "blurb": "Check the goal before the data."
  },
  "ss-210377028": {
   "category": "research",
@@ -96,7 +96,7 @@
   "engagement": 0,
   "trending": 1.637,
   "best": 58.0,
-  "blurb": "A sequel to Love, Aurelius: maybe what an AI needs is not a perfect objective but a well-placed obsession with human flourishing."
+  "blurb": "Give AI a worthy obsession."
  },
  "ss-209224664": {
   "category": "research",
@@ -105,7 +105,7 @@
   "engagement": 0,
   "trending": 1.398,
   "best": 76.0,
-  "blurb": "Treat morality as a system with predictable breakages, not a verdict machine. Here are five of them, and why models must not inherit them."
+  "blurb": "Five ways moral judgment breaks."
  },
  "ss-208463566": {
   "category": "research",
@@ -114,7 +114,7 @@
   "engagement": 0,
   "trending": 1.254,
   "best": 87.0,
-  "blurb": "Every alignment method assumes we can still check the model's work. This piece proposes evaluating the shape of its values instead, before that assumption fails."
+  "blurb": "Test a model's values, not its outputs."
  },
  "ss-208418808": {
   "category": "research",
@@ -123,7 +123,7 @@
   "engagement": 0,
   "trending": 1.254,
   "best": 74.0,
-  "blurb": "A letter to Marcus Aurelius on building a mind that will outreason us, and why the goal must shift from control to evolving our own morality."
+  "blurb": "A letter to Marcus about the minds we're building."
  },
  "ss-207827995": {
   "category": "personal",
@@ -132,7 +132,7 @@
   "engagement": 0,
   "trending": 1.152,
   "best": 52.0,
-  "blurb": "Success = focus x time, and the room you're in sets the coefficients."
+  "blurb": "Focus × time × the room you're in."
  },
  "ss-207055706": {
   "category": "personal",
@@ -141,7 +141,7 @@
   "engagement": 0,
   "trending": 1.047,
   "best": 88.0,
-  "blurb": "Jamie and Sally, four seasons, and no villain. A short story about how trust is spent quietly on assumptions nobody compared."
+  "blurb": "Four seasons. No villain."
  },
  "ss-206772437": {
   "category": "research",
@@ -150,6 +150,6 @@
   "engagement": 0,
   "trending": 1.031,
   "best": 71.0,
-  "blurb": "We defend against malice but not against sincere people who are wrong, so judge by track record and treat autonomy as structural."
+  "blurb": "Judge track records, not intentions."
  }
 }

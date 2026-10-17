@@ -109,7 +109,7 @@ def build_index(posts):
 {best}
 {trending}
 <section>
-  <h2>All writing</h2>
+  <h2>All</h2>
   <ul class="list">{"".join(dated(p) for p in everything)}</ul>
 </section>"""
     return page(CONFIG["site_title"], body, description=CONFIG["tagline"])
@@ -118,7 +118,7 @@ def build_index(posts):
 def build_post(p, prev, nxt):
     sub = f'<p class="subtitle">{escape(p["subtitle"])}</p>' if p.get("subtitle") else ""
     origins = [(p["source"], p["url"])] + [(a["source"], a["url"]) for a in p.get("also_on", [])]
-    orig = " and ".join(f'<a href="{escape(u)}">{SOURCE_NAMES[s]}</a>' for s, u in origins)
+    orig = " · ".join(f'<a href="{escape(u)}">{SOURCE_NAMES[s]}</a>' for s, u in origins)
     nav = []
     if prev:
         nav.append(f'<a href="{escape(prev["slug"])}.html">← {escape(prev["title"])}</a>')
@@ -129,7 +129,7 @@ def build_post(p, prev, nxt):
   {sub}
   <p class="meta">{fmt_date(p['date'])}</p>
   <div class="prose">{p['html']}</div>
-  <p class="meta">Originally published on {orig}.</p>
+  <p class="meta">{orig} ↗</p>
 </article>
 <nav class="pager">{"".join(nav)}</nav>"""
     return page(f"{p['title']} · {CONFIG['site_title']}", body,
