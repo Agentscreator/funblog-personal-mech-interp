@@ -3,18 +3,18 @@
  "ranked_at": "2026-10-17T00:00:00+00:00",
  "posts": {
   "ss-220559716": {
-   "hash": "a5f2ab6b1ea89938",
+   "hash": "7159fa931d66c8ae",
    "category": "research",
    "overall": 90,
    "scores": {
     "originality": 9,
-    "rigor": 8,
-    "craft": 8,
+    "rigor": 7,
+    "craft": 9,
     "depth": 9,
     "standalone": 9
    },
    "blurb": "Relationships don't decay. We learn what they were.",
-   "rationale": "The most rigorous piece in the corpus: concrete mechanistic models, quantified results, and five falsifiable predictions. Counterintuitive findings (selection not growth; 7x reconciliation asymmetry) are clearly argued."
+   "rationale": "Still the most rigorous piece: mechanistic models, quantified results, five falsifiable predictions. The edit adds a stronger concrete hook but compresses the trait-evaluation section, dropping the warmth-gating and linear-error detail, so craft rises and rigor dips slightly."
   },
   "ss-208463566": {
    "hash": "6b9773ee794c80bc",
