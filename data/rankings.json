@@ -239,6 +239,20 @@
    },
    "blurb": "Focus × time × the room you're in.",
    "rationale": "Short and punchy but the idea is well-trodden and the 'formula' is not developed beyond the anecdotes."
+  },
+  "ss-221421459": {
+   "hash": "5ff3ff1e104fdefc",
+   "category": "research",
+   "overall": 66,
+   "scores": {
+    "originality": 6,
+    "rigor": 5,
+    "craft": 5,
+    "depth": 5,
+    "standalone": 8
+   },
+   "blurb": "Sycophancy shows up in the last layers.",
+   "rationale": "First hands-on interp experiment in the corpus with a clean neutral/bait design and a clear finding. Thin evidence (20 prompts, one behavioral flip, logit lens only, no error bars or ablation) and the layer-27 circuit claim outruns the data; the piece ends abruptly."
   }
  }
 }
