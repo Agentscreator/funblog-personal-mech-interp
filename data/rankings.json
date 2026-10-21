@@ -3,18 +3,18 @@
  "ranked_at": "2026-10-17T00:00:00+00:00",
  "posts": {
   "ss-220559716": {
-   "hash": "7159fa931d66c8ae",
+   "hash": "fbdce53c1500944b",
    "category": "research",
-   "overall": 90,
+   "overall": 86,
    "scores": {
     "originality": 9,
-    "rigor": 7,
-    "craft": 9,
-    "depth": 9,
+    "rigor": 6,
+    "craft": 8,
+    "depth": 8,
     "standalone": 9
    },
    "blurb": "Relationships don't decay. We learn what they were.",
-   "rationale": "Still the most rigorous piece: mechanistic models, quantified results, five falsifiable predictions. The edit adds a stronger concrete hook but compresses the trait-evaluation section, dropping the warmth-gating and linear-error detail, so craft rises and rigor dips slightly."
+   "rationale": "Decay-vs-selection core is now plainer and stronger, but the trait-evaluation and re-attribution evidence is cut, so two of the five predictions and the 'association score' term refer to material no longer in the essay. Also dropped the learning-vs-real-change test, which was the most usable idea."
   },
   "ss-208463566": {
    "hash": "6b9773ee794c80bc",
