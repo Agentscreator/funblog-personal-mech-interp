@@ -24,9 +24,11 @@ When the user says "rank new posts" (or similar):
    }
    ```
    Rigor for personal work means emotional honesty and precision, not evidence. Penalise
-   `standalone` when a piece largely repeats another post. Use the full range and do not cluster
-   everything at 70-85. Existing anchors are The Trust Bank 88, Mechanics of Association 90,
-   Moral-Based Evaluation 87, and The Formula for Success 52.
+   `standalone` when a piece largely repeats another post. Grade on the absolute scale in
+   `rankings.json` (`scale`), not relative to this corpus: 90+ is best-in-genre published work, 80s
+   would be published in a strong venue, 60s is good with clear weaknesses, 40s is notes or a weak
+   draft. Leave headroom so improvement shows. Existing anchors are The Trust Bank 70, Moral-Based
+   Evaluation 68, Love Doesn't Rust 67, and The Formula for Success 30.
 5. Run `python3 scripts/rank.py && python3 scripts/build.py`, report where the new posts landed,
    and commit `data/` if the user asks.
 
