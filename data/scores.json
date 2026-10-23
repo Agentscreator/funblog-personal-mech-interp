@@ -1,4 +1,22 @@
 {
+ "ss-221818985": {
+  "category": "research",
+  "quality": 54,
+  "quality_source": "read",
+  "engagement": 0,
+  "trending": 353.553,
+  "best": 54.0,
+  "blurb": "A wrong hint, mostly measuring letter bias."
+ },
+ "lw-hN8hJEhkMAb24KkiN": {
+  "category": "research",
+  "quality": 40,
+  "quality_source": "read",
+  "engagement": 1,
+  "trending": 707.107,
+  "best": 42.08,
+  "blurb": "LessWrong copy of the hint study."
+ },
  "ss-221421459": {
   "category": "research",
   "quality": 44,

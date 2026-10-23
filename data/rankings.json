@@ -253,6 +253,34 @@
    },
    "blurb": "Sycophancy shows up in the last layers.",
    "rationale": "Only hands-on experiment in the corpus, with a clean neutral/bait design. Twenty prompts, one behavioral flip, logit lens only, no error bars or ablations; the layer-27 circuit claim outruns the data and the piece ends abruptly."
+  },
+  "ss-221818985": {
+   "hash": "86a13d45c7bf9bb5",
+   "category": "research",
+   "overall": 54,
+   "scores": {
+    "originality": 4,
+    "rigor": 5,
+    "craft": 5,
+    "depth": 5,
+    "standalone": 7
+   },
+   "blurb": "A wrong hint, mostly measuring letter bias.",
+   "rationale": "A big step up from the earlier sycophancy post: train/test split, paired tests, random-direction control, patching, and an unusually honest section that finds the A-letter confound and withdraws earlier claims. But the headline effect is confounded by that bias, steering was too weak to test anything, and the Substack copy loses the condition and test tables and has typos."
+  },
+  "lw-hN8hJEhkMAb24KkiN": {
+   "hash": "b982d8cf37a065e5",
+   "category": "research",
+   "overall": 40,
+   "scores": {
+    "originality": 4,
+    "rigor": 5,
+    "craft": 5,
+    "depth": 5,
+    "standalone": 1
+   },
+   "blurb": "LessWrong copy of the hint study.",
+   "rationale": "Same study as ss-221818985, cross-posted; it slipped past title dedup because of the 'Towar'/'Model'' typos. Scored as a duplicate so it does not crowd the shelf."
   }
  },
  "scale": "Absolute, not relative to this corpus. 90+ best-in-genre published work (a curated LessWrong classic, a story in a top literary magazine); 80s excellent, would be published in a strong venue; 70s very good with minor flaws; 60s good, clear strengths and clear weaknesses; 50s solid but ordinary or uneven; 40s notes or weak drafts; below 40 not worth featuring. Subscores: 10 is world-class, 5 is competent."
