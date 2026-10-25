@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site"
 CONFIG = json.loads((ROOT / "config.json").read_text())
 
-SECTIONS = {"research": "Research", "personal": "Personal"}
+SECTIONS = {"personal": "Personal", "research": "Research"}
 SOURCE_NAMES = {"substack": "Substack", "lesswrong": "LessWrong"}
 
 
@@ -106,8 +106,8 @@ def build_index(posts):
 </section>"""
     everything = sorted(posts, key=lambda p: p["date"], reverse=True)
     body = f"""<p class="intro">{escape(CONFIG["tagline"])}</p>
-{best}
 {trending}
+{best}
 <section>
   <h2>All</h2>
   <ul class="list">{"".join(dated(p) for p in everything)}</ul>
