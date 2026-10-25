@@ -3,18 +3,18 @@
   "category": "research",
   "quality": 54,
   "quality_source": "read",
-  "engagement": 0,
-  "trending": 125.0,
-  "best": 54.0,
+  "engagement": 1,
+  "trending": 250.0,
+  "best": 56.08,
   "blurb": "A wrong hint, mostly measuring letter bias."
  },
  "ss-221421459": {
   "category": "research",
   "quality": 44,
   "quality_source": "read",
-  "engagement": 0,
-  "trending": 68.041,
-  "best": 44.0,
+  "engagement": 1,
+  "trending": 136.083,
+  "best": 46.08,
   "blurb": "Sycophancy shows up in the last layers."
  },
  "ss-220559716": {
@@ -30,9 +30,9 @@
   "category": "research",
   "quality": 61,
   "quality_source": "read",
-  "engagement": 0,
-  "trending": 19.09,
-  "best": 61.0,
+  "engagement": 1,
+  "trending": 38.18,
+  "best": 63.08,
   "blurb": "AI broke the resume. Trust is what's left."
  },
  "ss-220000849": {

@@ -60,8 +60,10 @@ def guess_category(pid, labeled, vectors, k=3):
 
 
 def engagement(p):
-    e = p.get("engagement", {})
-    return e.get("likes", 0) + 2 * e.get("comments", 0) + 3 * e.get("restacks", 0) + max(e.get("karma", 0), 0)
+    total = 0
+    for e in [p.get("engagement", {})] + [a.get("engagement", {}) for a in p.get("also_on", [])]:
+        total += e.get("likes", 0) + 2 * e.get("comments", 0) + 3 * e.get("restacks", 0) + max(e.get("karma", 0), 0)
+    return total
 
 
 def trending(p, today):

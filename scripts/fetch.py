@@ -256,7 +256,9 @@ def main():
         if key in by_title:
             also = by_title[key].setdefault("also_on", [])
             if p["url"] not in {a["url"] for a in also}:
-                also.append({"source": p["source"], "url": p["url"]})
+                # Keep the other copy's karma/comments so cross-posts still trend.
+                also.append({"source": p["source"], "url": p["url"],
+                             "engagement": p.get("engagement", {})})
             continue
         by_title[key] = p
     posts = list(by_title.values())
