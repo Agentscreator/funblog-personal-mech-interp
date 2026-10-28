@@ -15,7 +15,7 @@ CONFIG = json.loads((ROOT / "config.json").read_text())
 CSS = ROOT / "scripts" / "style.css"
 CSS_VERSION = hashlib.sha256(CSS.read_bytes()).hexdigest()[:8]
 # Old URLs that people may have bookmarked or shared.
-REDIRECTS = {"personal.html": "index.html"}
+REDIRECTS = {"personal.html": "./"}
 
 # (key, nav label, file, one-line explainer). The first page is the landing page;
 # every other key is a shelf (a post category).
@@ -64,11 +64,17 @@ def short_date(d):
     return date.fromisoformat(d).strftime("%b %Y")
 
 
+def link(rel, href):
+    # Link the home page by its folder, not index.html: browsers cache the two URLs separately, and
+    # a stale index.html from an older deploy can outlive the folder URL people actually land on.
+    return (rel or "./") if href == "index.html" else rel + href
+
+
 def page(title, body, *, description="", canonical="", depth=0, current="", rel=None):
     rel = "../" * depth if rel is None else rel
     canon = f'<link rel="canonical" href="{escape(canonical)}">' if canonical else ""
     here = ' aria-current="page"'
-    tabs = " ".join(f'<a href="{rel}{href}"{here if key == current else ""}>{label}</a>'
+    tabs = " ".join(f'<a href="{link(rel, href)}"{here if key == current else ""}>{label}</a>'
                     for key, label, href, _ in PAGES)
     email = escape(CONFIG["email"])
     links = " · ".join(['<a href="#contact">Contact</a>'] + [
@@ -87,7 +93,7 @@ def page(title, body, *, description="", canonical="", depth=0, current="", rel=
 <body>
 <main>
 <header>
-  <a class="name" href="{rel}index.html">{escape(CONFIG["site_title"])}</a>
+  <a class="name" href="{link(rel, "index.html")}">{escape(CONFIG["site_title"])}</a>
   <p class="links">{links}</p>
   <p class="contact" id="contact">Say hi: <a href="mailto:{email}">{email}</a></p>
   <nav class="tabs">{tabs}</nav>
@@ -165,7 +171,7 @@ def main():
     # GitHub Pages serves this for a missing URL at any depth, so links must be absolute.
     root = urlparse(CONFIG["base_url"]).path.rstrip("/") + "/"
     (OUT / "404.html").write_text(page(f"Not found · {CONFIG['site_title']}", f"""<p class="intro">There's nothing at this address.</p>
-<p><a class="back" href="{root}index.html">See my best work →</a></p>""", rel=root))
+<p><a class="back" href="{root}">See my best work →</a></p>""", rel=root))
     for cat in SECTIONS:
         seq = ranked(posts, cat)
         for i, p in enumerate(seq):
