@@ -11,6 +11,9 @@ OUT = ROOT / "site"
 CONFIG = json.loads((ROOT / "config.json").read_text())
 
 SECTIONS = {"personal": "Personal", "research": "Research"}
+# (key, nav label, file). The first page is the landing page.
+PAGES = [("trending", "Trending", "index.html"), ("personal", "Personal", "personal.html"),
+         ("research", "Research", "research.html")]
 SOURCE_NAMES = {"substack": "Substack", "lesswrong": "LessWrong"}
 
 
@@ -48,10 +51,15 @@ def short_date(d):
     return date.fromisoformat(d).strftime("%b %Y")
 
 
-def page(title, body, *, description="", canonical="", depth=0):
+def page(title, body, *, description="", canonical="", depth=0, current=""):
     rel = "../" * depth
     canon = f'<link rel="canonical" href="{escape(canonical)}">' if canonical else ""
-    links = " ".join(f'<a href="{escape(u)}" rel="me noopener">{escape(n)}</a>' for n, u in CONFIG["links"].items())
+    here = ' aria-current="page"'
+    tabs = " ".join(f'<a href="{rel}{href}"{here if key == current else ""}>{label}</a>'
+                    for key, label, href in PAGES)
+    email = escape(CONFIG["email"])
+    links = " · ".join([f'<a href="mailto:{email}">Email</a>'] + [
+        f'<a href="{escape(u)}" rel="me noopener">{escape(n)}</a>' for n, u in CONFIG["links"].items()])
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -66,53 +74,43 @@ def page(title, body, *, description="", canonical="", depth=0):
 <main>
 <header>
   <a class="name" href="{rel}index.html">{escape(CONFIG["site_title"])}</a>
-  <nav>{links}</nav>
+  <p class="links">{links}</p>
+  <nav class="tabs">{tabs}</nav>
 </header>
 {body}
+<footer>Say hi: <a href="mailto:{email}">{email}</a></footer>
 </main>
 </body>
 </html>
 """
 
 
-def entry(p, blurb=True):
-    note = f'<span class="blurb">{escape(p["blurb"])}</span>' if blurb and p["blurb"] else ""
+def entry(p):
+    note = f'<span class="blurb">{escape(p["blurb"])}</span>' if p["blurb"] else ""
     return f"""<li><a class="item" href="posts/{escape(p['slug'])}.html">
-  <span class="title">{escape(p['title'])}</span>
+  <span class="row"><span class="title">{escape(p['title'])}</span><time>{short_date(p['date'])}</time></span>
   {note}
 </a></li>"""
 
 
-def dated(p):
-    return f"""<li><a class="item row" href="posts/{escape(p['slug'])}.html">
-  <span class="title">{escape(p['title'])}</span>
-  <time>{short_date(p['date'])}</time>
-</a></li>"""
+def listing(key, posts, intro=""):
+    label = next(l for k, l, _ in PAGES if k == key)
+    lead = f'<p class="intro">{escape(intro)}</p>' if intro else ""
+    body = f"""{lead}<ul class="list">{"".join(entry(p) for p in posts)}</ul>"""
+    title = CONFIG["site_title"] if key == PAGES[0][0] else f"{label} · {CONFIG['site_title']}"
+    return page(title, body, description=CONFIG["tagline"], current=key)
 
 
-def build_index(posts):
-    n = CONFIG.get("featured_per_section", 3)
-    best = "".join(f"""<section id="{cat}">
-  <h2>{label}</h2>
-  <ul class="best">{"".join(entry(p) for p in ranked(posts, cat)[:n])}</ul>
-</section>""" for cat, label in SECTIONS.items())
-    # Without any likes/comments, trending is just date order and would duplicate "All writing".
-    trending = ""
+def build_pages(posts):
+    # Without any likes/comments, trending is just date order.
     if any(p["engagement"] for p in posts):
-        hot = sorted(posts, key=lambda p: -p["trending"])[:CONFIG.get("trending_count", 4)]
-        trending = f"""<section>
-  <h2>Trending</h2>
-  <ul class="list">{"".join(dated(p) for p in hot)}</ul>
-</section>"""
-    everything = sorted(posts, key=lambda p: p["date"], reverse=True)
-    body = f"""<p class="intro">{escape(CONFIG["tagline"])}</p>
-{trending}
-{best}
-<section>
-  <h2>All</h2>
-  <ul class="list">{"".join(dated(p) for p in everything)}</ul>
-</section>"""
-    return page(CONFIG["site_title"], body, description=CONFIG["tagline"])
+        hot = sorted(posts, key=lambda p: -p["trending"])
+    else:
+        hot = sorted(posts, key=lambda p: p["date"], reverse=True)
+    out = {"trending": listing("trending", hot[:CONFIG.get("trending_count", 8)], CONFIG["tagline"])}
+    for cat in SECTIONS:
+        out[cat] = listing(cat, ranked(posts, cat))
+    return out
 
 
 def build_post(p, prev, nxt):
@@ -133,7 +131,7 @@ def build_post(p, prev, nxt):
 </article>
 <nav class="pager">{"".join(nav)}</nav>"""
     return page(f"{p['title']} · {CONFIG['site_title']}", body,
-                description=p["blurb"], canonical=p["url"], depth=1)
+                description=p["blurb"], canonical=p["url"], depth=1, current=p["category"])
 
 
 def main():
@@ -143,7 +141,9 @@ def main():
     (OUT / "posts").mkdir(parents=True)
     shutil.copy(ROOT / "scripts" / "style.css", OUT / "style.css")
     (OUT / ".nojekyll").write_text("")
-    (OUT / "index.html").write_text(build_index(posts))
+    pages = build_pages(posts)
+    for key, _, href in PAGES:
+        (OUT / href).write_text(pages[key])
     for cat in SECTIONS:
         seq = ranked(posts, cat)
         for i, p in enumerate(seq):
