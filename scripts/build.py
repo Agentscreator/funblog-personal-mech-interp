@@ -11,11 +11,15 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site"
 CONFIG = json.loads((ROOT / "config.json").read_text())
-# GitHub Pages lets browsers cache files for 10 minutes; a new query string forces a fresh stylesheet.
 CSS = ROOT / "scripts" / "style.css"
-CSS_VERSION = hashlib.sha256(CSS.read_bytes()).hexdigest()[:8]
+# GitHub Pages lets browsers cache every file for 10 minutes, so right after a deploy a phone can mix
+# old and new pages. Every internal link carries this build id, so each deploy gets fresh URLs and
+# all pages reached from one page come from the same build.
+BUILD = hashlib.sha256(b"".join(f.read_bytes() for f in [
+    Path(__file__), CSS, ROOT / "config.json", ROOT / "data" / "posts.json",
+    ROOT / "data" / "scores.json", ROOT / "data" / "overrides.json"])).hexdigest()[:8]
 # Old URLs that people may have bookmarked or shared.
-REDIRECTS = {"personal.html": "./"}
+REDIRECTS = {"personal.html": "index.html"}
 
 # (key, nav label, file, one-line explainer). The first page is the landing page;
 # every other key is a shelf (a post category).
@@ -71,9 +75,9 @@ def minutes(p):
 
 
 def link(rel, href):
-    # Link the home page by its folder, not index.html: browsers cache the two URLs separately, and
-    # a stale index.html from an older deploy can outlive the folder URL people actually land on.
-    return (rel or "./") if href == "index.html" else rel + href
+    # Link the home page by its folder, not index.html, so it matches the URL people land on.
+    base = (rel or "./") if href == "index.html" else rel + href
+    return f"{base}?v={BUILD}"
 
 
 def page(title, body, *, description="", canonical="", depth=0, current="", rel=None):
@@ -94,7 +98,7 @@ def page(title, body, *, description="", canonical="", depth=0, current="", rel=
 <meta name="description" content="{escape(description)}">
 {canon}
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="{rel}style.css?v={CSS_VERSION}">
+<link rel="stylesheet" href="{link(rel, 'style.css')}">
 </head>
 <body>
 <main>
@@ -114,7 +118,7 @@ def page(title, body, *, description="", canonical="", depth=0, current="", rel=
 def entry(p, shelf=False):
     note = f'<span class="blurb">{escape(p["blurb"])}</span>' if p["blurb"] else ""
     info = ([LABELS[p["category"]]] if shelf else []) + [short_date(p["date"]), f"{minutes(p)} min read"]
-    return f"""<li><a class="item" href="posts/{escape(p['slug'])}.html">
+    return f"""<li><a class="item" href="{link("posts/", escape(p['slug']) + ".html")}">
   <span class="title">{escape(p['title'])}</span>
   {note}
   <span class="info">{" · ".join(info)}</span>
@@ -149,13 +153,13 @@ def build_post(p, prev, nxt):
     shelf = LABELS[p["category"]]
     nav = []
     if prev:
-        nav.append(f'''<a class="prev" href="{escape(prev["slug"])}.html">
+        nav.append(f'''<a class="prev" href="{link("", escape(prev["slug"]) + ".html")}">
   <span class="dir">← Previous in {shelf}</span><span class="title">{escape(prev["title"])}</span></a>''')
     if nxt:
-        nav.append(f'''<a class="next" href="{escape(nxt["slug"])}.html">
+        nav.append(f'''<a class="next" href="{link("", escape(nxt["slug"]) + ".html")}">
   <span class="dir">Next in {shelf} →</span><span class="title">{escape(nxt["title"])}</span></a>''')
     body = f"""<article>
-  <a class="shelf" href="../{FILES[p['category']]}">{shelf}</a>
+  <a class="shelf" href="{link("../", FILES[p['category']])}">{shelf}</a>
   <h1>{escape(p['title'])}</h1>
   {sub}
   <p class="meta">{fmt_date(p['date'])} · {minutes(p)} min read</p>
@@ -178,12 +182,13 @@ def main():
     for key, _, href, _ in PAGES:
         (OUT / href).write_text(pages[key])
     for old, new in REDIRECTS.items():
+        new = link("", new)
         (OUT / old).write_text(f'<!doctype html><meta charset="utf-8"><title>Moved</title>'
                                f'<meta http-equiv="refresh" content="0; url={new}"><a href="{new}">Moved here</a>')
     # GitHub Pages serves this for a missing URL at any depth, so links must be absolute.
     root = urlparse(CONFIG["base_url"]).path.rstrip("/") + "/"
     (OUT / "404.html").write_text(page(f"Not found · {CONFIG['site_title']}", f"""<p class="intro">There's nothing at this address.</p>
-<p><a class="back" href="{root}">See my best work →</a></p>""", rel=root))
+<p><a class="back" href="{link(root, "index.html")}">See my best work →</a></p>""", rel=root))
     for cat in SECTIONS:
         seq = ranked(posts, cat)
         for i, p in enumerate(seq):
