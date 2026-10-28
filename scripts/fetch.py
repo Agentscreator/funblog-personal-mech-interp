@@ -171,7 +171,8 @@ def fetch_substack_rss(sub):
     # know about a slug so its id (and therefore its ranking) stays stable.
     known = {p["slug"]: p for p in cached_posts() if p["source"] == "substack"}
     posts = []
-    for item in ET.fromstring(xml).iter("item"):
+    items = list(ET.fromstring(xml).iter("item"))
+    for item in items:
         url = item.findtext("link").strip()
         slug = url.rstrip("/").rsplit("/", 1)[-1]
         html = sanitize(item.findtext("content:encoded", "", ns))
@@ -190,6 +191,13 @@ def fetch_substack_rss(sub):
             "engagement": old.get("engagement", {"likes": 0, "comments": 0, "restacks": 0}),
             "html": html,
         })
+    # The feed only lists the newest ~20 posts. When it is full, older posts
+    # dropped off the end rather than being deleted, so keep their cached copy.
+    if len(items) >= 20 and posts:
+        oldest = min(p["date"] for p in posts)
+        seen = {p["slug"] for p in posts}
+        posts += [{k: v for k, v in p.items() if k != "also_on"}  # also_on is rebuilt in main()
+                  for p in known.values() if p["slug"] not in seen and p["date"] <= oldest]
     return posts
 
 

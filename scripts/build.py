@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
 """Render data/posts.json + data/scores.json into a static site in site/."""
+import hashlib
 import json
 import shutil
 from datetime import date
 from html import escape
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site"
 CONFIG = json.loads((ROOT / "config.json").read_text())
+# GitHub Pages lets browsers cache files for 10 minutes; a new query string forces a fresh stylesheet.
+CSS = ROOT / "scripts" / "style.css"
+CSS_VERSION = hashlib.sha256(CSS.read_bytes()).hexdigest()[:8]
+# Old URLs that people may have bookmarked or shared.
+REDIRECTS = {"personal.html": "index.html"}
 
 # (key, nav label, file, one-line explainer). The first page is the landing page;
 # every other key is a shelf (a post category).
@@ -32,6 +39,8 @@ def load():
         if o.get("hide"):
             continue
         p["category"] = o.get("category") or s["category"]
+        if p["category"] not in SECTIONS:
+            raise SystemExit(f"{p['slug']}: unknown category {p['category']!r}, expected one of {SECTIONS}")
         p["score"] = s["best"] + o.get("boost", 0)
         p["trending"] = s["trending"]
         p["engagement"] = s.get("engagement", 0)
@@ -55,8 +64,8 @@ def short_date(d):
     return date.fromisoformat(d).strftime("%b %Y")
 
 
-def page(title, body, *, description="", canonical="", depth=0, current=""):
-    rel = "../" * depth
+def page(title, body, *, description="", canonical="", depth=0, current="", rel=None):
+    rel = "../" * depth if rel is None else rel
     canon = f'<link rel="canonical" href="{escape(canonical)}">' if canonical else ""
     here = ' aria-current="page"'
     tabs = " ".join(f'<a href="{rel}{href}"{here if key == current else ""}>{label}</a>'
@@ -72,7 +81,8 @@ def page(title, body, *, description="", canonical="", depth=0, current=""):
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(description)}">
 {canon}
-<link rel="stylesheet" href="{rel}style.css">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="{rel}style.css?v={CSS_VERSION}">
 </head>
 <body>
 <main>
@@ -144,11 +154,18 @@ def main():
     if OUT.exists():
         shutil.rmtree(OUT)
     (OUT / "posts").mkdir(parents=True)
-    shutil.copy(ROOT / "scripts" / "style.css", OUT / "style.css")
+    shutil.copy(CSS, OUT / "style.css")
     (OUT / ".nojekyll").write_text("")
     pages = build_pages(posts)
     for key, _, href, _ in PAGES:
         (OUT / href).write_text(pages[key])
+    for old, new in REDIRECTS.items():
+        (OUT / old).write_text(f'<!doctype html><meta charset="utf-8"><title>Moved</title>'
+                               f'<meta http-equiv="refresh" content="0; url={new}"><a href="{new}">Moved here</a>')
+    # GitHub Pages serves this for a missing URL at any depth, so links must be absolute.
+    root = urlparse(CONFIG["base_url"]).path.rstrip("/") + "/"
+    (OUT / "404.html").write_text(page(f"Not found · {CONFIG['site_title']}", f"""<p class="intro">There's nothing at this address.</p>
+<p><a class="back" href="{root}index.html">See my best work →</a></p>""", rel=root))
     for cat in SECTIONS:
         seq = ranked(posts, cat)
         for i, p in enumerate(seq):

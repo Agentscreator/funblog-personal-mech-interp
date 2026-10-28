@@ -5,8 +5,9 @@ Two numbers per post:
 
   quality   How good the piece is. Comes from data/rankings.json, which holds
             scores Claude assigned after actually reading each post (in a Claude
-            Code session, see CLAUDE.md). A post nobody has read yet gets a
-            provisional score: the median of its shelf. Text heuristics were
+            Code session, see CLAUDE.md). A post edited since its read keeps
+            that old score until it is re-read. A post nobody has read yet gets
+            a provisional score: the median of its shelf. Text heuristics were
             tried and couldn't beat that (leave-one-out error was worse than
             guessing the median), so the script doesn't pretend to judge prose.
             Its shelf is guessed by TF-IDF nearest neighbours against posts
@@ -98,8 +99,12 @@ def main():
     out = {}
     for p in posts:
         g = graded.get(p["id"])
+        old = read.get(p["id"])
         if g:
             cat, quality, source, blurb = g["category"], g["overall"], "read", g.get("blurb", "")
+        elif old and "overall" in old:
+            # Edited since it was read: a typo fix shouldn't knock a post off Featured.
+            cat, quality, source, blurb = old["category"], old["overall"], "stale", old.get("blurb", "")
         else:
             cat = read.get(p["id"], {}).get("category") or guess_category(p["id"], labeled, vectors)
             quality, source, blurb = shelf_median[cat], "provisional", p.get("subtitle") or ""
@@ -119,7 +124,8 @@ def main():
         print(f"\n{cat}")
         for p in sorted((p for p in posts if out[p["id"]]["category"] == cat), key=lambda p: -out[p["id"]]["best"]):
             s = out[p["id"]]
-            flag = "  (provisional, not read yet)" if s["quality_source"] == "provisional" else ""
+            flag = {"provisional": "  (provisional, not read yet)",
+                    "stale": "  (edited since read, old score)"}.get(s["quality_source"], "")
             print(f"  {s['best']:6.1f}  {p['title']}{flag}")
     if pending:
         print(f"\n{len(pending)} post(s) not read yet. Open Claude Code in this repo and say 'rank new posts'.")
