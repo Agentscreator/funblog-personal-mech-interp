@@ -25,6 +25,8 @@ PAGES = [("featured", "Featured", "index.html", "My best work, across every shel
          ("essays", "Essays", "essays.html", "Ideas on decisions, incentives and how to live."),
          ("fiction", "Fiction & Poetry", "fiction.html", "Stories, poems and parables.")]
 SECTIONS = [k for k, *_ in PAGES[1:]]
+LABELS = {k: label for k, label, *_ in PAGES}
+FILES = {k: href for k, _, href, _ in PAGES}
 SOURCE_NAMES = {"substack": "Substack", "lesswrong": "LessWrong"}
 
 
@@ -64,6 +66,10 @@ def short_date(d):
     return date.fromisoformat(d).strftime("%b %Y")
 
 
+def minutes(p):
+    return max(1, round(p["words"] / 230))
+
+
 def link(rel, href):
     # Link the home page by its folder, not index.html: browsers cache the two URLs separately, and
     # a stale index.html from an older deploy can outlive the folder URL people actually land on.
@@ -96,7 +102,7 @@ def page(title, body, *, description="", canonical="", depth=0, current="", rel=
   <a class="name" href="{link(rel, "index.html")}">{escape(CONFIG["site_title"])}</a>
   <p class="links">{links}</p>
   <p class="contact" id="contact">Say hi: <a href="mailto:{email}">{email}</a></p>
-  <nav class="tabs">{tabs}</nav>
+  <nav class="tabs" aria-label="Sections">{tabs}</nav>
 </header>
 {body}
 </main>
@@ -105,18 +111,20 @@ def page(title, body, *, description="", canonical="", depth=0, current="", rel=
 """
 
 
-def entry(p):
+def entry(p, shelf=False):
     note = f'<span class="blurb">{escape(p["blurb"])}</span>' if p["blurb"] else ""
+    info = ([LABELS[p["category"]]] if shelf else []) + [short_date(p["date"]), f"{minutes(p)} min read"]
     return f"""<li><a class="item" href="posts/{escape(p['slug'])}.html">
-  <span class="row"><span class="title">{escape(p['title'])}</span><time>{short_date(p['date'])}</time></span>
+  <span class="title">{escape(p['title'])}</span>
   {note}
+  <span class="info">{" · ".join(info)}</span>
 </a></li>"""
 
 
 def listing(key, posts):
     label, intro = next((l, i) for k, l, _, i in PAGES if k == key)
     body = f"""<p class="intro">{escape(intro)}</p>
-<ul class="list">{"".join(entry(p) for p in posts)}</ul>"""
+<ul class="list">{"".join(entry(p, shelf=key == PAGES[0][0]) for p in posts)}</ul>"""
     title = CONFIG["site_title"] if key == PAGES[0][0] else f"{label} · {CONFIG['site_title']}"
     return page(title, body, description=CONFIG["tagline"], current=key)
 
@@ -138,19 +146,23 @@ def build_post(p, prev, nxt):
     sub = f'<p class="subtitle">{escape(p["subtitle"])}</p>' if p.get("subtitle") else ""
     origins = [(p["source"], p["url"])] + [(a["source"], a["url"]) for a in p.get("also_on", [])]
     orig = " · ".join(f'<a href="{escape(u)}">{SOURCE_NAMES[s]}</a>' for s, u in origins)
+    shelf = LABELS[p["category"]]
     nav = []
     if prev:
-        nav.append(f'<a href="{escape(prev["slug"])}.html">← {escape(prev["title"])}</a>')
+        nav.append(f'''<a class="prev" href="{escape(prev["slug"])}.html">
+  <span class="dir">← Previous in {shelf}</span><span class="title">{escape(prev["title"])}</span></a>''')
     if nxt:
-        nav.append(f'<a class="next" href="{escape(nxt["slug"])}.html">{escape(nxt["title"])} →</a>')
+        nav.append(f'''<a class="next" href="{escape(nxt["slug"])}.html">
+  <span class="dir">Next in {shelf} →</span><span class="title">{escape(nxt["title"])}</span></a>''')
     body = f"""<article>
+  <a class="shelf" href="../{FILES[p['category']]}">{shelf}</a>
   <h1>{escape(p['title'])}</h1>
   {sub}
-  <p class="meta">{fmt_date(p['date'])}</p>
+  <p class="meta">{fmt_date(p['date'])} · {minutes(p)} min read</p>
   <div class="prose">{p['html']}</div>
-  <p class="meta">{orig} ↗</p>
+  <p class="meta">Also on {orig} ↗</p>
 </article>
-<nav class="pager">{"".join(nav)}</nav>"""
+<nav class="pager" aria-label="More in {shelf}">{"".join(nav)}</nav>"""
     return page(f"{p['title']} · {CONFIG['site_title']}", body,
                 description=p["blurb"], canonical=p["url"], depth=1, current=p["category"])
 
