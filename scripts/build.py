@@ -59,7 +59,7 @@ def page(title, body, *, description="", canonical="", depth=0, current=""):
     tabs = " ".join(f'<a href="{rel}{href}"{here if key == current else ""}>{label}</a>'
                     for key, label, href, _ in PAGES)
     email = escape(CONFIG["email"])
-    links = " · ".join([f'<a href="mailto:{email}">{email}</a>'] + [
+    links = " · ".join(['<a href="#contact">Contact</a>'] + [
         f'<a href="{escape(u)}" rel="me noopener">{escape(n)}</a>' for n, u in CONFIG["links"].items()])
     return f"""<!doctype html>
 <html lang="en">
@@ -76,6 +76,7 @@ def page(title, body, *, description="", canonical="", depth=0, current=""):
 <header>
   <a class="name" href="{rel}index.html">{escape(CONFIG["site_title"])}</a>
   <p class="links">{links}</p>
+  <p class="contact" id="contact">Say hi: <a href="mailto:{email}">{email}</a></p>
   <nav class="tabs">{tabs}</nav>
 </header>
 {body}
