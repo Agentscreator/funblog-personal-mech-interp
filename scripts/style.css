@@ -28,7 +28,7 @@ header { margin-bottom: 40px; }
 .contact { display: none; margin: 8px 0 0; font: 0.9rem var(--sans); scroll-margin-top: 100vh; } /* margin keeps the page from jumping */
 .contact:target { display: block; }
 .contact a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-.tabs { display: flex; gap: 24px; margin-top: 28px; border-bottom: 1px solid var(--rule); font: 500 0.9rem var(--sans); }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 28px; border-bottom: 1px solid var(--rule); font: 500 0.9rem var(--sans); white-space: nowrap; }
 .tabs a { padding-bottom: 10px; margin-bottom: -1px; color: var(--muted); border-bottom: 2px solid transparent; }
 .tabs a[aria-current] { color: var(--fg); border-bottom-color: var(--accent); }
 .name { font: 600 1.4rem var(--sans); letter-spacing: -0.01em; }

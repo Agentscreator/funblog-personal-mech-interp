@@ -10,11 +10,14 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site"
 CONFIG = json.loads((ROOT / "config.json").read_text())
 
-SECTIONS = {"personal": "Personal", "research": "Research"}
-# (key, nav label, file, one-line explainer). The first page is the landing page.
-PAGES = [("trending", "Trending", "index.html", "What people are reading right now."),
-         ("personal", "Personal", "personal.html", "Stories, poems and essays, best first."),
-         ("research", "Research", "research.html", "AI safety and evaluation, best first.")]
+# (key, nav label, file, one-line explainer). The first page is the landing page;
+# every other key is a shelf (a post category).
+PAGES = [("featured", "Featured", "index.html", "My best work, across every shelf."),
+         ("research", "Research", "research.html", "Experiments and simulations, with results."),
+         ("perspectives", "Perspectives", "perspectives.html", "Arguments about AI: alignment, evaluation, and what it changes."),
+         ("essays", "Essays", "essays.html", "Ideas on decisions, incentives and how to live."),
+         ("fiction", "Fiction & Poetry", "fiction.html", "Stories, poems and parables.")]
+SECTIONS = [k for k, *_ in PAGES[1:]]
 SOURCE_NAMES = {"substack": "Substack", "lesswrong": "LessWrong"}
 
 
@@ -102,13 +105,14 @@ def listing(key, posts):
     return page(title, body, description=CONFIG["tagline"], current=key)
 
 
+def featured(posts):
+    # Best work regardless of shelf; these also stay on their own shelf. Unread posts can't be featured.
+    pool = [p for p in posts if not p["provisional"] or p["pin"]]
+    return sorted(pool, key=lambda p: (not p["pin"], -p["score"], p["date"]))[:CONFIG.get("featured_count", 6)]
+
+
 def build_pages(posts):
-    # Without any likes/comments, trending is just date order.
-    if any(p["engagement"] for p in posts):
-        hot = sorted(posts, key=lambda p: -p["trending"])
-    else:
-        hot = sorted(posts, key=lambda p: p["date"], reverse=True)
-    out = {"trending": listing("trending", hot[:CONFIG.get("trending_count", 8)])}
+    out = {"featured": listing("featured", featured(posts))}
     for cat in SECTIONS:
         out[cat] = listing(cat, ranked(posts, cat))
     return out

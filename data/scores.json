@@ -10,24 +10,24 @@
  },
  "ss-221421459": {
   "category": "research",
-  "quality": 44,
+  "quality": 40,
   "quality_source": "read",
   "engagement": 1,
   "trending": 74.074,
-  "best": 46.08,
+  "best": 42.08,
   "blurb": "Sycophancy shows up in the last layers."
  },
  "ss-220559716": {
   "category": "research",
-  "quality": 67,
+  "quality": 60,
   "quality_source": "read",
   "engagement": 0,
   "trending": 17.213,
-  "best": 67.0,
+  "best": 60.0,
   "blurb": "Relationships don't decay. We learn what they were."
  },
  "ss-220251918": {
-  "category": "research",
+  "category": "perspectives",
   "quality": 61,
   "quality_source": "read",
   "engagement": 1,
@@ -36,7 +36,7 @@
   "blurb": "AI broke the resume. Trust is what's left."
  },
  "ss-220000849": {
-  "category": "personal",
+  "category": "fiction",
   "quality": 52,
   "quality_source": "read",
   "engagement": 0,
@@ -45,7 +45,7 @@
   "blurb": "A self-portrait in the third person."
  },
  "ss-218633709": {
-  "category": "research",
+  "category": "perspectives",
   "quality": 40,
   "quality_source": "read",
   "engagement": 0,
@@ -54,7 +54,7 @@
   "blurb": "Value moves to what's hard to fake."
  },
  "ss-216230747": {
-  "category": "personal",
+  "category": "fiction",
   "quality": 46,
   "quality_source": "read",
   "engagement": 0,
@@ -63,7 +63,7 @@
   "blurb": "A poem about peace."
  },
  "ss-215583264": {
-  "category": "research",
+  "category": "essays",
   "quality": 42,
   "quality_source": "read",
   "engagement": 0,
@@ -72,7 +72,7 @@
   "blurb": "What a job really buys from you."
  },
  "ss-213921144": {
-  "category": "research",
+  "category": "essays",
   "quality": 45,
   "quality_source": "read",
   "engagement": 0,
@@ -81,7 +81,7 @@
   "blurb": "Decide later. Sixteen biases, sixteen fixes."
  },
  "ss-213722983": {
-  "category": "personal",
+  "category": "fiction",
   "quality": 63,
   "quality_source": "read",
   "engagement": 0,
@@ -90,16 +90,16 @@
   "blurb": "Debts, and a parable about worth."
  },
  "ss-211829148": {
-  "category": "personal",
-  "quality": 55,
+  "category": "essays",
+  "quality": 50,
   "quality_source": "read",
   "engagement": 0,
   "trending": 1.637,
-  "best": 55.0,
+  "best": 50.0,
   "blurb": "Life isn't short. We waste it."
  },
  "ss-210543088": {
-  "category": "research",
+  "category": "essays",
   "quality": 52,
   "quality_source": "read",
   "engagement": 0,
@@ -108,7 +108,7 @@
   "blurb": "Check the goal before the data."
  },
  "ss-210377028": {
-  "category": "research",
+  "category": "perspectives",
   "quality": 36,
   "quality_source": "read",
   "engagement": 0,
@@ -117,7 +117,7 @@
   "blurb": "Give AI a worthy obsession."
  },
  "ss-209224664": {
-  "category": "research",
+  "category": "essays",
   "quality": 56,
   "quality_source": "read",
   "engagement": 0,
@@ -126,7 +126,7 @@
   "blurb": "Five ways moral judgment breaks."
  },
  "ss-208463566": {
-  "category": "research",
+  "category": "perspectives",
   "quality": 68,
   "quality_source": "read",
   "engagement": 0,
@@ -135,7 +135,7 @@
   "blurb": "Test a model's values, not its outputs."
  },
  "ss-208418808": {
-  "category": "research",
+  "category": "perspectives",
   "quality": 57,
   "quality_source": "read",
   "engagement": 0,
@@ -144,7 +144,7 @@
   "blurb": "A letter to Marcus about the minds we're building."
  },
  "ss-207827995": {
-  "category": "personal",
+  "category": "essays",
   "quality": 30,
   "quality_source": "read",
   "engagement": 0,
@@ -153,7 +153,7 @@
   "blurb": "Focus × time × the room you're in."
  },
  "ss-207055706": {
-  "category": "personal",
+  "category": "fiction",
   "quality": 70,
   "quality_source": "read",
   "engagement": 0,
@@ -162,7 +162,7 @@
   "blurb": "Four seasons. No villain."
  },
  "ss-206772437": {
-  "category": "research",
+  "category": "essays",
   "quality": 55,
   "quality_source": "read",
   "engagement": 0,

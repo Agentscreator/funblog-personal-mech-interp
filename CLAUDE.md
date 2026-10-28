@@ -1,8 +1,15 @@
 # Blog repo — instructions for Claude Code
 
-This site pulls Joshua's writing from LessWrong and Substack, and features his best work on two
-shelves: **research** (AI safety, evaluation, decision-making, incentives, analytical essays) and
-**personal** (short stories, poems, reflective essays that are not about work).
+This site pulls Joshua's writing from LessWrong and Substack and sorts it onto four shelves. The
+landing page, **Featured**, shows the top-scored posts regardless of shelf; they also stay on their
+own shelf. Apply the first test that fits:
+
+- **research**: he ran something (an experiment, a simulation, an analysis of data) and reports
+  results. Topic does not matter; an argument without results is not research.
+- **perspectives**: an argument about AI, such as alignment, evaluation, or what AI changes in society.
+- **essays**: an argument about ideas that are not mainly about AI, such as decisions, incentives,
+  morality, or how to live.
+- **fiction**: stories, poems, and parables. The tab is called "Fiction & Poetry".
 
 ## "Rank new posts"
 
@@ -16,19 +23,21 @@ When the user says "rank new posts" (or similar):
    ```json
    "<id>": {
      "hash": "<copy from posts.json>",
-     "category": "research" | "personal",
+     "category": "research" | "perspectives" | "essays" | "fiction",
      "overall": 0-100,
      "scores": {"originality": 0-10, "rigor": 0-10, "craft": 0-10, "depth": 0-10, "standalone": 0-10},
      "blurb": "under 8 words, plain, no hype words",
      "rationale": "two sentences, private"
    }
    ```
-   Rigor for personal work means emotional honesty and precision, not evidence. Penalise
+   Grade each post by its shelf's standard. Rigor for research means a reproducible method,
+   controls and claims that stay inside the data; for perspectives and essays it means claims that
+   are argued, not asserted; for fiction it means emotional honesty and precision. Penalise
    `standalone` when a piece largely repeats another post. Grade on the absolute scale in
    `rankings.json` (`scale`), not relative to this corpus: 90+ is best-in-genre published work, 80s
    would be published in a strong venue, 60s is good with clear weaknesses, 40s is notes or a weak
    draft. Leave headroom so improvement shows. Existing anchors are The Trust Bank 70, Moral-Based
-   Evaluation 68, Love Doesn't Rust 67, and The Formula for Success 30.
+   Evaluation 68, Love Doesn't Rust 60, and The Formula for Success 30.
 5. Run `python3 scripts/rank.py && python3 scripts/build.py`, report where the new posts landed,
    and commit `data/` if the user asks.
 

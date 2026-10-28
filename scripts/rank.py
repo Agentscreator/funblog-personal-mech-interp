@@ -9,8 +9,8 @@ Two numbers per post:
             provisional score: the median of its shelf. Text heuristics were
             tried and couldn't beat that (leave-one-out error was worse than
             guessing the median), so the script doesn't pretend to judge prose.
-            Its shelf (research vs personal) *is* guessed reliably, by TF-IDF
-            nearest neighbours against posts already labeled (16/17 in LOO).
+            Its shelf is guessed by TF-IDF nearest neighbours against posts
+            already labeled.
 
   trending  Engagement velocity: likes, comments, restacks and LessWrong karma,
             decayed by age (Hacker News style). New posts that people respond
@@ -35,6 +35,7 @@ POSTS = ROOT / "data" / "posts.json"
 RANKINGS = ROOT / "data" / "rankings.json"
 SCORES = ROOT / "data" / "scores.json"
 
+CATEGORIES = ("research", "perspectives", "essays", "fiction")
 WORD = re.compile(r"[a-z']+")
 
 
@@ -56,7 +57,7 @@ def guess_category(pid, labeled, vectors, k=3):
     sims = sorted(((sum(v.get(w, 0) * x for w, x in vectors[q].items()), cat) for q, cat in labeled.items()),
                   reverse=True)[:k]
     votes = Counter(cat for _, cat in sims)
-    return votes.most_common(1)[0][0] if votes else "research"
+    return votes.most_common(1)[0][0] if votes else "essays"
 
 
 def engagement(p):
@@ -91,7 +92,7 @@ def main():
     vectors = tfidf_vectors(posts)
     labeled = {i: g["category"] for i, g in graded.items()}
     shelf_median = {c: median([g["overall"] for g in graded.values() if g["category"] == c] or [60])
-                    for c in ("research", "personal")}
+                    for c in CATEGORIES}
 
     today = date.today()
     out = {}
@@ -114,7 +115,7 @@ def main():
         }
 
     SCORES.write_text(json.dumps(out, indent=1, ensure_ascii=False))
-    for cat in ("research", "personal"):
+    for cat in CATEGORIES:
         print(f"\n{cat}")
         for p in sorted((p for p in posts if out[p["id"]]["category"] == cat), key=lambda p: -out[p["id"]]["best"]):
             s = out[p["id"]]

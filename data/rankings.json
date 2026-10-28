@@ -5,20 +5,20 @@
   "ss-220559716": {
    "hash": "fbdce53c1500944b",
    "category": "research",
-   "overall": 67,
+   "overall": 60,
    "scores": {
     "originality": 7,
-    "rigor": 6,
+    "rigor": 4,
     "craft": 6,
     "depth": 7,
     "standalone": 7
    },
    "blurb": "Relationships don't decay. We learn what they were.",
-   "rationale": "The most rigorous piece in the corpus: a simulation with numbers and falsifiable predictions, and the decay-vs-selection point is genuinely clarifying. The model itself is never specified, and two predictions and the 'association score' refer to material no longer in the essay."
+   "rationale": "Original and clarifying: decay-vs-selection and the cost of late updating are real insights with falsifiable predictions. Judged as research it is not reproducible: the model, parameters and code are never given, no number has a spread, and two predictions and the 'association score' refer to material no longer in the post."
   },
   "ss-208463566": {
    "hash": "6b9773ee794c80bc",
-   "category": "research",
+   "category": "perspectives",
    "overall": 68,
    "scores": {
     "originality": 7,
@@ -32,7 +32,7 @@
   },
   "ss-220251918": {
    "hash": "983811c7ce84ca41",
-   "category": "research",
+   "category": "perspectives",
    "overall": 61,
    "scores": {
     "originality": 5,
@@ -46,7 +46,7 @@
   },
   "ss-209224664": {
    "hash": "0f8a210fe9ac886f",
-   "category": "research",
+   "category": "essays",
    "overall": 56,
    "scores": {
     "originality": 5,
@@ -60,7 +60,7 @@
   },
   "ss-208418808": {
    "hash": "7f463c099d7facbf",
-   "category": "research",
+   "category": "perspectives",
    "overall": 57,
    "scores": {
     "originality": 5,
@@ -74,7 +74,7 @@
   },
   "ss-210543088": {
    "hash": "e9c1d985f99cae71",
-   "category": "research",
+   "category": "essays",
    "overall": 52,
    "scores": {
     "originality": 5,
@@ -88,7 +88,7 @@
   },
   "ss-206772437": {
    "hash": "0d539bcb826534f8",
-   "category": "research",
+   "category": "essays",
    "overall": 55,
    "scores": {
     "originality": 6,
@@ -102,7 +102,7 @@
   },
   "ss-215583264": {
    "hash": "64737d613ddfc85c",
-   "category": "research",
+   "category": "essays",
    "overall": 42,
    "scores": {
     "originality": 3,
@@ -116,7 +116,7 @@
   },
   "ss-213921144": {
    "hash": "80f1e33aa3ef0d94",
-   "category": "research",
+   "category": "essays",
    "overall": 45,
    "scores": {
     "originality": 3,
@@ -130,7 +130,7 @@
   },
   "ss-218633709": {
    "hash": "6db9178d29eb9ccf",
-   "category": "research",
+   "category": "perspectives",
    "overall": 40,
    "scores": {
     "originality": 3,
@@ -144,7 +144,7 @@
   },
   "ss-210377028": {
    "hash": "994e26aa06e4beea",
-   "category": "research",
+   "category": "perspectives",
    "overall": 36,
    "scores": {
     "originality": 5,
@@ -158,7 +158,7 @@
   },
   "ss-207055706": {
    "hash": "5c25bcbe6a147987",
-   "category": "personal",
+   "category": "fiction",
    "overall": 70,
    "scores": {
     "originality": 6,
@@ -172,7 +172,7 @@
   },
   "ss-213722983": {
    "hash": "da32b33038450b9d",
-   "category": "personal",
+   "category": "fiction",
    "overall": 63,
    "scores": {
     "originality": 7,
@@ -186,21 +186,21 @@
   },
   "ss-211829148": {
    "hash": "7c8c6956cb7d2588",
-   "category": "personal",
-   "overall": 55,
+   "category": "essays",
+   "overall": 50,
    "scores": {
     "originality": 4,
-    "rigor": 5,
+    "rigor": 3,
     "craft": 7,
     "depth": 5,
     "standalone": 6
    },
    "blurb": "Life isn't short. We waste it.",
-   "rationale": "Strong rhetorical rhythm and a good turn toward 'the pull you cannot explain'. Largely Seneca's On the Shortness of Life restated, and it overlaps Scrutinizing the Objective."
+   "rationale": "Strong Senecan voice and a clear thesis about borrowed goals. Judged as an argument, every claim is asserted rather than shown, and it overlaps Scrutinizing the Objective."
   },
   "ss-220000849": {
    "hash": "cf8b0e16fc4b2952",
-   "category": "personal",
+   "category": "fiction",
    "overall": 52,
    "scores": {
     "originality": 5,
@@ -214,7 +214,7 @@
   },
   "ss-216230747": {
    "hash": "ffb9373ceaf5f254",
-   "category": "personal",
+   "category": "fiction",
    "overall": 46,
    "scores": {
     "originality": 5,
@@ -228,7 +228,7 @@
   },
   "ss-207827995": {
    "hash": "9923fd33c84bdca1",
-   "category": "personal",
+   "category": "essays",
    "overall": 30,
    "scores": {
     "originality": 2,
@@ -243,10 +243,10 @@
   "ss-221421459": {
    "hash": "5ff3ff1e104fdefc",
    "category": "research",
-   "overall": 44,
+   "overall": 40,
    "scores": {
     "originality": 4,
-    "rigor": 3,
+    "rigor": 2,
     "craft": 4,
     "depth": 3,
     "standalone": 6
