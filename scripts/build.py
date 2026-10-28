@@ -11,9 +11,10 @@ OUT = ROOT / "site"
 CONFIG = json.loads((ROOT / "config.json").read_text())
 
 SECTIONS = {"personal": "Personal", "research": "Research"}
-# (key, nav label, file). The first page is the landing page.
-PAGES = [("trending", "Trending", "index.html"), ("personal", "Personal", "personal.html"),
-         ("research", "Research", "research.html")]
+# (key, nav label, file, one-line explainer). The first page is the landing page.
+PAGES = [("trending", "Trending", "index.html", "What people are reading right now."),
+         ("personal", "Personal", "personal.html", "Stories, poems and essays, best first."),
+         ("research", "Research", "research.html", "AI safety and evaluation, best first.")]
 SOURCE_NAMES = {"substack": "Substack", "lesswrong": "LessWrong"}
 
 
@@ -56,9 +57,9 @@ def page(title, body, *, description="", canonical="", depth=0, current=""):
     canon = f'<link rel="canonical" href="{escape(canonical)}">' if canonical else ""
     here = ' aria-current="page"'
     tabs = " ".join(f'<a href="{rel}{href}"{here if key == current else ""}>{label}</a>'
-                    for key, label, href in PAGES)
+                    for key, label, href, _ in PAGES)
     email = escape(CONFIG["email"])
-    links = " · ".join([f'<a href="mailto:{email}">Email</a>'] + [
+    links = " · ".join([f'<a href="mailto:{email}">{email}</a>'] + [
         f'<a href="{escape(u)}" rel="me noopener">{escape(n)}</a>' for n, u in CONFIG["links"].items()])
     return f"""<!doctype html>
 <html lang="en">
@@ -78,7 +79,6 @@ def page(title, body, *, description="", canonical="", depth=0, current=""):
   <nav class="tabs">{tabs}</nav>
 </header>
 {body}
-<footer>Say hi: <a href="mailto:{email}">{email}</a></footer>
 </main>
 </body>
 </html>
@@ -93,10 +93,10 @@ def entry(p):
 </a></li>"""
 
 
-def listing(key, posts, intro=""):
-    label = next(l for k, l, _ in PAGES if k == key)
-    lead = f'<p class="intro">{escape(intro)}</p>' if intro else ""
-    body = f"""{lead}<ul class="list">{"".join(entry(p) for p in posts)}</ul>"""
+def listing(key, posts):
+    label, intro = next((l, i) for k, l, _, i in PAGES if k == key)
+    body = f"""<p class="intro">{escape(intro)}</p>
+<ul class="list">{"".join(entry(p) for p in posts)}</ul>"""
     title = CONFIG["site_title"] if key == PAGES[0][0] else f"{label} · {CONFIG['site_title']}"
     return page(title, body, description=CONFIG["tagline"], current=key)
 
@@ -107,7 +107,7 @@ def build_pages(posts):
         hot = sorted(posts, key=lambda p: -p["trending"])
     else:
         hot = sorted(posts, key=lambda p: p["date"], reverse=True)
-    out = {"trending": listing("trending", hot[:CONFIG.get("trending_count", 8)], CONFIG["tagline"])}
+    out = {"trending": listing("trending", hot[:CONFIG.get("trending_count", 8)])}
     for cat in SECTIONS:
         out[cat] = listing(cat, ranked(posts, cat))
     return out
@@ -142,7 +142,7 @@ def main():
     shutil.copy(ROOT / "scripts" / "style.css", OUT / "style.css")
     (OUT / ".nojekyll").write_text("")
     pages = build_pages(posts)
-    for key, _, href in PAGES:
+    for key, _, href, _ in PAGES:
         (OUT / href).write_text(pages[key])
     for cat in SECTIONS:
         seq = ranked(posts, cat)
