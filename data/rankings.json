@@ -267,6 +267,20 @@
    },
    "blurb": "A wrong hint, mostly measuring letter bias.",
    "rationale": "A big step up from the earlier sycophancy post: train/test split, paired tests, random-direction control, patching, and an unusually honest section that finds the A-letter confound and withdraws earlier claims. But the headline effect is confounded by that bias, steering was too weak to test anything, and the Substack copy loses the condition and test tables and has typos."
+  },
+  "ss-222809559": {
+   "hash": "f6f28814a19a7bed",
+   "category": "research",
+   "overall": 56,
+   "scores": {
+    "originality": 4,
+    "rigor": 5,
+    "craft": 5,
+    "depth": 6,
+    "standalone": 7
+   },
+   "blurb": "Injected concepts surface, but is it introspection?",
+   "rationale": "An honest small replication: it names its broken detection metric, the missing steering control, and six bugs from the first run, and it reports cell sizes. The TL;DR overclaims a match with Anthropic's result that the body itself retracts, and the intro prose about introspection is muddled."
   }
  },
  "scale": "Absolute, not relative to this corpus. 90+ best-in-genre published work (a curated LessWrong classic, a story in a top literary magazine); 80s excellent, would be published in a strong venue; 70s very good with minor flaws; 60s good, clear strengths and clear weaknesses; 50s solid but ordinary or uneven; 40s notes or weak drafts; below 40 not worth featuring. Subscores: 10 is world-class, 5 is competent."

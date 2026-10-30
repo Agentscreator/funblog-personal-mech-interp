@@ -255,12 +255,17 @@ def main():
             posts += old
 
     # Cross-posted pieces: keep the Substack copy as primary, remember the LW link.
-    # Titles are matched loosely so a typo in one copy doesn't split the pair.
+    # Titles are matched loosely so a typo in one copy doesn't split the pair, and a
+    # subtitle tacked onto one copy ("Title: Subtitle") still matches the bare title.
+    def same_piece(a, b):
+        return (difflib.SequenceMatcher(None, a, b).ratio() >= 0.9
+                or (min(len(a), len(b)) >= 15 and (a.startswith(b) or b.startswith(a))))
+
     by_title = {}
     for p in sorted(posts, key=lambda p: p["source"] != "substack"):
         key = norm_title(p["title"])
         key = next((k for k, q in by_title.items() if q["source"] != p["source"]
-                    and difflib.SequenceMatcher(None, k, key).ratio() >= 0.9), key)
+                    and same_piece(k, key)), key)
         if key in by_title:
             also = by_title[key].setdefault("also_on", [])
             if p["url"] not in {a["url"] for a in also}:
