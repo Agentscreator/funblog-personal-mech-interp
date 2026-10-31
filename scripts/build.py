@@ -101,7 +101,9 @@ def origins(p):
 
 
 def byline():
-    return f'{AUTHOR}<sup>{MARKS}</sup>'
+    names = dict(LEGEND)
+    marks = "".join(f'<span class="mark" title="{names[m]}">{m}</span>' for m in MARKS)
+    return f'{AUTHOR}<sup class="marks">{marks}</sup>'
 
 
 def fmt_date(d):
@@ -195,7 +197,7 @@ def featured(posts):
 
 
 def publications(groups, key):
-    legend = "".join(f"<span><sup>{m}</sup> {escape(t)}</span>" for m, t in LEGEND)
+    legend = "".join(f'<span><span class="mark">{m}</span> {escape(t)}</span>' for m, t in LEGEND)
     here = ' aria-current="page"'
     filters = "".join(f'<li><a href="{link("", href)}"{here if k == key else ""}>{escape(label)} '
                       f'<span class="count">{len(groups[k])}</span></a></li>' for k, label, href, _ in PAGES)

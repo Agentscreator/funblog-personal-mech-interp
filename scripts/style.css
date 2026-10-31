@@ -22,6 +22,11 @@ a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; 
 a:hover { text-decoration-thickness: 2px; }
 a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
 sup { font-size: 0.7em; line-height: 0; }
+/* Author marks (* † ‡): set in the serif, black and spaced so † and ‡ are easy to tell apart. */
+.mark { font-family: var(--serif); color: var(--fg); }
+.marks { font-size: 1.2em; vertical-align: 0.3em; line-height: 0; margin-left: 2px; letter-spacing: 0.15em; }
+.marks .mark { cursor: help; }
+.legend .mark { display: inline-block; min-width: 0.7em; font-size: 1.15rem; line-height: 1; vertical-align: -0.1em; }
 ul { list-style: none; padding: 0; margin: 0; }
 
 /* Header: home link, contact links. */
