@@ -18,25 +18,24 @@ CSS = ROOT / "scripts" / "style.css"
 BUILD = hashlib.sha256(b"".join(f.read_bytes() for f in [
     Path(__file__), CSS, ROOT / "config.json", ROOT / "data" / "posts.json",
     ROOT / "data" / "scores.json", ROOT / "data" / "overrides.json"])).hexdigest()[:8]
-# Old URLs that people may have bookmarked or shared. Shelves used to be separate pages; they are
-# now sections of the one publications page.
-REDIRECTS = {"personal.html": "index.html", "research.html": "index.html#research",
-             "perspectives.html": "index.html#perspectives", "essays.html": "index.html#essays",
-             "fiction.html": "index.html#fiction"}
+# Old URLs that people may have bookmarked or shared.
+REDIRECTS = {"personal.html": "index.html"}
 # Author markers, as on an academic publications page. Every post is solo, so Joshua is both.
 LEGEND = [("*", "equal contribution"), ("†", "principal investigator"), ("‡", "corresponding author")]
 AUTHOR = "Joshua N. Brown"
 MARKS = "†‡"
 
-# (key, heading, one-line explainer). "selected" is the top-scored work across every shelf;
-# every other key is a shelf (a post category). All of them are sections of index.html.
-PAGES = [("selected", "Selected", "My best work, across every shelf."),
-         ("research", "Research", "Experiments and simulations, with results."),
-         ("perspectives", "Perspectives", "Arguments about AI: alignment, evaluation, and what it changes."),
-         ("essays", "Essays", "Ideas on decisions, incentives and how to live."),
-         ("fiction", "Fiction & Poetry", "Stories, poems and parables.")]
+# (key, tab label, file, one-line explainer). Each is its own page under the shared Publications
+# header, like a filter tab. "selected" (the landing page) is the top-scored work across every
+# shelf; every other key is a shelf (a post category).
+PAGES = [("selected", "Selected", "index.html", "My best work, across every shelf."),
+         ("research", "Research", "research.html", "Experiments and simulations, with results."),
+         ("perspectives", "Perspectives", "perspectives.html", "Arguments about AI: alignment, evaluation, and what it changes."),
+         ("essays", "Essays", "essays.html", "Ideas on decisions, incentives and how to live."),
+         ("fiction", "Fiction & Poetry", "fiction.html", "Stories, poems and parables.")]
 SECTIONS = [k for k, *_ in PAGES[1:]]
-LABELS = {k: label for k, label, _ in PAGES}
+LABELS = {k: label for k, label, *_ in PAGES}
+FILES = {k: href for k, _, href, _ in PAGES}
 SOURCE_NAMES = {"substack": "Substack", "lesswrong": "LessWrong"}
 
 
@@ -169,7 +168,7 @@ def entry(p, rel=""):
 
 
 def section(key, posts, by_year):
-    label, intro = next((l, i) for k, l, i in PAGES if k == key)
+    label, intro = next((l, i) for k, l, _, i in PAGES if k == key)
     if by_year:
         groups, out = {}, []
         for p in posts:
@@ -192,16 +191,17 @@ def featured(posts):
     return sorted(pool, key=lambda p: (not p["pin"], -p["score"], p["date"]))[:CONFIG.get("featured_count", 6)]
 
 
-def publications(posts):
-    groups = {"selected": featured(posts), **{cat: shelf(posts, cat) for cat in SECTIONS}}
+def publications(groups, key):
     legend = "".join(f"<span><sup>{m}</sup> {escape(t)}</span>" for m, t in LEGEND)
-    filters = "".join(f'<li><a href="#{k}">{escape(LABELS[k])} <span class="count">{len(groups[k])}</span></a></li>'
-                      for k, *_ in PAGES)
+    here = ' aria-current="page"'
+    filters = "".join(f'<li><a href="{link("", href)}"{here if k == key else ""}>{escape(label)} '
+                      f'<span class="count">{len(groups[k])}</span></a></li>' for k, label, href, _ in PAGES)
     body = f"""<h1>Publications</h1>
 <p class="legend">{legend}</p>
-<ul class="filters">{filters}</ul>
-{"".join(section(k, groups[k], by_year=k != "selected") for k, *_ in PAGES)}"""
-    return page(f"Publications · {CONFIG['site_title']}", body, description=CONFIG["tagline"])
+<nav aria-label="Shelves"><ul class="filters">{filters}</ul></nav>
+{section(key, groups[key], by_year=key != "selected")}"""
+    title = "Publications" if key == "selected" else f"{LABELS[key]} · Publications"
+    return page(f"{title} · {CONFIG['site_title']}", body, description=CONFIG["tagline"])
 
 
 def build_post(p, prev, nxt):
@@ -216,7 +216,7 @@ def build_post(p, prev, nxt):
         nav.append(f'''<a class="next" href="{link("", escape(nxt["slug"]) + ".html")}">
   <span class="dir">Older in {shelf} →</span><span class="title">{escape(nxt["title"])}</span></a>''')
     body = f"""<article>
-  <a class="shelf" href="{link("../", "index.html")}#{p['category']}">{shelf}</a>
+  <a class="shelf" href="{link("../", FILES[p['category']])}">{shelf}</a>
   <h1>{escape(p['title'])}</h1>
   {sub}
   <p class="authors">{byline()}</p>
@@ -236,7 +236,9 @@ def main():
     (OUT / "posts").mkdir(parents=True)
     shutil.copy(CSS, OUT / "style.css")
     (OUT / ".nojekyll").write_text("")
-    (OUT / "index.html").write_text(publications(posts))
+    groups = {"selected": featured(posts), **{cat: shelf(posts, cat) for cat in SECTIONS}}
+    for key, _, href, _ in PAGES:
+        (OUT / href).write_text(publications(groups, key))
     for old, new in REDIRECTS.items():
         new = link("", new)
         (OUT / old).write_text(f'<!doctype html><meta charset="utf-8"><title>Moved</title>'

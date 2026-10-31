@@ -2,8 +2,8 @@
 
 This site pulls Joshua's writing from LessWrong and Substack and sorts it onto four shelves. The
 site is one academic-style **Publications** page (black on white, author legend * † ‡, every post
-bylined "Joshua N. Brown†‡"). Its first section, **Selected**, shows the top-scored posts regardless
-of shelf; below it each shelf is listed newest first, grouped by year. Apply the first test that fits:
+bylined "Joshua N. Brown†‡"). Tabs under the title switch pages: **Selected** (the landing page) shows
+the top-scored posts regardless of shelf; each shelf tab lists its posts newest first, by year. Apply the first test that fits:
 
 - **research**: he ran something (an experiment, a simulation, an analysis of data) and reports
   results. Topic does not matter; an argument without results is not research.
