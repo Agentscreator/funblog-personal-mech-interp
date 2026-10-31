@@ -17,7 +17,7 @@ CSS = ROOT / "scripts" / "style.css"
 # all pages reached from one page come from the same build.
 BUILD = hashlib.sha256(b"".join(f.read_bytes() for f in [
     Path(__file__), CSS, ROOT / "config.json", ROOT / "data" / "posts.json",
-    ROOT / "data" / "scores.json", ROOT / "data" / "overrides.json"])).hexdigest()[:8]
+    ROOT / "data" / "scores.json", ROOT / "data" / "overrides.json", ROOT / "data" / "rankings.json"])).hexdigest()[:8]
 # Old URLs that people may have bookmarked or shared.
 REDIRECTS = {"personal.html": "index.html"}
 # Author markers, as on an academic publications page. Every post is solo, so Joshua is both.
@@ -43,6 +43,7 @@ def load():
     posts = json.loads((ROOT / "data" / "posts.json").read_text())
     scores = json.loads((ROOT / "data" / "scores.json").read_text())
     overrides = json.loads((ROOT / "data" / "overrides.json").read_text()).get("posts", {})
+    rankings = json.loads((ROOT / "data" / "rankings.json").read_text())["posts"]
     out = []
     for p in posts:
         s = scores[p["id"]]
@@ -58,6 +59,7 @@ def load():
         p["provisional"] = s["quality_source"] == "provisional"
         p["pin"] = bool(o.get("pin"))
         p["blurb"] = o.get("blurb") or s["blurb"] or p.get("subtitle") or ""
+        p["abstract"] = o.get("abstract") or rankings.get(p["id"], {}).get("abstract") or excerpt(p)
         out.append(p)
     return out
 
@@ -69,8 +71,9 @@ def shelf(posts, cat):
     return sorted(newest, key=lambda p: not p["pin"])
 
 
-def abstract(p, limit=70):
-    # The subtitle plus the opening prose, skipping short heading lines like "TL;DR" or "Prologue".
+def excerpt(p, limit=70):
+    # Stand-in abstract for posts not yet ranked: the subtitle plus the opening prose, skipping
+    # short heading lines like "TL;DR" or "Prologue".
     words = p["subtitle"].split() if p.get("subtitle") else []
     for line in p.get("text", "").splitlines():
         if len(words) >= limit:
@@ -160,7 +163,7 @@ def entry(p, rel=""):
   <p class="authors">{byline()}</p>
   <p class="venue"><em>{venue}</em>, {fmt_date(p['date'])} · {minutes(p)} min read</p>
   <div class="actions">
-    <details><summary>Abstract</summary><p>{escape(abstract(p))}</p></details>
+    <details><summary>Abstract</summary><p>{escape(p["abstract"])}</p></details>
     <details><summary>BibTeX</summary><pre>{escape(bibtex(p))}</pre></details>
     {" ".join(actions)}
   </div>

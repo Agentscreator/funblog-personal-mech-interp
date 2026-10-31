@@ -28,6 +28,7 @@ When the user says "rank new posts" (or similar):
      "overall": 0-100,
      "scores": {"originality": 0-10, "rigor": 0-10, "craft": 0-10, "depth": 0-10, "standalone": 0-10},
      "blurb": "under 8 words, plain, no hype words",
+     "abstract": "60-90 words shown under the Abstract button: what the piece does, what it finds or argues, and (for research) its main limitation. Plain, faithful, no hype",
      "rationale": "two sentences, private"
    }
    ```
@@ -52,5 +53,5 @@ the corpus has grown a lot.
 - `scripts/rank.py` writes `data/scores.json` with quality (from rankings.json, or the shelf median
   if unread) plus trending (engagement decayed by age). It needs no API key.
 - `scripts/build.py` turns everything into a static site in `site/`.
-- `data/overrides.json` holds manual pin, hide, boost, category or blurb per slug.
+- `data/overrides.json` holds manual pin, hide, boost, category, blurb or abstract per slug.
 - `.github/workflows/update.yml` runs all of the above every 6 hours and deploys to GitHub Pages.
