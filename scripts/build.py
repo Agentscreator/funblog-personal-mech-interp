@@ -18,19 +18,25 @@ CSS = ROOT / "scripts" / "style.css"
 BUILD = hashlib.sha256(b"".join(f.read_bytes() for f in [
     Path(__file__), CSS, ROOT / "config.json", ROOT / "data" / "posts.json",
     ROOT / "data" / "scores.json", ROOT / "data" / "overrides.json"])).hexdigest()[:8]
-# Old URLs that people may have bookmarked or shared.
-REDIRECTS = {"personal.html": "index.html"}
+# Old URLs that people may have bookmarked or shared. Shelves used to be separate pages; they are
+# now sections of the one publications page.
+REDIRECTS = {"personal.html": "index.html", "research.html": "index.html#research",
+             "perspectives.html": "index.html#perspectives", "essays.html": "index.html#essays",
+             "fiction.html": "index.html#fiction"}
+# Author markers, as on an academic publications page. Every post is solo, so Joshua is both.
+LEGEND = [("*", "equal contribution"), ("†", "principal investigator"), ("‡", "corresponding author")]
+AUTHOR = "Joshua N. Brown"
+MARKS = "†‡"
 
-# (key, nav label, file, one-line explainer). The first page is the landing page;
-# every other key is a shelf (a post category).
-PAGES = [("featured", "Featured", "index.html", "My best work, across every shelf."),
-         ("research", "Research", "research.html", "Experiments and simulations, with results."),
-         ("perspectives", "Perspectives", "perspectives.html", "Arguments about AI: alignment, evaluation, and what it changes."),
-         ("essays", "Essays", "essays.html", "Ideas on decisions, incentives and how to live."),
-         ("fiction", "Fiction & Poetry", "fiction.html", "Stories, poems and parables.")]
+# (key, heading, one-line explainer). "selected" is the top-scored work across every shelf;
+# every other key is a shelf (a post category). All of them are sections of index.html.
+PAGES = [("selected", "Selected", "My best work, across every shelf."),
+         ("research", "Research", "Experiments and simulations, with results."),
+         ("perspectives", "Perspectives", "Arguments about AI: alignment, evaluation, and what it changes."),
+         ("essays", "Essays", "Ideas on decisions, incentives and how to live."),
+         ("fiction", "Fiction & Poetry", "Stories, poems and parables.")]
 SECTIONS = [k for k, *_ in PAGES[1:]]
-LABELS = {k: label for k, label, *_ in PAGES}
-FILES = {k: href for k, _, href, _ in PAGES}
+LABELS = {k: label for k, label, _ in PAGES}
 SOURCE_NAMES = {"substack": "Substack", "lesswrong": "LessWrong"}
 
 
@@ -57,9 +63,43 @@ def load():
     return out
 
 
-def ranked(posts, cat):
+def shelf(posts, cat):
+    # Newest first, like a publications list; pinned posts still lead.
     pool = [p for p in posts if p["category"] == cat]
-    return sorted(pool, key=lambda p: (not p["pin"], -p["score"], p["date"]))
+    newest = sorted(pool, key=lambda p: p["date"], reverse=True)
+    return sorted(newest, key=lambda p: not p["pin"])
+
+
+def abstract(p, limit=70):
+    # The subtitle plus the opening prose, skipping short heading lines like "TL;DR" or "Prologue".
+    words = p["subtitle"].split() if p.get("subtitle") else []
+    for line in p.get("text", "").splitlines():
+        if len(words) >= limit:
+            break
+        if len(line.split()) >= 8:
+            words += line.split()
+    text = " ".join(words[:limit])
+    return text + ("…" if len(words) > limit else "")
+
+
+def bibtex(p):
+    word = next((w for w in p["slug"].split("-") if w not in {"the", "a", "an", "on", "of", "how", "in"}), "post")
+    key = f"brown{p['date'][:4]}{word}"
+    venue = ", ".join(SOURCE_NAMES[s] for s in venues(p))
+    return (f"@misc{{{key},\n  author = {{Brown, Joshua N.}},\n  title = {{{p['title']}}},\n"
+            f"  year = {{{p['date'][:4]}}},\n  howpublished = {{{venue}}},\n  url = {{{p['url']}}}\n}}")
+
+
+def venues(p):
+    return [p["source"]] + [a["source"] for a in p.get("also_on", [])]
+
+
+def origins(p):
+    return [(p["source"], p["url"])] + [(a["source"], a["url"]) for a in p.get("also_on", [])]
+
+
+def byline():
+    return f'{AUTHOR}<sup>{MARKS}</sup>'
 
 
 def fmt_date(d):
@@ -80,12 +120,9 @@ def link(rel, href):
     return f"{base}?v={BUILD}"
 
 
-def page(title, body, *, description="", canonical="", depth=0, current="", rel=None):
+def page(title, body, *, description="", canonical="", depth=0, rel=None):
     rel = "../" * depth if rel is None else rel
     canon = f'<link rel="canonical" href="{escape(canonical)}">' if canonical else ""
-    here = ' aria-current="page"'
-    tabs = " ".join(f'<a href="{link(rel, href)}"{here if key == current else ""}>{label}</a>'
-                    for key, label, href, _ in PAGES)
     email = escape(CONFIG["email"])
     links = " · ".join(['<a href="#contact">Contact</a>'] + [
         f'<a href="{escape(u)}" rel="me noopener">{escape(n)}</a>' for n, u in CONFIG["links"].items()])
@@ -103,10 +140,9 @@ def page(title, body, *, description="", canonical="", depth=0, current="", rel=
 <body>
 <main>
 <header>
-  <a class="name" href="{link(rel, "index.html")}">{escape(CONFIG["site_title"])}</a>
+  <a class="home" href="{link(rel, "index.html")}">joshua/</a>
   <p class="links">{links}</p>
   <p class="contact" id="contact">Say hi: <a href="mailto:{email}">{email}</a></p>
-  <nav class="tabs" aria-label="Sections">{tabs}</nav>
 </header>
 {body}
 </main>
@@ -115,22 +151,39 @@ def page(title, body, *, description="", canonical="", depth=0, current="", rel=
 """
 
 
-def entry(p, shelf=False):
-    note = f'<span class="blurb">{escape(p["blurb"])}</span>' if p["blurb"] else ""
-    info = ([LABELS[p["category"]]] if shelf else []) + [short_date(p["date"]), f"{minutes(p)} min read"]
-    return f"""<li><a class="item" href="{link("posts/", escape(p['slug']) + ".html")}">
-  <span class="title">{escape(p['title'])}</span>
-  {note}
-  <span class="info">{" · ".join(info)}</span>
-</a></li>"""
+def entry(p, rel=""):
+    href = link(rel + "posts/", escape(p["slug"]) + ".html")
+    venue = ", ".join(SOURCE_NAMES[s] for s in venues(p))
+    actions = [f'<a href="{href}">Read</a>'] + [
+        f'<a href="{escape(u)}" rel="noopener">{SOURCE_NAMES[s]} ↗</a>' for s, u in origins(p)]
+    return f"""<li class="pub">
+  <h4><a href="{href}">{escape(p['title'])}</a></h4>
+  <p class="authors">{byline()}</p>
+  <p class="venue"><em>{venue}</em>, {fmt_date(p['date'])} · {minutes(p)} min read</p>
+  <div class="actions">
+    <details><summary>Abstract</summary><p>{escape(abstract(p))}</p></details>
+    <details><summary>BibTeX</summary><pre>{escape(bibtex(p))}</pre></details>
+    {" ".join(actions)}
+  </div>
+</li>"""
 
 
-def listing(key, posts):
-    label, intro = next((l, i) for k, l, _, i in PAGES if k == key)
-    body = f"""<p class="intro">{escape(intro)}</p>
-<ul class="list">{"".join(entry(p, shelf=key == PAGES[0][0]) for p in posts)}</ul>"""
-    title = CONFIG["site_title"] if key == PAGES[0][0] else f"{label} · {CONFIG['site_title']}"
-    return page(title, body, description=CONFIG["tagline"], current=key)
+def section(key, posts, by_year):
+    label, intro = next((l, i) for k, l, i in PAGES if k == key)
+    if by_year:
+        groups, out = {}, []
+        for p in posts:
+            groups.setdefault(p["date"][:4], []).append(p)
+        for year, ps in groups.items():
+            out.append(f'<h3 class="year">{year}</h3>\n<ul class="pubs">{"".join(entry(p) for p in ps)}</ul>')
+        items = "\n".join(out)
+    else:
+        items = f'<ul class="pubs">{"".join(entry(p) for p in posts)}</ul>'
+    return f"""<section id="{key}">
+<h2>{label} <span class="count">{len(posts)}</span></h2>
+<p class="intro">{escape(intro)}</p>
+{items}
+</section>"""
 
 
 def featured(posts):
@@ -139,36 +192,41 @@ def featured(posts):
     return sorted(pool, key=lambda p: (not p["pin"], -p["score"], p["date"]))[:CONFIG.get("featured_count", 6)]
 
 
-def build_pages(posts):
-    out = {"featured": listing("featured", featured(posts))}
-    for cat in SECTIONS:
-        out[cat] = listing(cat, ranked(posts, cat))
-    return out
+def publications(posts):
+    groups = {"selected": featured(posts), **{cat: shelf(posts, cat) for cat in SECTIONS}}
+    legend = "".join(f"<span><sup>{m}</sup> {escape(t)}</span>" for m, t in LEGEND)
+    filters = "".join(f'<li><a href="#{k}">{escape(LABELS[k])} <span class="count">{len(groups[k])}</span></a></li>'
+                      for k, *_ in PAGES)
+    body = f"""<h1>Publications</h1>
+<p class="legend">{legend}</p>
+<ul class="filters">{filters}</ul>
+{"".join(section(k, groups[k], by_year=k != "selected") for k, *_ in PAGES)}"""
+    return page(f"Publications · {CONFIG['site_title']}", body, description=CONFIG["tagline"])
 
 
 def build_post(p, prev, nxt):
     sub = f'<p class="subtitle">{escape(p["subtitle"])}</p>' if p.get("subtitle") else ""
-    origins = [(p["source"], p["url"])] + [(a["source"], a["url"]) for a in p.get("also_on", [])]
-    orig = " · ".join(f'<a href="{escape(u)}">{SOURCE_NAMES[s]}</a>' for s, u in origins)
+    orig = " · ".join(f'<a href="{escape(u)}">{SOURCE_NAMES[s]}</a>' for s, u in origins(p))
     shelf = LABELS[p["category"]]
     nav = []
     if prev:
         nav.append(f'''<a class="prev" href="{link("", escape(prev["slug"]) + ".html")}">
-  <span class="dir">← Previous in {shelf}</span><span class="title">{escape(prev["title"])}</span></a>''')
+  <span class="dir">← Newer in {shelf}</span><span class="title">{escape(prev["title"])}</span></a>''')
     if nxt:
         nav.append(f'''<a class="next" href="{link("", escape(nxt["slug"]) + ".html")}">
-  <span class="dir">Next in {shelf} →</span><span class="title">{escape(nxt["title"])}</span></a>''')
+  <span class="dir">Older in {shelf} →</span><span class="title">{escape(nxt["title"])}</span></a>''')
     body = f"""<article>
-  <a class="shelf" href="{link("../", FILES[p['category']])}">{shelf}</a>
+  <a class="shelf" href="{link("../", "index.html")}#{p['category']}">{shelf}</a>
   <h1>{escape(p['title'])}</h1>
   {sub}
+  <p class="authors">{byline()}</p>
   <p class="meta">{fmt_date(p['date'])} · {minutes(p)} min read</p>
   <div class="prose">{p['html']}</div>
   <p class="meta">Also on {orig} ↗</p>
 </article>
 <nav class="pager" aria-label="More in {shelf}">{"".join(nav)}</nav>"""
     return page(f"{p['title']} · {CONFIG['site_title']}", body,
-                description=p["blurb"], canonical=p["url"], depth=1, current=p["category"])
+                description=p["blurb"], canonical=p["url"], depth=1)
 
 
 def main():
@@ -178,9 +236,7 @@ def main():
     (OUT / "posts").mkdir(parents=True)
     shutil.copy(CSS, OUT / "style.css")
     (OUT / ".nojekyll").write_text("")
-    pages = build_pages(posts)
-    for key, _, href, _ in PAGES:
-        (OUT / href).write_text(pages[key])
+    (OUT / "index.html").write_text(publications(posts))
     for old, new in REDIRECTS.items():
         new = link("", new)
         (OUT / old).write_text(f'<!doctype html><meta charset="utf-8"><title>Moved</title>'
@@ -188,9 +244,9 @@ def main():
     # GitHub Pages serves this for a missing URL at any depth, so links must be absolute.
     root = urlparse(CONFIG["base_url"]).path.rstrip("/") + "/"
     (OUT / "404.html").write_text(page(f"Not found · {CONFIG['site_title']}", f"""<p class="intro">There's nothing at this address.</p>
-<p><a class="back" href="{link(root, "index.html")}">See my best work →</a></p>""", rel=root))
+<p><a class="back" href="{link(root, "index.html")}">See all publications →</a></p>""", rel=root))
     for cat in SECTIONS:
-        seq = ranked(posts, cat)
+        seq = shelf(posts, cat)
         for i, p in enumerate(seq):
             prev = seq[i - 1] if i > 0 else None
             nxt = seq[i + 1] if i + 1 < len(seq) else None
