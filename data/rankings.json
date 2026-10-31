@@ -281,6 +281,20 @@
    },
    "blurb": "Injected concepts surface, but is it introspection?",
    "rationale": "An honest small replication: it names its broken detection metric, the missing steering control, and six bugs from the first run, and it reports cell sizes. The TL;DR overclaims a match with Anthropic's result that the body itself retracts, and the intro prose about introspection is muddled."
+  },
+  "ss-222882823": {
+   "hash": "d1101adaf57836e2",
+   "category": "essays",
+   "overall": 47,
+   "scores": {
+    "originality": 3,
+    "rigor": 4,
+    "craft": 5,
+    "depth": 4,
+    "standalone": 5
+   },
+   "blurb": "Write one goal, track the hours",
+   "rationale": "Practical method, a real objections section with falsifiable predictions, and a strong last line; the two-halves view of regret is the freshest idea. The core is well-trodden and overlaps The Formula for Success and On the Wrong Goal, a chain of ten cited names stands in for argument, the objections are raised but never answered (noise doing hidden work undercuts the thesis), and the AI-safety section is a second essay."
   }
  },
  "scale": "Absolute, not relative to this corpus. 90+ best-in-genre published work (a curated LessWrong classic, a story in a top literary magazine); 80s excellent, would be published in a strong venue; 70s very good with minor flaws; 60s good, clear strengths and clear weaknesses; 50s solid but ordinary or uneven; 40s notes or weak drafts; below 40 not worth featuring. Subscores: 10 is world-class, 5 is competent."
