@@ -316,6 +316,21 @@
    "blurb": "Write one goal, track the hours",
    "rationale": "Practical method, a real objections section with falsifiable predictions, and a strong last line; the two-halves view of regret is the freshest idea. The core is well-trodden and overlaps The Formula for Success and On the Wrong Goal, a chain of ten cited names stands in for argument, the objections are raised but never answered (noise doing hidden work undercuts the thesis), and the AI-safety section is a second essay.",
    "abstract": "A good life is one where most hours go to what matters and little is left to regret. Drawing on Seneca, Marcus Aurelius and Emerson, this essay treats regret as the test of time spent well and proposes a simple operating system: one written goal, hours logged against it each week, and a single document that collects every lesson so old failures stop returning. It closes with why the author's own hours go to AI safety, three objections, and three falsifiable predictions."
+  },
+  "ss-the-dichotomies-of-becoming": {
+   "hash": "52c7106ea3405324",
+   "category": "essays",
+   "overall": 50,
+   "scores": {
+    "originality": 4,
+    "rigor": 3,
+    "craft": 6,
+    "depth": 5,
+    "standalone": 4
+   },
+   "blurb": "Every year leaves a ring.",
+   "abstract": "The essay argues that the question of a good life is less what one accomplishes than how one spends time, and works through four tensions: recognition against private good hours, one focus against many, Emerson's self-reliance against Marcus Aurelius's duty to others, and how to judge the people one lets in. It reconciles Emerson and Aurelius as answering different questions, rejects Aurelius on tolerating bad-faith people, and closes on the image of a tree's rings as a record of years that cannot be revised.",
+   "rationale": "The tree-ring close and the Emerson/Aurelius split (where direction comes from vs. what it is for) are the best moments, but most claims are asserted and the 'four tensions' frame is loose, with the first not really a tension. It covers much of the same ground and sources as Time Spent Well and On the Wrong Goal, published a week earlier, so standalone is docked."
   }
  },
  "scale": "Absolute, not relative to this corpus. 90+ best-in-genre published work (a curated LessWrong classic, a story in a top literary magazine); 80s excellent, would be published in a strong venue; 70s very good with minor flaws; 60s good, clear strengths and clear weaknesses; 50s solid but ordinary or uneven; 40s notes or weak drafts; below 40 not worth featuring. Subscores: 10 is world-class, 5 is competent."
