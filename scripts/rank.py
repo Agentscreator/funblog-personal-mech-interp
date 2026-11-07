@@ -4,7 +4,10 @@
 Two numbers per post:
 
   quality   How good the piece is. Comes from data/rankings.json, which holds
-            scores Claude assigned after actually reading each post (in a Claude
+            five 0-100 metric scores Claude assigned after actually reading each post
+            (novelty 30%, evidence 25%, rigor 15%, craft 15%, consequence 15%; fiction
+            swaps evidence for "earned" and rigor for "control"). This script
+            recomputes the weighted overall from them (in a Claude
             Code session, see CLAUDE.md). A post edited since its read keeps
             that old score until it is re-read. A post nobody has read yet gets
             a provisional score: the median of its shelf. Text heuristics were
@@ -37,6 +40,18 @@ RANKINGS = ROOT / "data" / "rankings.json"
 SCORES = ROOT / "data" / "scores.json"
 
 CATEGORIES = ("research", "perspectives", "essays", "fiction")
+WEIGHTS = {"novelty": 0.30, "evidence": 0.25, "rigor": 0.15, "craft": 0.15, "consequence": 0.15}
+FICTION_SWAPS = {"evidence": "earned", "rigor": "control"}
+
+
+def weighted_overall(g):
+    """Weighted sum of the five rubric metrics, or the stored overall if they aren't all there."""
+    scores = g.get("scores", {})
+    swaps = FICTION_SWAPS if g.get("category") == "fiction" else {}
+    keys = {swaps.get(m, m): w for m, w in WEIGHTS.items()}
+    if all(k in scores for k in keys):
+        return round(sum(scores[k] * w for k, w in keys.items()))
+    return g["overall"]
 WORD = re.compile(r"[a-z']+")
 
 
@@ -80,6 +95,9 @@ def main():
 
     posts = json.loads(POSTS.read_text())
     read = json.loads(RANKINGS.read_text())["posts"] if RANKINGS.exists() else {}
+    for g in read.values():
+        if "overall" in g:
+            g["overall"] = weighted_overall(g)
     # A read only counts if the text hasn't changed since.
     graded = {p["id"]: read[p["id"]] for p in posts if read.get(p["id"], {}).get("hash") == p["hash"]}
     pending = [p for p in posts if p["id"] not in graded]

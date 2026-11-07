@@ -25,21 +25,33 @@ When the user says "rank new posts" (or similar):
    "<id>": {
      "hash": "<copy from posts.json>",
      "category": "research" | "perspectives" | "essays" | "fiction",
-     "overall": 0-100,
-     "scores": {"originality": 0-10, "rigor": 0-10, "craft": 0-10, "depth": 0-10, "standalone": 0-10},
+     "overall": "weighted total, 0-100 (rank.py recomputes it from scores)",
+     "scores": {"novelty": 0-100, "evidence": 0-100, "rigor": 0-100, "craft": 0-100, "consequence": 0-100},
      "blurb": "under 8 words, plain, no hype words",
      "abstract": "60-90 words shown under the Abstract button: what the piece does, what it finds or argues, and (for research) its main limitation. Plain, faithful, no hype",
      "rationale": "two sentences, private"
    }
    ```
-   Grade each post by its shelf's standard. Rigor for research means a reproducible method,
-   controls and claims that stay inside the data; for perspectives and essays it means claims that
-   are argued, not asserted; for fiction it means emotional honesty and precision. Penalise
-   `standalone` when a piece largely repeats another post. Grade on the absolute scale in
-   `rankings.json` (`scale`), not relative to this corpus: 90+ is best-in-genre published work, 80s
-   would be published in a strong venue, 60s is good with clear weaknesses, 40s is notes or a weak
-   draft. Leave headroom so improvement shows. Existing anchors are The Trust Bank 70, Moral-Based
-   Evaluation 68, Love Doesn't Rust 60, and The Formula for Success 30.
+   The rubric has five metrics, each 0-100, weighted (also in `rankings.json` under `rubric`):
+
+   | Metric | Weight | What it asks |
+   |---|---|---|
+   | novelty | 30% | Would an informed reader in that field learn something they couldn't get from three other sources? Restating a known idea well scores low no matter how well it's restated. |
+   | evidence | 25% | Are the claims backed by data, controls and falsifiable predictions? Zero data means a low score even if the argument is correct. |
+   | rigor | 15% | Does the piece name its own weaknesses accurately and at a cost to itself? Stated objections, withdrawn claims, admitted confounds. |
+   | craft | 15% | Prose, structure, economy. Does it say it in the fewest good words? |
+   | consequence | 15% | If fully true, how much does it change what anyone does? |
+
+   For fiction and poetry, use `earned` (does it show rather than assert) in place of `evidence`
+   and `control` (no unearned sentiment, no register breaks) in place of `rigor`. Weights stay the
+   same. Honesty is 15%, not 50%: high rigor can't rescue low novelty and consequence.
+
+   Calibration is absolute, not relative to this corpus: 90+ best in field (a NeurIPS or Nature
+   paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real
+   engagement, a top literary quarterly); 70 a good post people send each other; 60 competent,
+   worth reading once; 50 fine for a personal blog; below 40 should not be on Selected (build.py
+   keeps it off unless pinned). Anchors: The Trust Bank 66, Concept Injection 64, Love Doesn't
+   Rust 63, Moral-Based Evaluation 51, The Formula for Success 21.
 5. Run `python3 scripts/rank.py && python3 scripts/build.py`, report where the new posts landed,
    and commit `data/` if the user asks.
 

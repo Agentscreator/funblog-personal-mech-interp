@@ -190,9 +190,13 @@ def section(key, posts, by_year):
 </section>"""
 
 
+SELECTED_FLOOR = 40
+
+
 def featured(posts):
     # Best work regardless of shelf; these also stay on their own shelf. Unread posts can't be featured.
-    pool = [p for p in posts if not p["provisional"] or p["pin"]]
+    # Below 40 on the rubric doesn't belong on Selected.
+    pool = [p for p in posts if (not p["provisional"] and p["score"] >= SELECTED_FLOOR) or p["pin"]]
     return sorted(pool, key=lambda p: (not p["pin"], -p["score"], p["date"]))[:CONFIG.get("featured_count", 6)]
 
 
