@@ -20,7 +20,7 @@ Two numbers per post:
             decayed by age (Hacker News style). New posts that people respond
             to float up.
 
-"Best" = quality + a small engagement bonus. Output: data/scores.json.
+"Best" = quality, with engagement as a tiebreaker (worth at most 0.1). Output: data/scores.json.
 
     python scripts/rank.py            # score everything
     python scripts/rank.py --pending  # list posts that still need a real read
@@ -126,14 +126,15 @@ def main():
         else:
             cat = read.get(p["id"], {}).get("category") or guess_category(p["id"], labeled, vectors)
             quality, source, blurb = shelf_median[cat], "provisional", p.get("subtitle") or ""
-        bonus = min(10, 3 * math.log1p(engagement(p)))
+        # Engagement only breaks ties: at most 0.1, so it can't outrank a higher rubric score.
+        bonus = min(10, 3 * math.log1p(engagement(p))) / 100
         out[p["id"]] = {
             "category": cat,
             "quality": quality,
             "quality_source": source,
             "engagement": engagement(p),
             "trending": round(trending(p, today), 3),
-            "best": round(quality + bonus, 2),
+            "best": round(quality + bonus, 3),
             "blurb": blurb,
         }
 
@@ -144,7 +145,7 @@ def main():
             s = out[p["id"]]
             flag = {"provisional": "  (provisional, not read yet)",
                     "stale": "  (edited since read, old score)"}.get(s["quality_source"], "")
-            print(f"  {s['best']:6.1f}  {p['title']}{flag}")
+            print(f"  {s['best']:7.2f}  {p['title']}{flag}")
     if pending:
         print(f"\n{len(pending)} post(s) not read yet. Open Claude Code in this repo and say 'rank new posts'.")
 

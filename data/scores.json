@@ -13,7 +13,7 @@
   "quality": 49,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 37.037,
+  "trending": 44.194,
   "best": 49.0,
   "blurb": "Write one goal, track the hours"
  },
@@ -22,8 +22,8 @@
   "quality": 64,
   "quality_source": "read",
   "engagement": 1,
-  "trending": 63.246,
-  "best": 66.08,
+  "trending": 74.074,
+  "best": 64.021,
   "blurb": "Injected concepts surface, but is it introspection?"
  },
  "ss-221818985": {
@@ -31,8 +31,8 @@
   "quality": 52,
   "quality_source": "read",
   "engagement": 1,
-  "trending": 28.534,
-  "best": 54.08,
+  "trending": 31.25,
+  "best": 52.021,
   "blurb": "A wrong hint, mostly measuring letter bias."
  },
  "ss-221421459": {
@@ -40,8 +40,8 @@
   "quality": 41,
   "quality_source": "read",
   "engagement": 1,
-  "trending": 24.149,
-  "best": 43.08,
+  "trending": 26.189,
+  "best": 41.021,
   "blurb": "Sycophancy shows up in the last layers."
  },
  "ss-220559716": {
@@ -49,7 +49,7 @@
   "quality": 63,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 8.0,
+  "trending": 8.505,
   "best": 63.0,
   "blurb": "Relationships don't decay. We learn what they were."
  },
@@ -58,8 +58,8 @@
   "quality": 53,
   "quality_source": "read",
   "engagement": 1,
-  "trending": 14.256,
-  "best": 55.08,
+  "trending": 15.086,
+  "best": 53.021,
   "blurb": "AI broke the resume. Trust is what's left."
  },
  "ss-220000849": {
@@ -67,7 +67,7 @@
   "quality": 51,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 6.749,
+  "trending": 7.128,
   "best": 51.0,
   "blurb": "A self-portrait in the third person."
  },
@@ -76,7 +76,7 @@
   "quality": 34,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 4.443,
+  "trending": 4.63,
   "best": 34.0,
   "blurb": "Value moves to what's hard to fake."
  },
@@ -85,7 +85,7 @@
   "quality": 32,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 2.592,
+  "trending": 2.667,
   "best": 32.0,
   "blurb": "A poem about peace."
  },
@@ -94,7 +94,7 @@
   "quality": 34,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 2.386,
+  "trending": 2.452,
   "best": 34.0,
   "blurb": "What a job really buys from you."
  },
@@ -103,7 +103,7 @@
   "quality": 38,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 1.783,
+  "trending": 1.823,
   "best": 38.0,
   "blurb": "Decide later. Sixteen biases, sixteen fixes."
  },
@@ -112,7 +112,7 @@
   "quality": 45,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 1.745,
+  "trending": 1.783,
   "best": 45.0,
   "blurb": "Debts, and a parable about worth."
  },
@@ -121,7 +121,7 @@
   "quality": 32,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 1.347,
+  "trending": 1.372,
   "best": 32.0,
   "blurb": "Life isn't short. We waste it."
  },
@@ -130,7 +130,7 @@
   "quality": 35,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 1.152,
+  "trending": 1.171,
   "best": 35.0,
   "blurb": "Check the goal before the data."
  },
@@ -139,7 +139,7 @@
   "quality": 34,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 1.115,
+  "trending": 1.133,
   "best": 34.0,
   "blurb": "Give AI a worthy obsession."
  },
@@ -148,7 +148,7 @@
   "quality": 37,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.985,
+  "trending": 1.0,
   "best": 37.0,
   "blurb": "Five ways moral judgment breaks."
  },
@@ -157,7 +157,7 @@
   "quality": 51,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.903,
+  "trending": 0.916,
   "best": 51.0,
   "blurb": "Test a model's values, not its outputs."
  },
@@ -166,7 +166,7 @@
   "quality": 29,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.903,
+  "trending": 0.916,
   "best": 29.0,
   "blurb": "A letter to Marcus about the minds we're building."
  },
@@ -175,7 +175,7 @@
   "quality": 21,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.844,
+  "trending": 0.855,
   "best": 21.0,
   "blurb": "Focus × time × the room you're in."
  },
@@ -184,7 +184,7 @@
   "quality": 66,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.78,
+  "trending": 0.79,
   "best": 66.0,
   "blurb": "Four seasons. No villain."
  },
@@ -193,7 +193,7 @@
   "quality": 50,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.77,
+  "trending": 0.78,
   "best": 50.0,
   "blurb": "Judge track records, not intentions."
  }
