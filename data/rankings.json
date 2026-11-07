@@ -331,6 +331,21 @@
    "blurb": "Every year leaves a ring.",
    "abstract": "The essay argues that the question of a good life is less what one accomplishes than how one spends time, and works through four tensions: recognition against private good hours, one focus against many, Emerson's self-reliance against Marcus Aurelius's duty to others, and how to judge the people one lets in. It reconciles Emerson and Aurelius as answering different questions, rejects Aurelius on tolerating bad-faith people, and closes on the image of a tree's rings as a record of years that cannot be revised.",
    "rationale": "The tree-ring close and the Emerson/Aurelius split (where direction comes from vs. what it is for) are the best moments, but most claims are asserted and the 'four tensions' frame is loose, with the first not really a tension. It covers much of the same ground and sources as Time Spent Well and On the Wrong Goal, published a week earlier, so standalone is docked."
+  },
+  "ss-emotion-vectors-in-llama-32-3b-and": {
+   "hash": "7e73d8f7d4353825",
+   "category": "research",
+   "overall": 56,
+   "scores": {
+    "novelty": 42,
+    "evidence": 52,
+    "rigor": 90,
+    "craft": 74,
+    "consequence": 38
+   },
+   "blurb": "Emotion structure replicates; steering does nothing.",
+   "abstract": "Builds emotion vectors for twelve emotions in Llama 3.2 3B Instruct from model-written stories, then steers with them on 43 trivia questions carrying a wrong hint. The emotion structure replicates earlier work: related emotions cluster, one valence axis explains 43-44% of variance, and held-out stories are classified at about 7 times chance. Steering at strengths 0.1 to 0.5 left the wrong-hint rate at 11.5-12.4% against a 12.3% baseline. The main limitation is that the tested strengths fell below the range where steering acts, on questions too easy to move.",
+   "rationale": "A clean, well-controlled write-up with a stated prediction, a random-direction control, a hook sanity check, and an unusually honest list of ways it could be wrong, including a bug that voids one check. But Part A is an acknowledged replication and Part B is an underpowered null at strengths that could not have found an effect, so it tells a reader little beyond what to run next."
   }
  },
  "scale": "Absolute, not relative to this corpus. Each metric 0-100; overall is the weighted sum. 90+ best in field (a NeurIPS or Nature paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real engagement, a top literary quarterly); 70 a good post people send each other; 60 competent, worth reading once; 50 fine for a personal blog; below 40 should not be on the Selected page.",
