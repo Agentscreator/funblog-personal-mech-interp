@@ -50,6 +50,8 @@ def load():
         o = overrides.get(p["slug"], {})
         if o.get("hide"):
             continue
+        if echoes_body(p):
+            p["subtitle"] = ""
         p["category"] = o.get("category") or s["category"]
         if p["category"] not in SECTIONS:
             raise SystemExit(f"{p['slug']}: unknown category {p['category']!r}, expected one of {SECTIONS}")
@@ -62,6 +64,14 @@ def load():
         p["abstract"] = o.get("abstract") or rankings.get(p["id"], {}).get("abstract") or excerpt(p)
         out.append(p)
     return out
+
+
+def echoes_body(p):
+    # Substack's RSS feed fills a missing subtitle with the post's opening text, which would then
+    # show twice on the post page. Drop it when it is just the start of the body.
+    sub = [w.strip(".,:;!?…").lower() for w in p.get("subtitle", "").split()]
+    body = [w.strip(".,:;!?…").lower() for w in p.get("text", "").split()[:len(sub)]]
+    return bool(sub) and sub == body
 
 
 def shelf(posts, cat):
