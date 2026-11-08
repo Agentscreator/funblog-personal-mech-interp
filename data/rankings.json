@@ -348,19 +348,19 @@
       "rationale": "A clean, well-controlled write-up with a stated prediction, a random-direction control, a hook sanity check, and an unusually honest list of ways it could be wrong, including a bug that voids one check. But Part A is an acknowledged replication and Part B is an underpowered null at strengths that could not have found an effect, so it tells a reader little beyond what to run next."
     },
     "ss-myrmex": {
-      "hash": "d943c32edda85ab6",
+      "hash": "c31d24bcc99d1f6d",
       "category": "fiction",
-      "overall": 51,
+      "overall": 59,
       "scores": {
-        "novelty": 45,
-        "earned": 50,
-        "control": 55,
-        "craft": 68,
-        "consequence": 42
+        "novelty": 52,
+        "earned": 64,
+        "control": 66,
+        "craft": 72,
+        "consequence": 45
       },
       "blurb": "An ant's meditations on AI and work.",
-      "abstract": "Four short books of numbered meditations, in the manner of Marcus Aurelius, on what human work means as AI systems take on a growing share of it. The first separates being redundant from being negligible. The second and third use an ant hill, a reef and a forest floor to argue that small, replaceable contributions still make the whole. The fourth turns to a single ant who carries her grain without certainty about where the hill is going, and with care because AI may help or harm it.",
-      "rationale": "The redundant-versus-negligible distinction and Book IV's first-person turn are the best things here; Books II and III stack a dozen interchangeable metaphors for one familiar consolation. Lines like 'fundamental part of the architecture' and 'gigantic unsolved problems' break the plain register, and closing maxims ('That is enough') assert what the images should earn."
+      "abstract": "Four short books of numbered meditations on what human work means as AI systems take on a growing share of it. The first traces the handover of trust step by step and separates being redundant from being negligible. The rest is told by an ant who watches a sister vanish without slowing the hill, sees tireless new carriers learn the slope from the ants' own trails, and keeps setting her grain with care, uncertain where the hill is going.",
+      "rationale": "The rewrite collapses a dozen interchangeable metaphors into one sustained first-person ant, and the carriers learning from the ants' scent trails plus the closing 'I know where it is' earn what the old maxims asserted. Book I's human, statistic-citing voice still breaks register against the ant books, and the carriers allegory turns on-the-nose in places."
     }
   },
   "scale": "Absolute, not relative to this corpus. Each metric 0-100; overall is the weighted sum. 90+ best in field (a NeurIPS or Nature paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real engagement, a top literary quarterly); 70 a good post people send each other; 60 competent, worth reading once; 50 fine for a personal blog; below 40 should not be on the Selected page.",

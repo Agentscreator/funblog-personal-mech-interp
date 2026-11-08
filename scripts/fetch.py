@@ -8,6 +8,7 @@ import hashlib
 import json
 import re
 import sys
+import time
 import urllib.request
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
@@ -165,7 +166,9 @@ def fetch_substack(sub):
 
 
 def fetch_substack_rss(sub):
-    xml = http_get(f"https://{sub}.substack.com/feed")
+    # Substack's CDN can serve a stale feed for a while after an edit; a unique
+    # query string forces a fresh copy.
+    xml = http_get(f"https://{sub}.substack.com/feed?t={int(time.time())}")
     ns = {"content": "http://purl.org/rss/1.0/modules/content/"}
     # RSS has no numeric post id or engagement counts: reuse what we already
     # know about a slug so its id (and therefore its ranking) stays stable.

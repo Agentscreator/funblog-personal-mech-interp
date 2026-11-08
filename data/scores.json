@@ -1,11 +1,11 @@
 {
  "ss-myrmex": {
   "category": "fiction",
-  "quality": 51,
+  "quality": 59,
   "quality_source": "read",
   "engagement": 0,
   "trending": 353.553,
-  "best": 51.0,
+  "best": 59.0,
   "blurb": "An ant's meditations on AI and work."
  },
  "ss-emotion-vectors-in-llama-32-3b-and": {
