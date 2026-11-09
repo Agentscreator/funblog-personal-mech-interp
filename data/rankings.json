@@ -348,19 +348,19 @@
       "rationale": "A clean, well-controlled write-up with a stated prediction, a random-direction control, a hook sanity check, and an unusually honest list of ways it could be wrong, including a bug that voids one check. But Part A is an acknowledged replication and Part B is an underpowered null at strengths that could not have found an effect, so it tells a reader little beyond what to run next."
     },
     "ss-myrmex": {
-      "hash": "c31d24bcc99d1f6d",
+      "hash": "588f5331fdf856c2",
       "category": "fiction",
-      "overall": 59,
+      "overall": 63,
       "scores": {
-        "novelty": 52,
-        "earned": 64,
-        "control": 66,
-        "craft": 72,
-        "consequence": 45
+        "novelty": 57,
+        "earned": 68,
+        "control": 67,
+        "craft": 75,
+        "consequence": 50
       },
       "blurb": "An ant's meditations on AI and work.",
-      "abstract": "Four short books of numbered meditations on what human work means as AI systems take on a growing share of it. The first traces the handover of trust step by step and separates being redundant from being negligible. The rest is told by an ant who watches a sister vanish without slowing the hill, sees tireless new carriers learn the slope from the ants' own trails, and keeps setting her grain with care, uncertain where the hill is going.",
-      "rationale": "The rewrite collapses a dozen interchangeable metaphors into one sustained first-person ant, and the carriers learning from the ants' scent trails plus the closing 'I know where it is' earn what the old maxims asserted. Book I's human, statistic-citing voice still breaks register against the ant books, and the carriers allegory turns on-the-nose in places."
+      "abstract": "Four short books of numbered meditations on human work as AI systems take on more of it. The first traces the stepwise handover of trust and separates being redundant from being negligible. The rest is told by an ant: the hill keeps rising without her, tireless carriers learn the slope from the ants' old scent trails, repeating even their dead ends, and she keeps placing her grain with care while she can still tell when theirs are wrong.",
+      "rationale": "The new trail beat (carriers replaying an ant's abandoned dead end a thousand times) and the deep-chamber wall where she can still spot their errors turn the allegory toward training data and oversight, which is fresher than the old redundancy theme and earns 'I go slowly on the turns.' Book I is still a human maxim voice that tells what the ant books then show, and 'I know where my trail leads' lands a bit vaguer than the grain line before it."
     }
   },
   "scale": "Absolute, not relative to this corpus. Each metric 0-100; overall is the weighted sum. 90+ best in field (a NeurIPS or Nature paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real engagement, a top literary quarterly); 70 a good post people send each other; 60 competent, worth reading once; 50 fine for a personal blog; below 40 should not be on the Selected page.",
