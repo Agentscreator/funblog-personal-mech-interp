@@ -348,7 +348,7 @@
       "rationale": "A clean, well-controlled write-up with a stated prediction, a random-direction control, a hook sanity check, and an unusually honest list of ways it could be wrong, including a bug that voids one check. But Part A is an acknowledged replication and Part B is an underpowered null at strengths that could not have found an effect, so it tells a reader little beyond what to run next."
     },
     "ss-myrmex": {
-      "hash": "588f5331fdf856c2",
+      "hash": "e8c51ba1520a6821",
       "category": "fiction",
       "overall": 63,
       "scores": {
