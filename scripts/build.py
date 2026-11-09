@@ -165,13 +165,17 @@ def page(title, body, *, description="", canonical="", depth=0, rel=None):
 """
 
 
+# Pinned posts jump the rubric order, so they say so: readers can tell placement was chosen, not scored.
+PIN_TAG = ' <span class="pinned" title="Pinned by the author: placed first, ahead of its rubric rank.">Pinned</span>'
+
+
 def entry(p, rel=""):
     href = link(rel + "posts/", escape(p["slug"]) + ".html")
     venue = ", ".join(SOURCE_NAMES[s] for s in venues(p))
     actions = [f'<a href="{href}">Read</a>'] + [
         f'<a href="{escape(u)}" rel="noopener">{SOURCE_NAMES[s]} ↗</a>' for s, u in origins(p)]
     return f"""<li class="pub">
-  <h4><a href="{href}">{escape(p['title'])}</a></h4>
+  <h4><a href="{href}">{escape(p['title'])}</a>{PIN_TAG if p["pin"] else ""}</h4>
   <p class="authors">{byline()}</p>
   <p class="venue"><em>{venue}</em>, {fmt_date(p['date'])} · {minutes(p)} min read</p>
   <div class="actions">
