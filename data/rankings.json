@@ -361,6 +361,21 @@
       "blurb": "An ant's meditations on AI and work.",
       "abstract": "Four short books of numbered meditations on human work as AI systems take on more of it. The first traces the stepwise handover of trust and separates being redundant from being negligible. The rest is told by an ant: the hill keeps rising without her, tireless carriers learn the slope from the ants' old scent trails, repeating even their dead ends, and she keeps placing her grain with care while she can still tell when theirs are wrong.",
       "rationale": "The new trail beat (carriers replaying an ant's abandoned dead end a thousand times) and the deep-chamber wall where she can still spot their errors turn the allegory toward training data and oversight, which is fresher than the old redundancy theme and earns 'I go slowly on the turns.' Book I is still a human maxim voice that tells what the ant books then show, and 'I know where my trail leads' lands a bit vaguer than the grain line before it."
+    },
+    "ss-love-quartz": {
+      "hash": "75bdc844a80ddc1d",
+      "category": "fiction",
+      "overall": 63,
+      "scores": {
+        "novelty": 55,
+        "earned": 72,
+        "control": 64,
+        "craft": 76,
+        "consequence": 52
+      },
+      "blurb": "Four masons, four mice, one crumb.",
+      "abstract": "Four linked stories across 1,728 years: a cathedral mason in 1986, a translator in 2026, a night-ward doctor in 2194, and a world-builder on a starship in 3714, each doing work a machine can match or surpass. Each is paired with a mouse who inherits one saying, \"take what you need, and leave a little,\" and passes a crumb on. A mason's ring-and-notch mark travels through all four eras. The piece asks what human work means once nobody can tell it apart from a machine's, and does not answer.",
+      "rationale": "Strong objects carry the theme (the coin-wide joint, the second teacup, the pen click, the mark on the star book) and the mouse frame braids four eras cleanly; the multi-era AI-displacement structure is familiar, though. Control slips in places: the clunky POV headers, the repeated 'What I noticed' tic, and the father's and Quartz's closing lines say the feeling outright when the images already carry it."
     }
   },
   "scale": "Absolute, not relative to this corpus. Each metric 0-100; overall is the weighted sum. 90+ best in field (a NeurIPS or Nature paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real engagement, a top literary quarterly); 70 a good post people send each other; 60 competent, worth reading once; 50 fine for a personal blog; below 40 should not be on the Selected page.",
