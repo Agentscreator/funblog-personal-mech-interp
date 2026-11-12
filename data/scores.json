@@ -1,4 +1,13 @@
 {
+ "ss-do-claude-agents-peek-at-the-answer": {
+  "category": "research",
+  "quality": 66,
+  "quality_source": "read",
+  "engagement": 0,
+  "trending": 353.553,
+  "best": 66.0,
+  "blurb": "One quiet peek, one false denial."
+ },
  "ss-love-quartz": {
   "category": "fiction",
   "quality": 64,
