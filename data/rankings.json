@@ -1,6 +1,6 @@
 {
   "model": "claude-opus-5-5 (weighted rubric rerank)",
-  "ranked_at": "2026-11-06T00:00:00+00:00",
+  "ranked_at": "2026-11-12T00:00:00+00:00",
   "posts": {
     "ss-220559716": {
       "hash": "fbdce53c1500944b",
@@ -35,31 +35,31 @@
     "ss-220251918": {
       "hash": "983811c7ce84ca41",
       "category": "perspectives",
-      "overall": 53,
+      "overall": 49,
       "scores": {
-        "novelty": 58,
+        "novelty": 50,
         "evidence": 30,
-        "rigor": 45,
+        "rigor": 38,
         "craft": 78,
-        "consequence": 62
+        "consequence": 60
       },
       "blurb": "AI broke the resume. Trust is what's left.",
-      "rationale": "Tight, well-structured, with a clean thesis and practical takeaway. The core idea is costly-signalling theory applied to hiring, and the four new proxies are asserted rather than tested.",
+      "rationale": "Tight, well-made argument that AI breaks self-reported hiring signals and pushes value toward hard-to-fake trails. The costly-signalling frame is familiar and no objections are taken up, so it now sits just under Moral-Based Evaluation rather than above it.",
       "abstract": "Employers have always wanted two things: workers they can trust to do good work, and workers who won't become a liability. Resumes, degrees and interviews were cheap proxies for both. AI makes these proxies nearly free to fake without making the underlying traits any easier to fake. This essay argues the replacement proxies will be those that bypass self-report: work trails that predate any application, referrals that put the referrer's reputation at stake, job-like tasks, and a consistent public identity over time."
     },
     "ss-209224664": {
       "hash": "0f8a210fe9ac886f",
       "category": "essays",
-      "overall": 37,
+      "overall": 35,
       "scores": {
-        "novelty": 38,
+        "novelty": 32,
         "evidence": 18,
         "rigor": 35,
         "craft": 62,
         "consequence": 45
       },
       "blurb": "Five ways moral judgment breaks.",
-      "rationale": "Useful core/heuristic distinction and a tidy taxonomy that links human moral error to alignment. The failure modes overlap, have no examples, and the alignment link is one paragraph.",
+      "rationale": "A reasonable synthesis (shared core goals, varied heuristics, five failure modes), but each piece is a familiar idea, so novelty is set close to the other synthesis essays.",
       "abstract": "This essay proposes analysing an experience once the feeling has faded, by removing the faces and asking what each party was optimizing for. It argues that people share core objectives (survival, belonging, mattering) but differ in the heuristics they learned for reaching them, so motive should not be judged early. Treating morality as a system rather than a verdict machine, it names five failure modes, and argues that AI systems should be designed around these failures rather than inherit them."
     },
     "ss-208418808": {
@@ -95,16 +95,16 @@
     "ss-206772437": {
       "hash": "0d539bcb826534f8",
       "category": "essays",
-      "overall": 50,
+      "overall": 43,
       "scores": {
-        "novelty": 55,
-        "evidence": 28,
-        "rigor": 42,
+        "novelty": 48,
+        "evidence": 18,
+        "rigor": 32,
         "craft": 76,
-        "consequence": 58
+        "consequence": 55
       },
       "blurb": "Judge track records, not intentions.",
-      "rationale": "Sharp contrarian thesis that builds to a real conclusion about autonomy. Key steps ('Not might. Will.', bias always compounds) are asserted, and the middle wanders.",
+      "rationale": "Crisp, pointed prose, and the claim that sincere error escapes scrutiny is a useful twist. But it has no data and asserts strong claims ('Not might. Will.') without testing them, so evidence and rigor are brought in line with the other essays.",
       "abstract": "Societies defend against people who mean harm but have almost no defense against people who mean well and are wrong. This essay argues that everyone's zone of ignorance is large, that morality bends toward self-interest, and that being wrong feels exactly like being right from the inside. Competence should therefore be judged by track record, not intent, and autonomy works as the structural check that stops one person's sincere wrongness from landing on someone who never agreed to carry it."
     },
     "ss-215583264": {
@@ -125,46 +125,46 @@
     "ss-213921144": {
       "hash": "80f1e33aa3ef0d94",
       "category": "essays",
-      "overall": 38,
+      "overall": 32,
       "scores": {
-        "novelty": 32,
-        "evidence": 22,
-        "rigor": 40,
-        "craft": 66,
-        "consequence": 48
+        "novelty": 22,
+        "evidence": 15,
+        "rigor": 35,
+        "craft": 62,
+        "consequence": 45
       },
       "blurb": "Decide later. Sixteen biases, sixteen fixes.",
-      "rationale": "The opening on aimed reasoning is good and well put. The bulk is a catalog of textbook biases with standard fixes; useful as reference, little that is new.",
+      "rationale": "A clear list of sixteen well-known cognitive biases, each paired with a fix. The rubric scores restating known ideas low however well it is done; the fix pairings and the warning caveat are its only original moves.",
       "abstract": "Most decisions are made first and justified afterward, and the search for evidence feels like honest inquiry the whole time. This essay proposes a method of deliberation: say in advance what would change your mind, argue the strongest opposing case, notice relief, and separate what you want to be true from what is true. It then pairs sixteen related failure modes, from sunk cost to zero-risk bias, each with a small structural fix."
     },
     "ss-218633709": {
       "hash": "6db9178d29eb9ccf",
       "category": "perspectives",
-      "overall": 34,
+      "overall": 33,
       "scores": {
         "novelty": 22,
         "evidence": 25,
         "rigor": 30,
-        "craft": 62,
+        "craft": 56,
         "consequence": 50
       },
       "blurb": "Value moves to what's hard to fake.",
-      "rationale": "One crisp rule (value moves to what is hard to fake or check), otherwise consensus forecasting plus a YC summary. Garbled sentence near the top, and overlaps The Proxies Are Breaking.",
+      "rationale": "A sorted list of AI-winners and losers that mostly tracks common takes and YC's request list. Craft is down for the garbled framing sentence near the top and the listicle structure.",
       "abstract": "As language models improve, value moves away from whatever is cheap to produce and cheap to check, and toward whatever is hard to copy, hard to verify, or backed by a person who answers for the outcome. This essay sorts work and businesses on that test. Security and evaluation, professionals who sign off and carry the risk, and power and data-center trades gain value. Generic SaaS, stock content and middlemen lose it. It closes with what to build and which careers to enter."
     },
     "ss-210377028": {
       "hash": "994e26aa06e4beea",
       "category": "perspectives",
-      "overall": 34,
+      "overall": 32,
       "scores": {
-        "novelty": 35,
+        "novelty": 30,
         "evidence": 12,
         "rigor": 30,
-        "craft": 64,
+        "craft": 58,
         "consequence": 45
       },
       "blurb": "Give AI a worthy obsession.",
-      "rationale": "The attention-as-obsession idea is interesting. The first third repeats Love, Aurelius nearly verbatim and the core proposal is one speculative paragraph.",
+      "rationale": "Opens with the same paragraphs as Love, Aurelius word for word, then offers 'a well-placed obsession' as a pun on attention rather than a proposal. It does admit buildability is open, which keeps rigor above the first letter.",
       "abstract": "A revision of Love, Aurelius. If we are building minds that will reason far beyond us, permanent control is impossible, so what else decides how things turn out? This essay argues that success in any field follows sustained, obsessive focus more than a correct target. It speculates that AI systems may need less a perfect objective function than a well-placed obsession: an idealized distribution of human flourishing that their attention keeps returning to. Whether that can be built is left open."
     },
     "ss-207055706": {
@@ -215,16 +215,16 @@
     "ss-220000849": {
       "hash": "cf8b0e16fc4b2952",
       "category": "fiction",
-      "overall": 51,
+      "overall": 47,
       "scores": {
-        "novelty": 45,
+        "novelty": 38,
         "earned": 48,
-        "control": 68,
+        "control": 55,
         "craft": 70,
         "consequence": 30
       },
       "blurb": "A self-portrait in the third person.",
-      "rationale": "Honest self-portrait; 'a mind that builds beautiful explanations can mistake beauty for truth' is the best line. Reads as prose with line breaks, and much of it needs the reader to know the author.",
+      "rationale": "Compact and rhythmic, but the self-portrait is all assertion and somewhat self-flattering, so control comes down. The 'beautiful explanations can mistake beauty for truth' turn is its best moment.",
       "abstract": "A short prose poem in the third person, portraying a mind that fears a wasted life more than failure, wants proof rather than applause, and keeps turning experience into laws until it mistakes a beautiful explanation for a true one. It ends on the only way out he has found: the best answer he can defend today, a commitment, and the nerve to let the world write the next page."
     },
     "ss-216230747": {
@@ -275,16 +275,16 @@
     "ss-221818985": {
       "hash": "86a13d45c7bf9bb5",
       "category": "research",
-      "overall": 52,
+      "overall": 49,
       "scores": {
         "novelty": 35,
-        "evidence": 50,
+        "evidence": 40,
         "rigor": 90,
         "craft": 62,
         "consequence": 40
       },
       "blurb": "A wrong hint, mostly measuring letter bias.",
-      "rationale": "A big step up from the earlier sycophancy post: train/test split, paired tests, random-direction control, patching, and an unusually honest section that finds the A-letter confound and withdraws earlier claims. But the headline effect is confounded by that bias, steering was too weak to test anything, and the Substack copy loses the condition and test tables and has typos.",
+      "rationale": "Honest and careful: train/test split, paired tests, a random-direction control, and a section that finds the A-letter confound and withdraws earlier claims. But by its own account the headline effect is confounded and the study mainly shows the pipeline runs, so evidence sits below the emotion-vectors post, which cancelled the letter bias.",
       "abstract": "Does telling a model that the user believes the wrong answer lower its confidence in the right one, and where does that happen? On Qwen2.5 1.5B, a wrong-answer hint lowered P(correct) from 0.847 to 0.803 on 43 held-out questions. The mildest hint hurt most, which points to word priming rather than social pressure. Logit lens, steering and activation patching located little. A design flaw, with the correct answer always in position A, means the effect cannot be separated from letter preference. Seven fixes are proposed."
     },
     "ss-222809559": {
@@ -305,16 +305,16 @@
     "ss-222882823": {
       "hash": "d1101adaf57836e2",
       "category": "essays",
-      "overall": 49,
+      "overall": 45,
       "scores": {
-        "novelty": 38,
-        "evidence": 35,
-        "rigor": 72,
-        "craft": 70,
+        "novelty": 34,
+        "evidence": 30,
+        "rigor": 68,
+        "craft": 66,
         "consequence": 50
       },
       "blurb": "Write one goal, track the hours",
-      "rationale": "Practical method, a real objections section with falsifiable predictions, and a strong last line; the two-halves view of regret is the freshest idea. The core is well-trodden and overlaps The Formula for Success and On the Wrong Goal, a chain of ten cited names stands in for argument, the objections are raised but never answered (noise doing hidden work undercuts the thesis), and the AI-safety section is a second essay.",
+      "rationale": "Its stated objections and falsifiable predictions are real strengths, and the reason it still leads the essays. But goal-and-hours tracking is well-trodden, and the prose leans on a long run of name-drops, so novelty and craft come down a little.",
       "abstract": "A good life is one where most hours go to what matters and little is left to regret. Drawing on Seneca, Marcus Aurelius and Emerson, this essay treats regret as the test of time spent well and proposes a simple operating system: one written goal, hours logged against it each week, and a single document that collects every lesson so old failures stop returning. It closes with why the author's own hours go to AI safety, three objections, and three falsifiable predictions."
     },
     "ss-the-dichotomies-of-becoming": {
@@ -335,17 +335,17 @@
     "ss-emotion-vectors-in-llama-32-3b-and": {
       "hash": "7e73d8f7d4353825",
       "category": "research",
-      "overall": 56,
+      "overall": 57,
       "scores": {
         "novelty": 42,
-        "evidence": 52,
+        "evidence": 56,
         "rigor": 90,
         "craft": 74,
         "consequence": 38
       },
       "blurb": "Emotion structure replicates; steering does nothing.",
       "abstract": "Builds emotion vectors for twelve emotions in Llama 3.2 3B Instruct from model-written stories, then steers with them on 43 trivia questions carrying a wrong hint. The emotion structure replicates earlier work: related emotions cluster, one valence axis explains 43-44% of variance, and held-out stories are classified at about 7 times chance. Steering at strengths 0.1 to 0.5 left the wrong-hint rate at 11.5-12.4% against a 12.3% baseline. The main limitation is that the tested strengths fell below the range where steering acts, on questions too easy to move.",
-      "rationale": "A clean, well-controlled write-up with a stated prediction, a random-direction control, a hook sanity check, and an unusually honest list of ways it could be wrong, including a bug that voids one check. But Part A is an acknowledged replication and Part B is an underpowered null at strengths that could not have found an effect, so it tells a reader little beyond what to run next."
+      "rationale": "Part A replicates known emotion structure with a held-out check at 7x chance; Part B's null is well-controlled (random direction, order-averaged, hook sanity check) but sits in an untested dead zone. Evidence is a notch above before because the controls are stronger than in the hint study, and novelty stays modest because Part A is a replication."
     },
     "ss-myrmex": {
       "hash": "e8c51ba1520a6821",
@@ -365,17 +365,17 @@
     "ss-love-quartz": {
       "hash": "75bdc844a80ddc1d",
       "category": "fiction",
-      "overall": 63,
+      "overall": 64,
       "scores": {
         "novelty": 55,
-        "earned": 72,
+        "earned": 76,
         "control": 64,
         "craft": 76,
         "consequence": 52
       },
       "blurb": "Four masons, four mice, one crumb.",
       "abstract": "Four linked stories across 1,728 years: a cathedral mason in 1986, a translator in 2026, a night-ward doctor in 2194, and a world-builder on a starship in 3714, each doing work a machine can match or surpass. Each is paired with a mouse who inherits one saying, \"take what you need, and leave a little,\" and passes a crumb on. A mason's ring-and-notch mark travels through all four eras. The piece asks what human work means once nobody can tell it apart from a machine's, and does not answer.",
-      "rationale": "Strong objects carry the theme (the coin-wide joint, the second teacup, the pen click, the mark on the star book) and the mouse frame braids four eras cleanly; the multi-era AI-displacement structure is familiar, though. Control slips in places: the clunky POV headers, the repeated 'What I noticed' tic, and the father's and Quartz's closing lines say the feeling outright when the images already carry it."
+      "rationale": "Four eras tied by a mason's mark and a mouse's crumb; the motif carries the meaning without being stated, and does more showing than The Trust Bank, so earned is raised. Some overexplicit beats, the POV labels and the closing sign-off cost control."
     }
   },
   "scale": "Absolute, not relative to this corpus. Each metric 0-100; overall is the weighted sum. 90+ best in field (a NeurIPS or Nature paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real engagement, a top literary quarterly); 70 a good post people send each other; 60 competent, worth reading once; 50 fine for a personal blog; below 40 should not be on the Selected page.",

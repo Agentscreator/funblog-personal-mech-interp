@@ -1,11 +1,11 @@
 {
  "ss-love-quartz": {
   "category": "fiction",
-  "quality": 63,
+  "quality": 64,
   "quality_source": "read",
   "engagement": 0,
   "trending": 353.553,
-  "best": 63.0,
+  "best": 64.0,
   "blurb": "Four masons, four mice, one crumb."
  },
  "ss-myrmex": {
@@ -19,11 +19,11 @@
  },
  "ss-emotion-vectors-in-llama-32-3b-and": {
   "category": "research",
-  "quality": 56,
+  "quality": 57,
   "quality_source": "read",
   "engagement": 0,
   "trending": 53.995,
-  "best": 56.0,
+  "best": 57.0,
   "blurb": "Emotion structure replicates; steering does nothing."
  },
  "ss-the-dichotomies-of-becoming": {
@@ -37,11 +37,11 @@
  },
  "ss-222882823": {
   "category": "essays",
-  "quality": 49,
+  "quality": 45,
   "quality_source": "read",
   "engagement": 0,
   "trending": 19.09,
-  "best": 49.0,
+  "best": 45.0,
   "blurb": "Write one goal, track the hours"
  },
  "ss-222809559": {
@@ -55,11 +55,11 @@
  },
  "ss-221818985": {
   "category": "research",
-  "quality": 52,
+  "quality": 49,
   "quality_source": "read",
   "engagement": 1,
   "trending": 19.382,
-  "best": 52.021,
+  "best": 49.021,
   "blurb": "A wrong hint, mostly measuring letter bias."
  },
  "ss-221421459": {
@@ -82,29 +82,29 @@
  },
  "ss-220251918": {
   "category": "perspectives",
-  "quality": 53,
+  "quality": 49,
   "quality_source": "read",
   "engagement": 1,
   "trending": 11.049,
-  "best": 53.021,
+  "best": 49.021,
   "blurb": "AI broke the resume. Trust is what's left."
  },
  "ss-220000849": {
   "category": "fiction",
-  "quality": 51,
+  "quality": 47,
   "quality_source": "read",
   "engagement": 0,
   "trending": 5.275,
-  "best": 51.0,
+  "best": 47.0,
   "blurb": "A self-portrait in the third person."
  },
  "ss-218633709": {
   "category": "perspectives",
-  "quality": 34,
+  "quality": 33,
   "quality_source": "read",
   "engagement": 0,
   "trending": 3.674,
-  "best": 34.0,
+  "best": 33.0,
   "blurb": "Value moves to what's hard to fake."
  },
  "ss-216230747": {
@@ -127,11 +127,11 @@
  },
  "ss-213921144": {
   "category": "essays",
-  "quality": 38,
+  "quality": 32,
   "quality_source": "read",
   "engagement": 0,
   "trending": 1.603,
-  "best": 38.0,
+  "best": 32.0,
   "blurb": "Decide later. Sixteen biases, sixteen fixes."
  },
  "ss-213722983": {
@@ -163,20 +163,20 @@
  },
  "ss-210377028": {
   "category": "perspectives",
-  "quality": 34,
+  "quality": 32,
   "quality_source": "read",
   "engagement": 0,
   "trending": 1.031,
-  "best": 34.0,
+  "best": 32.0,
   "blurb": "Give AI a worthy obsession."
  },
  "ss-209224664": {
   "category": "essays",
-  "quality": 37,
+  "quality": 35,
   "quality_source": "read",
   "engagement": 0,
   "trending": 0.916,
-  "best": 37.0,
+  "best": 35.0,
   "blurb": "Five ways moral judgment breaks."
  },
  "ss-208463566": {
@@ -217,11 +217,11 @@
  },
  "ss-206772437": {
   "category": "essays",
-  "quality": 50,
+  "quality": 43,
   "quality_source": "read",
   "engagement": 0,
   "trending": 0.724,
-  "best": 50.0,
+  "best": 43.0,
   "blurb": "Judge track records, not intentions."
  }
 }
