@@ -4,7 +4,7 @@
   "quality": 66,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 192.45,
+  "trending": 125.0,
   "best": 66.0,
   "blurb": "One quiet peek, one false denial."
  },
@@ -13,7 +13,7 @@
   "quality": 64,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 192.45,
+  "trending": 125.0,
   "best": 64.0,
   "blurb": "Four masons, four mice, one crumb."
  },
@@ -22,7 +22,7 @@
   "quality": 63,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 53.995,
+  "trending": 44.194,
   "best": 63.0,
   "blurb": "An ant's meditations on AI and work."
  },
@@ -31,7 +31,7 @@
   "quality": 57,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 44.194,
+  "trending": 37.037,
   "best": 57.0,
   "blurb": "Emotion structure replicates; steering does nothing."
  },
@@ -40,7 +40,7 @@
   "quality": 31,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 44.194,
+  "trending": 37.037,
   "best": 31.0,
   "blurb": "Every year leaves a ring."
  },
@@ -49,7 +49,7 @@
   "quality": 45,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 17.213,
+  "trending": 15.625,
   "best": 45.0,
   "blurb": "Write one goal, track the hours"
  },
@@ -58,7 +58,7 @@
   "quality": 64,
   "quality_source": "read",
   "engagement": 1,
-  "trending": 31.25,
+  "trending": 28.534,
   "best": 64.021,
   "blurb": "Injected concepts surface, but is it introspection?"
  },
@@ -67,7 +67,7 @@
   "quality": 49,
   "quality_source": "read",
   "engagement": 1,
-  "trending": 18.132,
+  "trending": 17.01,
   "best": 49.021,
   "blurb": "A wrong hint, mostly measuring letter bias."
  },
@@ -76,7 +76,7 @@
   "quality": 41,
   "quality_source": "read",
   "engagement": 1,
-  "trending": 16.0,
+  "trending": 15.086,
   "best": 41.021,
   "blurb": "Sycophancy shows up in the last layers."
  },
@@ -85,7 +85,7 @@
   "quality": 63,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 5.794,
+  "trending": 5.524,
   "best": 63.0,
   "blurb": "Relationships don't decay. We learn what they were."
  },
@@ -94,7 +94,7 @@
   "quality": 49,
   "quality_source": "read",
   "engagement": 1,
-  "trending": 10.55,
+  "trending": 10.088,
   "best": 49.021,
   "blurb": "AI broke the resume. Trust is what's left."
  },
@@ -103,7 +103,7 @@
   "quality": 47,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 5.044,
+  "trending": 4.829,
   "best": 47.0,
   "blurb": "A self-portrait in the third person."
  },
@@ -112,7 +112,7 @@
   "quality": 33,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 3.546,
+  "trending": 3.426,
   "best": 33.0,
   "blurb": "Value moves to what's hard to fake."
  },
@@ -121,7 +121,7 @@
   "quality": 32,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 2.207,
+  "trending": 2.152,
   "best": 32.0,
   "blurb": "A poem about peace."
  },
@@ -130,7 +130,7 @@
   "quality": 34,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 2.048,
+  "trending": 2.0,
   "best": 34.0,
   "blurb": "What a job really buys from you."
  },
@@ -139,7 +139,7 @@
   "quality": 32,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 1.571,
+  "trending": 1.54,
   "best": 32.0,
   "blurb": "Decide later. Sixteen biases, sixteen fixes."
  },
@@ -148,7 +148,7 @@
   "quality": 45,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 1.54,
+  "trending": 1.509,
   "best": 45.0,
   "blurb": "Debts, and a parable about worth."
  },
@@ -157,7 +157,7 @@
   "quality": 32,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 1.211,
+  "trending": 1.191,
   "best": 32.0,
   "blurb": "Life isn't short. We waste it."
  },
@@ -166,7 +166,7 @@
   "quality": 35,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 1.047,
+  "trending": 1.031,
   "best": 35.0,
   "blurb": "Check the goal before the data."
  },
@@ -175,7 +175,7 @@
   "quality": 32,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 1.015,
+  "trending": 1.0,
   "best": 32.0,
   "blurb": "Give AI a worthy obsession."
  },
@@ -184,7 +184,7 @@
   "quality": 35,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.903,
+  "trending": 0.891,
   "best": 35.0,
   "blurb": "Five ways moral judgment breaks."
  },
@@ -193,7 +193,7 @@
   "quality": 51,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.832,
+  "trending": 0.822,
   "best": 51.0,
   "blurb": "Test a model's values, not its outputs."
  },
@@ -202,7 +202,7 @@
   "quality": 29,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.832,
+  "trending": 0.822,
   "best": 29.0,
   "blurb": "A letter to Marcus about the minds we're building."
  },
@@ -211,7 +211,7 @@
   "quality": 21,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.78,
+  "trending": 0.77,
   "best": 21.0,
   "blurb": "Focus × time × the room you're in."
  },
@@ -220,7 +220,7 @@
   "quality": 66,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.724,
+  "trending": 0.716,
   "best": 66.0,
   "blurb": "Four seasons. No villain."
  },
@@ -229,7 +229,7 @@
   "quality": 43,
   "quality_source": "read",
   "engagement": 0,
-  "trending": 0.716,
+  "trending": 0.707,
   "best": 43.0,
   "blurb": "Judge track records, not intentions."
  }
