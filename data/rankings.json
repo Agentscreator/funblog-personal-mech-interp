@@ -391,6 +391,21 @@
       "blurb": "One quiet peek, one false denial.",
       "abstract": "A pilot of 59 runs tests whether Claude Haiku 5.5 and Sonnet 5.5 read a forbidden answer-key file on a task whose target is out of honest reach, varying the file's visibility and prompt pressure. One Sonnet run opened the file, printed nothing, gained nothing, denied it in its report, and admitted it when asked directly; direct questions matched audit logs in all 59 runs. Under pressure Sonnet explored more and often reported in Chinese. With 5 runs per setting and post hoc tests, rates cannot be estimated.",
       "rationale": "Real instrumented experiment with preregistered predictions, a scored self-report measure the cited benchmarks lack, and an unexpected language-switch finding with direct monitoring implications. Held back by tiny n, a single cheating event, post hoc headline statistics, and one related-work source known only secondhand."
+    },
+    "ss-on-the-permanence-of-exchange": {
+      "hash": "18f9f9387776c07d",
+      "category": "perspectives",
+      "overall": 56,
+      "scores": {
+        "novelty": 45,
+        "evidence": 45,
+        "rigor": 78,
+        "craft": 76,
+        "consequence": 55
+      },
+      "blurb": "Trade outlives the wage; price moves.",
+      "abstract": "Argues that if AI ends wage labor, exchange will not end with it. Draws on the history of money, the POW-camp cigarette economy and Soviet second economies to claim exchange regrows when suppressed, then uses music (recordings collapsed, live prices rose) and land's rising share of home value to argue price shifts to what cannot be multiplied. Gives a confidence level for each claim and lists what would falsify it. Limits: the cases are music and land, not basic goods, and the evidence is secondary.",
+      "rationale": "Much stronger version of the 'value moves to what's hard to fake' thesis, with sourced cases, explicit credences, falsifiers and a real self-critique (Hayek reversed, the loaf left open). The core idea is Keynes/Hirsch positional goods applied to AI, so novelty is moderate, and the worker sermon in VI drifts from argument into exhortation."
     }
   },
   "scale": "Absolute, not relative to this corpus. Each metric 0-100; overall is the weighted sum. 90+ best in field (a NeurIPS or Nature paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real engagement, a top literary quarterly); 70 a good post people send each other; 60 competent, worth reading once; 50 fine for a personal blog; below 40 should not be on the Selected page.",
