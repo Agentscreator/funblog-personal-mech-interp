@@ -6,6 +6,9 @@
     },
     "love-quartz": {
       "pin": true
+    },
+    "do-claude-agents-peek-at-the-answer": {
+      "pin": true
     }
   }
 }
