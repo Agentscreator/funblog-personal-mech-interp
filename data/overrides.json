@@ -3,6 +3,9 @@
   "posts": {
     "myrmex": {
       "pin": true
+    },
+    "love-quartz": {
+      "pin": true
     }
   }
 }
