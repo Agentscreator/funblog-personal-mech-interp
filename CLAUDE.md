@@ -50,8 +50,8 @@ When the user says "rank new posts" (or similar):
    paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real
    engagement, a top literary quarterly); 70 a good post people send each other; 60 competent,
    worth reading once; 50 fine for a personal blog; below 40 should not be on Selected (build.py
-   keeps it off unless pinned). Anchors: The Trust Bank 66, Concept Injection 64, Love Doesn't
-   Rust 63, Moral-Based Evaluation 51, The Formula for Success 21.
+   keeps it off unless pinned). Anchors: Do Claude Agents Peek 67, The Trust Bank 59, Love Doesn't
+   Rust 58, Concept Injection 55, Moral-Based Evaluation 43, The Formula for Success 21.
 5. Run `python3 scripts/rank.py && python3 scripts/build.py`, report where the new posts landed,
    and commit `data/` if the user asks.
 
