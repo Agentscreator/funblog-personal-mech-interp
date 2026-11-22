@@ -46,6 +46,14 @@ h1 { font: 600 2.4rem/1.15 var(--serif); letter-spacing: -0.01em; margin: 0 0 14
 .filters a[aria-current] { font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; }
 .count { color: var(--muted); font: 0.8em var(--sans); font-variant-numeric: tabular-nums; }
 
+/* Search box under the shelf tabs; results replace the shelf while there's a query. */
+.search { margin: 18px 0 0; }
+.search input { width: 100%; padding: 8px 12px; border: 1px solid var(--fg); border-radius: 0; background: var(--bg); color: var(--fg); font: 1rem var(--sans); -webkit-appearance: none; appearance: none; }
+.search input:focus { outline: 2px solid var(--fg); outline-offset: 1px; }
+.snippet { margin: 6px 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+mark { background: #e6e6e6; color: var(--fg); font-weight: 600; }
+[hidden] { display: none !important; }
+
 /* Sections and entries. */
 section { margin-top: 36px; }
 h2 { font: 600 1.5rem/1.3 var(--serif); margin: 0; padding-bottom: 6px; border-bottom: 1px dashed var(--rule); }

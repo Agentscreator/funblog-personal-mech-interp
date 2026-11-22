@@ -199,7 +199,7 @@ def section(key, posts, by_year):
         items = "\n".join(out)
     else:
         items = f'<ul class="pubs">{"".join(entry(p) for p in posts)}</ul>'
-    return f"""<section id="{key}">
+    return f"""<section id="{key}" class="shelf-list">
 <h2>{label} <span class="count">{len(posts)}</span></h2>
 <p class="intro">{escape(intro)}</p>
 {items}
@@ -216,6 +216,80 @@ def featured(posts):
     return sorted(pool, key=lambda p: (not p["pin"], -p["score"], p["date"]))[:CONFIG.get("featured_count", 6)]
 
 
+SEARCH_JS = """
+(function () {
+  var form = document.getElementById("search"), input = document.getElementById("q");
+  var shelf = document.querySelector("section.shelf-list"), out = document.getElementById("results");
+  var index = null, loading = null;
+  form.hidden = false;
+  function load() {
+    if (!loading) loading = fetch(form.dataset.index).then(function (r) { return r.json(); })
+      .then(function (d) { index = d; });
+    return loading;
+  }
+  function esc(s) {
+    return s.replace(/[&<>"]/g, function (c) { return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]; });
+  }
+  function mark(s, terms) {
+    var re = new RegExp("(" + terms.map(function (t) { return t.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&"); }).join("|") + ")", "gi");
+    return esc(s).replace(re, "<mark>$1</mark>");
+  }
+  function snippet(text, terms) {
+    var low = text.toLowerCase(), at = -1;
+    for (var i = 0; i < terms.length && at < 0; i++) at = low.indexOf(terms[i]);
+    if (at < 0) return "";
+    var a = Math.max(0, text.lastIndexOf(" ", Math.max(0, at - 90)) + 1), b = text.indexOf(" ", at + 110);
+    if (b < 0) b = text.length;
+    return (a > 0 ? "… " : "") + text.slice(a, b) + (b < text.length ? " …" : "");
+  }
+  function run() {
+    var q = input.value.trim();
+    var url = new URL(location.href);
+    if (q) url.searchParams.set("q", q); else url.searchParams.delete("q");
+    history.replaceState(null, "", url);
+    if (!q) { out.hidden = true; shelf.hidden = false; return; }
+    if (!index) { load().then(run); return; }
+    var terms = q.toLowerCase().split(/\\s+/).filter(Boolean);
+    var hits = index.map(function (p) {
+      var title = p.title.toLowerCase(), about = (p.blurb + " " + p.abstract).toLowerCase(), body = p.text.toLowerCase();
+      var score = 0;
+      for (var i = 0; i < terms.length; i++) {
+        var t = terms[i], inBody = body.indexOf(t) >= 0;
+        if (title.indexOf(t) < 0 && about.indexOf(t) < 0 && !inBody) return null;
+        score += (title.indexOf(t) >= 0 ? 10 : 0) + (about.indexOf(t) >= 0 ? 4 : 0) + (inBody ? 1 : 0);
+      }
+      return {p: p, score: score};
+    }).filter(Boolean).sort(function (a, b) { return b.score - a.score || (a.p.date < b.p.date ? 1 : -1); });
+    var items = hits.map(function (h) {
+      var p = h.p, snip = snippet(p.text, terms);
+      return '<li class="pub"><h4><a href="' + esc(p.href) + '">' + mark(p.title, terms) + '</a></h4>' +
+        '<p class="authors">' + form.dataset.byline + '</p>' +
+        '<p class="venue"><em>' + esc(p.shelf) + '</em>, ' + esc(p.when) + ' · ' + p.minutes + ' min read</p>' +
+        (snip ? '<p class="snippet">' + mark(snip, terms) + '</p>' : '') + '</li>';
+    }).join("");
+    out.innerHTML = '<h2>Search <span class="count">' + hits.length + '</span></h2>' +
+      '<p class="intro">' + (hits.length ? hits.length + (hits.length === 1 ? " piece matches " : " pieces match ") : "Nothing matches ") +
+      "\\u201c" + esc(q) + "\\u201d across every shelf.</p>" + (items ? '<ul class="pubs">' + items + "</ul>" : "");
+    out.hidden = false; shelf.hidden = true;
+  }
+  input.addEventListener("focus", load);
+  input.addEventListener("input", run);
+  input.addEventListener("keydown", function (e) { if (e.key === "Escape") { input.value = ""; run(); } });
+  form.addEventListener("submit", function (e) { e.preventDefault(); input.blur(); });
+  var start = new URL(location.href).searchParams.get("q");
+  if (start) { input.value = start; run(); }
+})();
+"""
+
+
+def search_index(posts):
+    # Everything the search box looks at, loaded only once someone starts typing.
+    return [{"title": p["title"], "href": link("posts/", p["slug"] + ".html"), "shelf": LABELS[p["category"]],
+             "when": fmt_date(p["date"]), "date": p["date"], "minutes": minutes(p), "blurb": p["blurb"],
+             "abstract": p["abstract"], "text": " ".join(p.get("text", "").split())}
+            for p in sorted(posts, key=lambda p: p["date"], reverse=True)]
+
+
 def publications(groups, key):
     legend = "".join(f'<span><span class="mark">{m}</span> {escape(t)}</span>' for m, t in LEGEND)
     here = ' aria-current="page"'
@@ -224,7 +298,12 @@ def publications(groups, key):
     body = f"""<h1>Publications</h1>
 <p class="legend">{legend}</p>
 <nav aria-label="Shelves"><ul class="filters">{filters}</ul></nav>
-{section(key, groups[key], by_year=key != "selected")}"""
+<form id="search" class="search" role="search" hidden data-index="{link("", "search.json")}" data-byline="{escape(byline())}">
+  <input id="q" type="search" placeholder="Search every piece" aria-label="Search every piece" autocomplete="off">
+</form>
+{section(key, groups[key], by_year=key != "selected")}
+<section id="results" aria-live="polite" hidden></section>
+<script>{SEARCH_JS}</script>"""
     title = "Publications" if key == "selected" else f"{LABELS[key]} · Publications"
     return page(f"{title} · {CONFIG['site_title']}", body, description=CONFIG["tagline"])
 
@@ -260,6 +339,7 @@ def main():
         shutil.rmtree(OUT)
     (OUT / "posts").mkdir(parents=True)
     shutil.copy(CSS, OUT / "style.css")
+    (OUT / "search.json").write_text(json.dumps(search_index(posts), ensure_ascii=False, separators=(",", ":")))
     (OUT / ".nojekyll").write_text("")
     groups = {"selected": featured(posts), **{cat: shelf(posts, cat) for cat in SECTIONS}}
     for key, _, href, _ in PAGES:
