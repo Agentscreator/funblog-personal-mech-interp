@@ -36,7 +36,7 @@ PAGES = [("selected", "Selected", "index.html", "My best work, across every shel
 SECTIONS = [k for k, *_ in PAGES[1:]]
 LABELS = {k: label for k, label, *_ in PAGES}
 FILES = {k: href for k, _, href, _ in PAGES}
-SOURCE_NAMES = {"substack": "Substack", "lesswrong": "LessWrong"}
+SOURCE_NAMES = {"substack": "Substack", "lesswrong": "LessWrong", "site": "Original to this site"}
 
 
 def load():
@@ -107,7 +107,9 @@ def venues(p):
 
 
 def origins(p):
-    return [(p["source"], p["url"])] + [(a["source"], a["url"]) for a in p.get("also_on", [])]
+    # Copies elsewhere. A native post's own URL is this site, so it isn't listed as an origin.
+    return [(s, u) for s, u in [(p["source"], p["url"])] + [(a["source"], a["url"]) for a in p.get("also_on", [])]
+            if s != "site"]
 
 
 def byline():
@@ -245,7 +247,7 @@ def build_post(p, prev, nxt):
   <p class="authors">{byline()}</p>
   <p class="meta">{fmt_date(p['date'])} · {minutes(p)} min read</p>
   <div class="prose">{p['html']}</div>
-  <p class="meta">Also on {orig} ↗</p>
+  {f'<p class="meta">Also on {orig} ↗</p>' if orig else ""}
 </article>
 <nav class="pager" aria-label="More in {shelf}">{"".join(nav)}</nav>"""
     return page(f"{p['title']} · {CONFIG['site_title']}", body,

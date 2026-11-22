@@ -235,6 +235,44 @@ def fetch_substack_api(sub):
     return posts
 
 
+def inline_md(s):
+    s = escape_text(s)
+    s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
+    return re.sub(r"\*(.+?)\*", r"<em>\1</em>", s)
+
+
+def load_native():
+    """Posts written for this site only: native/<slug>.md.
+
+    The file opens with `key: value` lines (title and date required, subtitle optional), then a
+    blank line, then the body: blank-line-separated paragraphs, `## ` headings, `*em*`, `**strong**`.
+    """
+    posts = []
+    for f in sorted((ROOT / "native").glob("*.md")):
+        head, _, body = f.read_text().partition("\n\n")
+        meta = dict(line.split(":", 1) for line in head.splitlines() if ":" in line)
+        meta = {k.strip(): v.strip() for k, v in meta.items()}
+        blocks = []
+        for b in re.split(r"\n\s*\n", body.strip()):
+            b = " ".join(b.split())
+            m = re.match(r"(#{2,4}) (.*)", b)
+            blocks.append(f"<h{len(m[1])}>{inline_md(m[2])}</h{len(m[1])}>" if m else f"<p>{inline_md(b)}</p>")
+        html = "".join(blocks)
+        posts.append({
+            "id": f"site-{f.stem}",
+            "source": "site",
+            "slug": f.stem,
+            "title": meta["title"],
+            "subtitle": meta.get("subtitle", ""),
+            "date": meta["date"],
+            "url": f"{CONFIG['base_url'].rstrip('/')}/posts/{f.stem}.html",
+            "words": len(to_text(html).split()),
+            "engagement": {},
+            "html": html,
+        })
+    return posts
+
+
 def norm_title(t):
     return re.sub(r"[^a-z0-9]", "", t.lower())
 
@@ -256,6 +294,9 @@ def main():
                 p.pop("also_on", None)  # rebuilt below
             print(f"{name}: reusing {len(old)} cached posts", file=sys.stderr)
             posts += old
+    native = load_native()
+    print(f"Native: {len(native)} posts")
+    posts += native
 
     # Cross-posted pieces: keep the Substack copy as primary, remember the LW link.
     # Titles are matched loosely so a typo in one copy doesn't split the pair, and a

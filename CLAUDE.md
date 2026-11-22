@@ -62,6 +62,8 @@ the corpus has grown a lot.
 
 - `scripts/fetch.py` pulls both sources into `data/posts.json`. Stdlib only. LessWrong needs
   `authorIsUnreviewed:true` or posts from new or rejected accounts are hidden.
+- `native/<slug>.md` holds posts written only for this site (`title:`/`date:` lines, a blank line,
+  then paragraphs and `## ` headings). fetch.py adds them with source `site`.
 - `scripts/rank.py` writes `data/scores.json` with quality (from rankings.json, or the shelf median
   if unread) plus trending (engagement decayed by age). It needs no API key.
 - `scripts/build.py` turns everything into a static site in `site/`.
