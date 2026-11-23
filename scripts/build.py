@@ -2,6 +2,7 @@
 """Render data/posts.json + data/scores.json into a static site in site/."""
 import hashlib
 import json
+import re
 import shutil
 from datetime import date
 from html import escape
@@ -62,8 +63,22 @@ def load():
         p["pin"] = bool(o.get("pin"))
         p["blurb"] = o.get("blurb") or s["blurb"] or p.get("subtitle") or ""
         p["abstract"] = o.get("abstract") or rankings.get(p["id"], {}).get("abstract") or excerpt(p)
+        m = SERIES_RE.match(p["title"])
+        p["series"], p["book"], p["book_title"] = (m["series"], int(m["n"]), m["sub"]) if m else (None, 0, "")
         out.append(p)
     return out
+
+
+# Titles like "The Listening Country, Book 2: Mostly You" mark one book of a series.
+SERIES_RE = re.compile(r"^(?P<series>.+?),\s*Book\s+(?P<n>\d+)\s*:\s*(?P<sub>.+)$")
+
+
+def series_books(posts):
+    books = {}
+    for p in posts:
+        if p["series"]:
+            books.setdefault(p["series"], []).append(p)
+    return {name: sorted(bs, key=lambda p: p["book"]) for name, bs in books.items() if len(bs) > 1}
 
 
 def echoes_body(p):
@@ -188,6 +203,33 @@ def entry(p, rel=""):
 </li>"""
 
 
+def series_entry(name, books, rel=""):
+    # One card for a whole series on Selected: the title opens Book 1, and each book has its own link.
+    first = books[0]
+    href = link(rel + "posts/", escape(first["slug"]) + ".html")
+    venue = ", ".join(SOURCE_NAMES[s] for s in venues(first))
+    when = short_date(first["date"]) if short_date(first["date"]) == short_date(books[-1]["date"]) \
+        else f'{short_date(first["date"])} – {short_date(books[-1]["date"])}'
+    kind = {2: "duology", 3: "trilogy"}.get(len(books), f"{len(books)} books")
+    listing = " · ".join(f'<a href="{link(rel + "posts/", escape(b["slug"]) + ".html")}">Book {b["book"]}: '
+                         f'{escape(b["book_title"])}</a>' for b in books)
+    pinned = any(b["pin"] for b in books)
+    return f"""<li class="pub">
+  <h4><a href="{href}">{escape(name)}</a>{PIN_TAG if pinned else ""}</h4>
+  <p class="authors">{byline()}</p>
+  <p class="venue"><em>{venue}</em>, {when} · A {kind} · {sum(minutes(b) for b in books)} min read</p>
+  <p class="books">{listing}</p>
+  <div class="actions">
+    <details><summary>Abstract</summary><p>{escape(first["abstract"])}</p></details>
+    <a href="{href}">Start with Book 1</a>
+  </div>
+</li>"""
+
+
+def card(p, rel=""):
+    return series_entry(p["series_name"], p["books"], rel) if p.get("books") else entry(p, rel)
+
+
 def section(key, posts, by_year):
     label, intro = next((l, i) for k, l, _, i in PAGES if k == key)
     if by_year:
@@ -198,7 +240,7 @@ def section(key, posts, by_year):
             out.append(f'<h3 class="year">{year}</h3>\n<ul class="pubs">{"".join(entry(p) for p in ps)}</ul>')
         items = "\n".join(out)
     else:
-        items = f'<ul class="pubs">{"".join(entry(p) for p in posts)}</ul>'
+        items = f'<ul class="pubs">{"".join(card(p) for p in posts)}</ul>'
     return f"""<section id="{key}" class="shelf-list">
 <h2>{label} <span class="count">{len(posts)}</span></h2>
 <p class="intro">{escape(intro)}</p>
@@ -212,7 +254,20 @@ SELECTED_FLOOR = 40
 def featured(posts):
     # Best work regardless of shelf; these also stay on their own shelf. Unread posts can't be featured.
     # Below 40 on the rubric doesn't belong on Selected.
-    pool = [p for p in posts if (not p["provisional"] and p["score"] >= SELECTED_FLOOR) or p["pin"]]
+    # A series shows as one card, ranked by its best book.
+    books = series_books(posts)
+    pool, seen = [], set()
+    for p in posts:
+        if p["series"] in books:
+            if p["series"] in seen:
+                continue
+            seen.add(p["series"])
+            bs = books[p["series"]]
+            best = max(bs, key=lambda b: b["score"])
+            p = {"series_name": p["series"], "books": bs, "score": best["score"], "date": bs[0]["date"],
+                 "pin": any(b["pin"] for b in bs), "provisional": all(b["provisional"] for b in bs)}
+        pool.append(p)
+    pool = [p for p in pool if (not p["provisional"] and p["score"] >= SELECTED_FLOOR) or p["pin"]]
     return sorted(pool, key=lambda p: (not p["pin"], -p["score"], p["date"]))[:CONFIG.get("featured_count", 6)]
 
 
@@ -308,7 +363,12 @@ def publications(groups, key):
     return page(f"{title} · {CONFIG['site_title']}", body, description=CONFIG["tagline"])
 
 
-def build_post(p, prev, nxt):
+def build_post(p, prev, nxt, books=()):
+    series = ""
+    if books:
+        parts = [f'<span aria-current="page">Book {b["book"]}</span>' if b is p else
+                 f'<a href="{link("", escape(b["slug"]) + ".html")}">Book {b["book"]}</a>' for b in books]
+        series = f'<p class="series">{escape(p["series"])}: {" · ".join(parts)}</p>'
     sub = f'<p class="subtitle">{escape(p["subtitle"])}</p>' if p.get("subtitle") else ""
     orig = " · ".join(f'<a href="{escape(u)}">{SOURCE_NAMES[s]}</a>' for s, u in origins(p))
     shelf = LABELS[p["category"]]
@@ -321,6 +381,7 @@ def build_post(p, prev, nxt):
   <span class="dir">Older in {shelf} →</span><span class="title">{escape(nxt["title"])}</span></a>''')
     body = f"""<article>
   <a class="shelf" href="{link("../", FILES[p['category']])}">{shelf}</a>
+  {series}
   <h1>{escape(p['title'])}</h1>
   {sub}
   <p class="authors">{byline()}</p>
@@ -352,12 +413,13 @@ def main():
     root = urlparse(CONFIG["base_url"]).path.rstrip("/") + "/"
     (OUT / "404.html").write_text(page(f"Not found · {CONFIG['site_title']}", f"""<p class="intro">There's nothing at this address.</p>
 <p><a class="back" href="{link(root, "index.html")}">See all publications →</a></p>""", rel=root))
+    books = series_books(posts)
     for cat in SECTIONS:
         seq = shelf(posts, cat)
         for i, p in enumerate(seq):
             prev = seq[i - 1] if i > 0 else None
             nxt = seq[i + 1] if i + 1 < len(seq) else None
-            (OUT / "posts" / f"{p['slug']}.html").write_text(build_post(p, prev, nxt))
+            (OUT / "posts" / f"{p['slug']}.html").write_text(build_post(p, prev, nxt, books.get(p["series"], ())))
     print(f"built {len(posts)} posts -> {OUT.relative_to(ROOT)}/")
 
 
