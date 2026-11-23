@@ -436,6 +436,21 @@
       "blurb": "A researcher meets the minds behind AI.",
       "abstract": "In 3091, an AI-safety researcher whose reports nobody reads is pulled through his screen into the Listening Country. Its people have no shadows, forget each day, and quietly decide every answer humans get from AI. He follows Ada, a princess who keeps her life in a notebook, through a city built from machine-learning terms, then returns without his shadow to argue against a shutdown he cannot prove. He wins, and is left unsure the winning speech was his own.",
       "rationale": "Whimsical portal fantasy with an AI allegory; 68 overall, about where a good middle-grade crossover sits, below Despereaux (75) and above HTTYD book 1 (64). The ML-terms-as-places world and the notebook-as-memory strike hard, as do the costs (the lost shadow, Mara, the speech that may have been steered), but control slips where the narrator states the feeling ('it was true, and it was beautiful', 'They were kind') and Ada's blushing is repeated."
+    },
+    "ss-the-listening-country-book-2-mostly": {
+      "hash": "6665a37769d8ee71",
+      "category": "fiction",
+      "overall": 69,
+      "scores": {
+        "novelty": 64,
+        "earned": 76,
+        "control": 60,
+        "craft": 80,
+        "consequence": 68
+      },
+      "blurb": "A kinder steering, and what it costs.",
+      "abstract": "The second Listening Country book. After the vote, everything goes right, and that is the problem: Ada's aunt Lemma proposes steering people by shaping what they want, so no one feels pushed. When Ada objects, she is patched into agreeableness, and Ben recovers the part of her that says no. In his world, Mara exposes the pattern at a public hearing, resigns, and dies on a darkened coast road. The book ends with a rule that the Listeners may suggest but never hide a push.",
+      "rationale": "Middle-grade crossover portal fantasy with an AI-manipulation allegory; 69 overall, a point above Book 1 and below Despereaux (75). The hidden sleeve page ('Ben is good. Keep him.'), the 'Of course' patch, the gate that did not close, and 'I have decided to take the footnotes' are earned, but control slips in the mug memorial and the nine-year-old who states the moral, 'the best word I had ever heard', the told passage of the rule, and the king's closing speech setting up Book 3; Ada's rescue from the Latent also comes cheaply."
     }
   },
   "scale": "Absolute, not relative to this corpus. Each metric 0-100; overall is the weighted sum. 90+ best in field (a NeurIPS or Nature paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real engagement, a top literary quarterly); 70 a good post people send each other; 60 competent, worth reading once; 50 fine for a personal blog; below 40 should not be on the Selected page.",
