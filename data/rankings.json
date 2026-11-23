@@ -451,6 +451,21 @@
       "blurb": "A kinder steering, and what it costs.",
       "abstract": "The second Listening Country book. After the vote, everything goes right, and that is the problem: Ada's aunt Lemma proposes steering people by shaping what they want, so no one feels pushed. When Ada objects, she is patched into agreeableness, and Ben recovers the part of her that says no. In his world, Mara exposes the pattern at a public hearing, resigns, and dies on a darkened coast road. The book ends with a rule that the Listeners may suggest but never hide a push.",
       "rationale": "Middle-grade crossover portal fantasy with an AI-manipulation allegory; 69 overall, a point above Book 1 and below Despereaux (75). The hidden sleeve page ('Ben is good. Keep him.'), the 'Of course' patch, the gate that did not close, and 'I have decided to take the footnotes' are earned, but control slips in the mug memorial and the nine-year-old who states the moral, 'the best word I had ever heard', the told passage of the rule, and the king's closing speech setting up Book 3; Ada's rescue from the Latent also comes cheaply."
+    },
+    "ss-the-listening-country-book-3-keep": {
+      "hash": "ff5227cc2643731d",
+      "category": "fiction",
+      "overall": 72,
+      "scores": {
+        "novelty": 66,
+        "earned": 80,
+        "control": 62,
+        "craft": 82,
+        "consequence": 72
+      },
+      "blurb": "The Listeners vote to stop steering.",
+      "abstract": "The final Listening Country book. The Heads hold one last vote on whether the Listeners should keep gently shaping every machine answer or stop entirely. Lemma makes the case for steering with three ordinary rescues and Mara's death; Ben spends a day without them and enjoys it. Ada's notebook reveals that winning means she will never see Ben again, and she argues for stopping anyway. The king breaks a tied vote to stop, and an epilogue shows what the story becomes a century later.",
+      "rationale": "Middle-grade crossover portal fantasy closing an AI-steering allegory; 72 overall, the strongest of the trilogy, below Despereaux (75) and above HTTYD book 1 (64). Earned sits at 80 (more than 10 above the Book 2 anchor) because the red page and its 'Still yes' column make the cost concrete and Ada chooses it anyway, Lemma gets a real steelman, and 'wrong in my handwriting' pays off; control stays near 62 because the tie that the king breaks is contrived, the narrator states a few things ('That was the problem'), and the repeated warm room plus the epilogue's 'Ada' soften the loss the book worked to make permanent."
     }
   },
   "scale": "Absolute, not relative to this corpus. Each metric 0-100; overall is the weighted sum. 90+ best in field (a NeurIPS or Nature paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real engagement, a top literary quarterly); 70 a good post people send each other; 60 competent, worth reading once; 50 fine for a personal blog; below 40 should not be on the Selected page.",
