@@ -34,24 +34,34 @@ When the user says "rank new posts" (or similar):
    ```
    The rubric has five metrics, each 0-100, weighted (also in `rankings.json` under `rubric`):
 
-   | Metric | Weight | What it asks |
-   |---|---|---|
-   | novelty | 30% | Would an informed reader in that field learn something they couldn't get from three other sources? Restating a known idea well scores low no matter how well it's restated. |
-   | evidence | 25% | Are the claims backed by data, controls and falsifiable predictions? Zero data means a low score even if the argument is correct. |
-   | rigor | 15% | Does the piece name its own weaknesses accurately and at a cost to itself? Stated objections, withdrawn claims, admitted confounds. |
-   | craft | 15% | Prose, structure, economy. Does it say it in the fewest good words? |
-   | consequence | 15% | If fully true, how much does it change what anyone does? |
+   Principles: grade only the text (no views, sales, awards, influence or author reputation);
+   grade the unit as published; a score means the same on every shelf, because Selected mixes them.
 
-   For fiction and poetry, use `earned` (does it show rather than assert) in place of `evidence`
-   and `control` (no unearned sentiment, no register breaks) in place of `rigor`. Weights stay the
-   same. Honesty is 15%, not 50%: high rigor can't rescue low novelty and consequence.
+   | Metric | Weight | Research & perspectives | Essays | Fiction & poetry |
+   |---|---|---|---|---|
+   | novelty | 30% | Would an informed reader in that field learn something they couldn't get from three other sources? Restating a known idea well scores low no matter how well it's restated. | Same | Would a well-read reader meet something new: premise, form, or specifics? A familiar shape with fresh specifics can reach the 70s; 80+ needs something new. |
+   | evidence | 25% | Data, controls, falsifiable predictions. Zero data means a low score even if the argument is correct; claims are only as strong as their evidence. | **Support**: concrete cases, worked examples, checkable claims and predictions. Bare assertion scores low. | **`earned`**: shows rather than asserts; setups pay off, costs stay paid, resolutions aren't handed out. |
+   | rigor | 15% | Names its own weaknesses accurately and at a cost to itself: stated objections, withdrawn claims, admitted confounds. | Same, plus the strongest version of the other side. | **`control`**: consistent register, no unearned sentiment, no cheap reversals, no narrator stating the moral. |
+   | craft | 15% | Prose, structure, economy, and pull: fewest good words, and the reader wants the next line. | Same | Same, plus voice. Comedy that works counts here. |
+   | consequence | 15% | If fully true, how much does it change what anyone does? | Same | **Resonance**: does it change how the reader sees something, and would they remember it a year later? Never reception. |
+
+   Fiction stores `earned` and `control` in place of `evidence` and `rigor`; essays keep the key
+   `evidence` but grade it as support. Weights stay the same. Honesty is 15%, not 50%: high rigor
+   can't rescue low novelty and consequence.
+
+   Process: score each metric on its own before the total, never back into a number. Length earns
+   nothing; a twelve-line poem can score 90. Grade against the whole medium and note the genre in
+   the rationale ("51 overall; near the top of progression fantasy"). If a metric sits more than
+   10 points from the nearest comparable anchor, the rationale says why.
 
    Calibration is absolute, not relative to this corpus: 90+ best in field (a NeurIPS or Nature
    paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real
    engagement, a top literary quarterly); 70 a good post people send each other; 60 competent,
    worth reading once; 50 fine for a personal blog; below 40 should not be on Selected (build.py
    keeps it off unless pinned). Anchors: Do Claude Agents Peek 67, The Trust Bank 59, Love Doesn't
-   Rust 58, Concept Injection 55, Moral-Based Evaluation 43, The Formula for Success 21.
+   Rust 58, Concept Injection 55, Moral-Based Evaluation 43, The Formula for Success 24. External
+   fiction anchors: Gravity Falls 80, How to Train Your Dragon (film) 76, The Tale of Despereaux 75,
+   How to Train Your Dragon (book 1) 64, The Beginning After the End 51.
 5. Run `python3 scripts/rank.py && python3 scripts/build.py`, report where the new posts landed,
    and commit `data/` if the user asks.
 

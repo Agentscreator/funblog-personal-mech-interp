@@ -1,11 +1,11 @@
 {
  "site-mine-has-been-a-life-of-much-greatness": {
   "category": "fiction",
-  "quality": 64,
+  "quality": 69,
   "quality_source": "read",
   "engagement": 0,
   "trending": 353.553,
-  "best": 64.0,
+  "best": 69.0,
   "blurb": "A vain watermelon misreads love."
  },
  "ss-on-the-permanence-of-exchange": {
@@ -28,20 +28,20 @@
  },
  "ss-love-quartz": {
   "category": "fiction",
-  "quality": 63,
+  "quality": 68,
   "quality_source": "read",
   "engagement": 0,
   "trending": 24.056,
-  "best": 63.0,
+  "best": 68.0,
   "blurb": "Four eras, four mice, one crumb."
  },
  "ss-myrmex": {
   "category": "fiction",
-  "quality": 62,
+  "quality": 65,
   "quality_source": "read",
   "engagement": 0,
   "trending": 15.625,
-  "best": 62.0,
+  "best": 65.0,
   "blurb": "An ant's meditations on AI and work."
  },
  "ss-emotion-vectors-in-llama-32-3b-and": {
@@ -55,20 +55,20 @@
  },
  "ss-the-dichotomies-of-becoming": {
   "category": "essays",
-  "quality": 29,
+  "quality": 32,
   "quality_source": "read",
   "engagement": 0,
   "trending": 14.267,
-  "best": 29.0,
+  "best": 32.0,
   "blurb": "Every year leaves a ring."
  },
  "ss-222882823": {
   "category": "essays",
-  "quality": 40,
+  "quality": 44,
   "quality_source": "read",
   "engagement": 0,
   "trending": 8.505,
-  "best": 40.0,
+  "best": 44.0,
   "blurb": "Write one goal, track the hours"
  },
  "ss-222809559": {
@@ -136,29 +136,29 @@
  },
  "ss-216230747": {
   "category": "fiction",
-  "quality": 28,
+  "quality": 30,
   "quality_source": "read",
   "engagement": 0,
   "trending": 1.783,
-  "best": 28.0,
+  "best": 30.0,
   "blurb": "A poem about peace."
  },
  "ss-215583264": {
   "category": "essays",
-  "quality": 30,
+  "quality": 34,
   "quality_source": "read",
   "engagement": 0,
   "trending": 1.672,
-  "best": 30.0,
+  "best": 34.0,
   "blurb": "What a job really buys from you."
  },
  "ss-213921144": {
   "category": "essays",
-  "quality": 30,
+  "quality": 35,
   "quality_source": "read",
   "engagement": 0,
   "trending": 1.322,
-  "best": 30.0,
+  "best": 35.0,
   "blurb": "Decide later. Sixteen biases, sixteen fixes."
  },
  "ss-213722983": {
@@ -172,20 +172,20 @@
  },
  "ss-211829148": {
   "category": "essays",
-  "quality": 30,
+  "quality": 32,
   "quality_source": "read",
   "engagement": 0,
   "trending": 1.047,
-  "best": 30.0,
+  "best": 32.0,
   "blurb": "Life isn't short. We waste it."
  },
  "ss-210543088": {
   "category": "essays",
-  "quality": 32,
+  "quality": 33,
   "quality_source": "read",
   "engagement": 0,
   "trending": 0.916,
-  "best": 32.0,
+  "best": 33.0,
   "blurb": "Check the goal before the data."
  },
  "ss-210377028": {
@@ -199,11 +199,11 @@
  },
  "ss-209224664": {
   "category": "essays",
-  "quality": 34,
+  "quality": 36,
   "quality_source": "read",
   "engagement": 0,
   "trending": 0.8,
-  "best": 34.0,
+  "best": 36.0,
   "blurb": "Five ways moral judgment breaks."
  },
  "ss-208463566": {
@@ -226,11 +226,11 @@
  },
  "ss-207827995": {
   "category": "essays",
-  "quality": 21,
+  "quality": 24,
   "quality_source": "read",
   "engagement": 0,
   "trending": 0.699,
-  "best": 21.0,
+  "best": 24.0,
   "blurb": "Focus × time × the room you're in."
  },
  "ss-207055706": {
@@ -244,11 +244,11 @@
  },
  "ss-206772437": {
   "category": "essays",
-  "quality": 41,
+  "quality": 45,
   "quality_source": "read",
   "engagement": 0,
   "trending": 0.645,
-  "best": 41.0,
+  "best": 45.0,
   "blurb": "Judge track records, not intentions."
  }
 }

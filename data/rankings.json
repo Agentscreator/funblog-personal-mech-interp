@@ -1,6 +1,6 @@
 {
- "model": "claude-opus-5-5 (full fresh rescore)",
- "ranked_at": "2026-11-18T00:00:00+00:00",
+ "model": "claude-opus-5-5 (rubric v2; essays and fiction reranked)",
+ "ranked_at": "2026-11-22T00:00:00+00:00",
  "posts": {
   "ss-220559716": {
    "hash": "fbdce53c1500944b",
@@ -50,16 +50,16 @@
   "ss-209224664": {
    "hash": "0f8a210fe9ac886f",
    "category": "essays",
-   "overall": 34,
+   "overall": 36,
    "scores": {
     "novelty": 32,
-    "evidence": 15,
+    "evidence": 22,
     "rigor": 30,
     "craft": 62,
     "consequence": 45
    },
    "blurb": "Five ways moral judgment breaks.",
-   "rationale": "Strip-the-feeling analysis and shared-core/different-heuristics is a reasonable frame, but familiar. Five failure modes are listed rather than argued, and no case tests them.",
+   "rationale": "The shared-core/different-heuristics frame is reasonable but familiar; examples are one-line illustrations, never a worked case. Five failure modes are listed rather than argued.",
    "abstract": "This essay proposes analysing an experience once the feeling has faded, by removing the faces and asking what each party was optimizing for. It argues that people share core objectives (survival, belonging, mattering) but differ in the heuristics they learned for reaching them, so motive should not be judged early. Treating morality as a system rather than a verdict machine, it names five failure modes, and argues that AI systems should be designed around these failures rather than inherit them."
   },
   "ss-208418808": {
@@ -80,61 +80,61 @@
   "ss-210543088": {
    "hash": "e9c1d985f99cae71",
    "category": "essays",
-   "overall": 32,
+   "overall": 33,
    "scores": {
     "novelty": 33,
-    "evidence": 12,
+    "evidence": 15,
     "rigor": 30,
     "craft": 56,
     "consequence": 42
    },
    "blurb": "Check the goal before the data.",
-   "rationale": "The incentive/objective split is a modest reframing, repeated more than developed. Asks what would prove the objective wrong but never turns that on its own claim.",
+   "rationale": "The incentive/objective split is a modest reframing with no concrete case at all to support it. Asks what would prove the objective wrong but never turns that on its own claim.",
    "abstract": "Better context improves decisions only relative to the right objective. This essay models decisions as a chain from incentive to objective, relevance, context, decision and outcome, and argues that the objective is the link most exposed to outside influence. Authority, love and persuasion rarely change what we want, but they easily change how we pursue it. A wrong objective can produce reasoning that looks sound and misleading feedback that reinforces it. The remedy is to ask whose framing set the objective and what evidence would show it is wrong."
   },
   "ss-206772437": {
    "hash": "0d539bcb826534f8",
    "category": "essays",
-   "overall": 41,
+   "overall": 45,
    "scores": {
     "novelty": 46,
-    "evidence": 15,
+    "evidence": 30,
     "rigor": 28,
-    "craft": 74,
+    "craft": 76,
     "consequence": 52
    },
    "blurb": "Judge track records, not intentions.",
-   "rationale": "A sharp inversion (good intentions deserve more scrutiny) delivered crisply, but it overstates ('nobody investigates good intentions', 'morals will diverge. Will.') and argues by assertion while telling readers to trust only track records.",
+   "rationale": "A sharp inversion (good intentions deserve more scrutiny) with real pull, supported by brief cases (doctor, manager, surgeon) but no worked example. Overclaims ('nobody investigates good intentions', 'Will.') and never states the strongest objection.",
    "abstract": "Societies defend against people who mean harm but have almost no defense against people who mean well and are wrong. This essay argues that everyone's zone of ignorance is large, that morality bends toward self-interest, and that being wrong feels exactly like being right from the inside. Competence should therefore be judged by track record, not intent, and autonomy works as the structural check that stops one person's sincere wrongness from landing on someone who never agreed to carry it."
   },
   "ss-215583264": {
    "hash": "64737d613ddfc85c",
    "category": "essays",
-   "overall": 30,
+   "overall": 34,
    "scores": {
     "novelty": 22,
-    "evidence": 18,
+    "evidence": 35,
     "rigor": 25,
     "craft": 50,
     "consequence": 48
    },
    "blurb": "What a job really buys from you.",
-   "rationale": "A bulleted primer on principal-agent and opportunity cost applied to lab hiring; standard material. Heavy list formatting, a stray typo, no objections.",
+   "rationale": "Standard principal-agent and opportunity-cost material, but with concrete support: the $250k-vs-$400k comparison and the stated-vs-rewarded-values examples. Heavy list formatting, a stray typo, no objections.",
    "abstract": "Employment is an exchange between two parties with different objectives. Using an AI lab and a researcher as the case, this essay sets out what each side seeks: execution, judgment and leverage from the researcher; money, skills, career capital, autonomy and meaning from the lab. It covers opportunity cost and the principal-agent problem, and argues that an institution is defined by what it rewards, not what it says. It ends with the questions to ask before trading years of your life."
   },
   "ss-213921144": {
    "hash": "80f1e33aa3ef0d94",
    "category": "essays",
-   "overall": 30,
+   "overall": 35,
    "scores": {
     "novelty": 18,
-    "evidence": 15,
+    "evidence": 35,
     "rigor": 30,
     "craft": 62,
     "consequence": 45
    },
    "blurb": "Decide later. Sixteen biases, sixteen fixes.",
-   "rationale": "A tidy catalog of well-known biases, each with a fix; useful, but any bias list covers it. The opening warning is the only self-limit.",
+   "rationale": "A familiar bias catalog, but each entry carries a concrete, checkable fix, which counts as support. The opening warning is the only self-limit.",
    "abstract": "Most decisions are made first and justified afterward, and the search for evidence feels like honest inquiry the whole time. This essay proposes a method of deliberation: say in advance what would change your mind, argue the strongest opposing case, notice relief, and separate what you want to be true from what is true. It then pairs sixteen related failure modes, from sunk cost to zero-risk bias, each with a small structural fix."
   },
   "ss-218633709": {
@@ -172,14 +172,14 @@
    "category": "fiction",
    "overall": 59,
    "scores": {
-    "novelty": 45,
-    "earned": 68,
-    "control": 62,
-    "craft": 76,
-    "consequence": 52
+    "novelty": 50,
+    "earned": 66,
+    "control": 55,
+    "craft": 74,
+    "consequence": 55
    },
    "blurb": "Four seasons. No villain.",
-   "rationale": "Strong concrete moments (the logged receipt, the millisecond pause, smiling photographs, the quiet Tuesday ending), but the narrator repeatedly stops to explain the lesson. The trust-account conceit is Covey/Gottman's emotional bank account, and the closing aphorisms break register.",
+   "rationale": "Strong concrete moments (the logged receipt, the millisecond pause, the quiet Tuesday ending) and a cost that stays paid. The narrator keeps stopping to state the lesson and the closing aphorisms break register; the conceit is Covey/Gottman's emotional bank account.",
    "abstract": "A short story told in four seasons. Jamie and Sally meet at a party, each performing their best self, and build a life on assumptions they never compare. Small unspoken rules and an unshared picture of the future draw down their \"trust bank\" until it reaches zero and they part quietly in the kitchen. A coda follows Sally as she takes stock of the loss without bitterness and concludes that alignment in what each wants a life to become is the only lasting remedy."
   },
   "ss-213722983": {
@@ -189,27 +189,27 @@
    "scores": {
     "novelty": 38,
     "earned": 38,
-    "control": 42,
+    "control": 38,
     "craft": 60,
-    "consequence": 33
+    "consequence": 35
    },
    "blurb": "Debts, and a parable about worth.",
-   "rationale": "A Meditations-style list of debts and a Sizoron parable; mostly assertion rather than dramatization. Register breaks (a web novel cited beside Seneca, 'with his whole chest') undercut the antique voice.",
+   "rationale": "A Meditations-style list of debts and a Sizoron parable, mostly assertion and stated morals. Register breaks (a web novel beside Seneca, 'with his whole chest') undercut the antique voice.",
    "abstract": "A set of numbered notes in the manner of the Meditations. The prologue lists lessons from a mother, a mentor, Marcus Aurelius, Seneca and others, and declares that philosophy is worthless until it changes behavior. A parable follows in which Sizoron asks an emperor how to become valuable. The answer is to listen to what others actually value in you, to read money as a true but limited report, and to give your life to human flourishing through technology."
   },
   "ss-211829148": {
    "hash": "7c8c6956cb7d2588",
    "category": "essays",
-   "overall": 30,
+   "overall": 32,
    "scores": {
     "novelty": 25,
-    "evidence": 8,
+    "evidence": 15,
     "rigor": 20,
-    "craft": 74,
+    "craft": 77,
     "consequence": 40
    },
    "blurb": "Life isn't short. We waste it.",
-   "rationale": "Seneca's argument restated with real rhetorical force. No caveats, and claims like 'he has lived twenty years' are asserted rather than earned.",
+   "rationale": "Seneca restated with strong rhetorical pull, which now counts under craft. Support is imagined scenarios only and there are no caveats.",
    "abstract": "Life is not short so much as spent: much of it goes to goals inherited from parents, industries or the applause of strangers. This essay argues that a borrowed goal also carries a borrowed ceiling, so capability goes underused as well as years lost. The only early evidence of one's own goal is an unexplained pull that came with no reward. It ends by recommending we ask whether our hours were chosen by us, rather than how many remain."
   },
   "ss-220000849": {
@@ -219,42 +219,42 @@
    "scores": {
     "novelty": 35,
     "earned": 38,
-    "control": 58,
-    "craft": 66,
-    "consequence": 28
+    "control": 56,
+    "craft": 64,
+    "consequence": 34
    },
    "blurb": "A self-portrait in the third person.",
-   "rationale": "A consistent, controlled self-portrait, but every line states a trait instead of showing one. Strongest in the ladder-with-no-top ending.",
+   "rationale": "A consistent self-portrait, but every line states a trait instead of showing one. Strongest in the ladder-with-no-top ending.",
    "abstract": "A short prose poem in the third person, portraying a mind that fears a wasted life more than failure, wants proof rather than applause, and keeps turning experience into laws until it mistakes a beautiful explanation for a true one. It ends on the only way out he has found: the best answer he can defend today, a commitment, and the nerve to let the world write the next page."
   },
   "ss-216230747": {
    "hash": "ffb9373ceaf5f254",
    "category": "fiction",
-   "overall": 28,
+   "overall": 30,
    "scores": {
-    "novelty": 22,
+    "novelty": 25,
     "earned": 30,
     "control": 30,
     "craft": 45,
-    "consequence": 20
+    "consequence": 22
    },
    "blurb": "A poem about peace.",
-   "rationale": "Sincere but abstract; images pile up without accumulating, and 'ravioli' and 'eternity halts before its immaculateness' break the register.",
+   "rationale": "Sincere but abstract; images pile up without accumulating. 'Ravioli' and 'eternity halts before its immaculateness' break the register.",
    "abstract": "A poem of surrender and stillness. Taking a blueberry that stays at peace even after it is picked as its image, the speaker accepts every past and future version of himself, chooses peace over conquest, and sets out how he hopes to live: with wonder, love without possession, forgiveness without forgetting, and a calm that does not need the world to be peaceful or perfect first."
   },
   "ss-207827995": {
    "hash": "9923fd33c84bdca1",
    "category": "essays",
-   "overall": 21,
+   "overall": 24,
    "scores": {
     "novelty": 15,
-    "evidence": 12,
+    "evidence": 25,
     "rigor": 10,
     "craft": 50,
     "consequence": 28
    },
    "blurb": "Focus × time × the room you're in.",
-   "rationale": "A formula without content and an anecdote chain standing in for evidence; 'results become inevitable' overclaims. Short and readable.",
+   "rationale": "Named cases (the NIH chain, the Budapest classroom) give some support, but they are survivorship anecdotes and the formula has no content. 'Results become inevitable' overclaims.",
    "abstract": "A short note proposing that success equals focus multiplied by time. Focus is shaped by environment, as the NIH mentorship chain and the Budapest classroom of Wigner, von Neumann and Teller illustrate. A revised formula, success = focus^years × environment, says that focus compounds. The note argues that technology now lets people choose the environment that sets those coefficients."
   },
   "ss-221421459": {
@@ -305,32 +305,32 @@
   "ss-222882823": {
    "hash": "d1101adaf57836e2",
    "category": "essays",
-   "overall": 40,
+   "overall": 44,
    "scores": {
     "novelty": 32,
-    "evidence": 22,
+    "evidence": 38,
     "rigor": 58,
-    "craft": 60,
+    "craft": 58,
     "consequence": 48
    },
    "blurb": "Write one goal, track the hours",
-   "rationale": "Credits its objections and lists falsifiable claims, but they are soft and nothing is tested. Wanders through many name-checked sources before reaching the method.",
+   "rationale": "Supports its method with a worked operating system and lists falsifiable claims and real objections, though nothing is tested. Leans on name-checked authorities and wanders before reaching the method.",
    "abstract": "A good life is one where most hours go to what matters and little is left to regret. Drawing on Seneca, Marcus Aurelius and Emerson, this essay treats regret as the test of time spent well and proposes a simple operating system: one written goal, hours logged against it each week, and a single document that collects every lesson so old failures stop returning. It closes with why the author's own hours go to AI safety, three objections, and three falsifiable predictions."
   },
   "ss-the-dichotomies-of-becoming": {
    "hash": "52c7106ea3405324",
    "category": "essays",
-   "overall": 29,
+   "overall": 32,
    "scores": {
     "novelty": 25,
-    "evidence": 15,
+    "evidence": 25,
     "rigor": 28,
     "craft": 60,
     "consequence": 32
    },
    "blurb": "Every year leaves a ring.",
    "abstract": "The essay argues that the question of a good life is less what one accomplishes than how one spends time, and works through four tensions: recognition against private good hours, one focus against many, Emerson's self-reliance against Marcus Aurelius's duty to others, and how to judge the people one lets in. It reconciles Emerson and Aurelius as answering different questions, rejects Aurelius on tolerating bad-faith people, and closes on the image of a tree's rings as a record of years that cannot be revised.",
-   "rationale": "The tree-ring and seed images land, but the promised four tensions blur together and several sentences are awkward ('as I've become'). Mostly restates the author's earlier time essays."
+   "rationale": "The tree-ring and seed images land, and the bad-people test gives concrete signs, but the four tensions blur and several sentences are awkward. Mostly restates the author's earlier time essays; 32 overall, typical of personal-philosophy blogging."
   },
   "ss-emotion-vectors-in-llama-32-3b-and": {
    "hash": "7e73d8f7d4353825",
@@ -350,32 +350,32 @@
   "ss-myrmex": {
    "hash": "e8c51ba1520a6821",
    "category": "fiction",
-   "overall": 62,
+   "overall": 65,
    "scores": {
-    "novelty": 55,
-    "earned": 64,
-    "control": 70,
+    "novelty": 60,
+    "earned": 66,
+    "control": 64,
     "craft": 78,
-    "consequence": 50
+    "consequence": 62
    },
    "blurb": "An ant's meditations on AI and work.",
    "abstract": "Four short books of numbered meditations on human work as AI systems take on more of it. The first traces the stepwise handover of trust and separates being redundant from being negligible. The rest is told by an ant: the hill keeps rising without her, tireless carriers learn the slope from the ants' old scent trails, repeating even their dead ends, and she keeps placing her grain with care while she can still tell when theirs are wrong.",
-   "rationale": "Economical and controlled; the scent-trail and dead-end images earn the point about inherited mistakes, and 'So I go slowly on the turns' lands. Book I states the thesis outright before the parable shows it."
+   "rationale": "The redundant/negligible distinction and the dead-end scent trail are fresh, and 'So I go slowly on the turns' stays with you. Book I states the thesis outright before the parable shows it, which control now penalizes."
   },
   "ss-love-quartz": {
    "hash": "75bdc844a80ddc1d",
    "category": "fiction",
-   "overall": 63,
+   "overall": 68,
    "scores": {
-    "novelty": 52,
-    "earned": 76,
+    "novelty": 58,
+    "earned": 78,
     "control": 66,
     "craft": 76,
-    "consequence": 50
+    "consequence": 64
    },
    "blurb": "Four eras, four mice, one crumb.",
    "abstract": "Four linked stories across 1,728 years: a cathedral mason in 1986, a translator in 2026, a night-ward doctor in 2194, and a world-builder on a starship in 3714, each doing work a machine can match or surpass. Each is paired with a mouse who inherits one saying, \"take what you need, and leave a little,\" and passes a crumb on. A mason's ring-and-notch mark travels through all four eras. The piece asks what human work means once nobody can tell it apart from a machine's, and does not answer.",
-   "rationale": "The ring-and-notch and the crumb carry the meaning across four eras without being explained, and the mouse sections show rather than tell. The relay-across-centuries form is familiar, the 'What I noticed' tic flattens the human voices, and it runs long."
+   "rationale": "The ring-and-notch and the crumb carry meaning across four eras without explanation, and the costs stay paid (the second cup put back, the father's stillness). The 'What I noticed' tic flattens the human voices and it runs long."
   },
   "ss-do-claude-agents-peek-at-the-answer": {
    "hash": "b12e92713c52df11",
@@ -410,17 +410,17 @@
   "site-mine-has-been-a-life-of-much-greatness": {
    "hash": "996b83c42dadef4a",
    "category": "fiction",
-   "overall": 64,
+   "overall": 69,
    "scores": {
-    "novelty": 58,
+    "novelty": 64,
     "earned": 74,
     "control": 62,
-    "craft": 80,
-    "consequence": 45
+    "craft": 86,
+    "consequence": 60
    },
    "blurb": "A vain watermelon misreads love.",
    "abstract": "A watermelon keeps three notebooks across one summer, sure the field exists to serve him and that the girl who waters him each morning at 7:02 is in love with him. He gets the evidence wrong at every step: twelve seconds of water was a sneeze, and the pet name he looked down on turns out to be the one she saves for the fruit she is about to lose. A foreword studies his photographs, and the man who ate him writes the afterword.",
-   "rationale": "The comic voice is sustained and the misreadings (the sneeze, 'buddy', the knock) show his blindness without saying it, so the reversal lands. Familiar proud-narrator-gets-eaten shape; a few lines explain rather than show ('It turned out I had it backwards'), and the turn to 'a man named Joshua Brown' breaks the register without enough setup."
+   "rationale": "Comic voice and fresh specifics (Doug the gourd, the sun as employee, eleven seconds, 'the review arrives while you are still in the mouth') carry it, and the cost stays paid. A few lines explain rather than show, and the 'Joshua Brown' turn breaks register without setup."
   }
  },
  "scale": "Absolute, not relative to this corpus. Each metric 0-100; overall is the weighted sum. 90+ best in field (a NeurIPS or Nature paper, a story in The New Yorker); 80+ strong venue (Alignment Forum frontpage with real engagement, a top literary quarterly); 70 a good post people send each other; 60 competent, worth reading once; 50 fine for a personal blog; below 40 should not be on the Selected page.",
@@ -436,12 +436,14 @@
    "evidence": "earned",
    "rigor": "control"
   },
-  "novelty": "Would an informed reader in the field learn something they couldn't get from three other sources? Restating a known idea well scores low no matter how well it is restated.",
-  "evidence": "Are the claims backed by data, controls and falsifiable predictions? Zero data means a low score even if the argument is correct.",
-  "rigor": "Does the piece name its own weaknesses accurately and at a cost to itself? Stated objections, withdrawn claims, admitted confounds.",
-  "craft": "Prose, structure, economy. Does it say it in the fewest good words.",
-  "consequence": "If fully true, how much does it change what anyone does.",
-  "earned": "Fiction: does it show rather than assert.",
-  "control": "Fiction: no unearned sentiment, no register breaks."
+  "principles": "Grade only the text: no views, sales, awards, influence or author reputation. Grade the unit as published. A score means the same on every shelf. Score each metric on its own before the total; length earns nothing.",
+  "novelty": "Would an informed reader in the field learn something they couldn't get from three other sources? Restating a known idea well scores low no matter how well it is restated. Fiction: would a well-read reader meet something new (premise, form, or specifics)? A familiar shape with fresh specifics can reach the 70s; 80+ needs something new.",
+  "evidence": "Research and perspectives: are the claims backed by data, controls and falsifiable predictions? Zero data means a low score even if the argument is correct; claims are only as strong as their evidence. Essays (support): concrete cases, worked examples, checkable claims and predictions; bare assertion scores low.",
+  "rigor": "Does the piece name its own weaknesses accurately and at a cost to itself? Stated objections, withdrawn claims, admitted confounds, the strongest version of the other side.",
+  "craft": "Prose, structure, economy, and pull: does it say it in the fewest good words, and does the reader want the next line? Voice and comedy that works count here.",
+  "consequence": "Nonfiction: if fully true, how much does it change what anyone does. Fiction (resonance): does it change how the reader sees something, and would they remember it a year later? Never reception or influence.",
+  "earned": "Fiction: does it show rather than assert? Setups pay off, costs stay paid, resolutions are not handed out.",
+  "control": "Fiction: consistent register, no unearned sentiment, no cheap reversals, no narrator stating the moral.",
+  "anchors": "Corpus: Do Claude Agents Peek 67, The Trust Bank 59, Love Doesn't Rust 58, Concept Injection 55, Moral-Based Evaluation 43, The Formula for Success 24. External fiction: Gravity Falls 80, How to Train Your Dragon (film) 76, The Tale of Despereaux 75, How to Train Your Dragon (book 1) 64, The Beginning After the End 51. If a metric is more than 10 points from the nearest comparable anchor, the rationale says why."
  }
 }
